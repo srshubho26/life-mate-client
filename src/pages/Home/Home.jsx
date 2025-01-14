@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import Banner from "./parts/Banner";
 import PremiumMembers from "./parts/PremiumMembers";
 import HowItWorks from "./parts/HowItWorks";
+import SuccessCountup from "./parts/SuccessCountup";
 
 const Home = () => {
     return (
@@ -11,8 +12,9 @@ const Home = () => {
             </Helmet>
 
             <Banner />
-            <PremiumMembers/>
-            <HowItWorks/>
+            <PremiumMembers />
+            <HowItWorks />
+            <SuccessCountup />
         </>
     );
 };

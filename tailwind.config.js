@@ -14,6 +14,7 @@ export default {
         'text-dark': '#fbe9fa',
         'background': '#fceefb',
         'lite': '#fdf6fd',
+        'clear-lite': '#fff6ffeb',
         'background-dark': '#110310',
         'clear-dark': '#11031066',
         'primary': '#d833db',
@@ -22,7 +23,9 @@ export default {
         'secondary-dark': '#713614',
         'accent': '#e2bb5a',
         'accent-deep': '#ebaa0a',
-        'accent-dark': '#a57e1d'
+        'accent-dark': '#a57e1d',
+        'line': '#ffafff',
+        'element': '#f9f0f9',
        },
               
       fontFamily: {

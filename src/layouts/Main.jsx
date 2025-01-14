@@ -5,7 +5,7 @@ import { Footer } from "flowbite-react";
 const Main = () => {
     return (<div className="">
         <Header />
-        <main><Outlet /></main>
+        <main className="pt-16 sm:pt-20"><Outlet /></main>
         <Footer />
     </div>);
 };

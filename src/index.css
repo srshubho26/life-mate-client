@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+AU+SA:wght@100..400&display=swap');
 
-body{
+body {
     font-family: "Open Sans", serif;
     font-optical-sizing: auto;
     font-variation-settings:
@@ -10,3 +10,43 @@ body{
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Banner css */
+.banner .slide-text:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -120px;
+    width: calc(100% + 150px);
+    height: 100%;
+    background: #110310c5;
+    transform: skewX(-25deg);
+    border-left: 10px solid #713614;
+}
+
+.banner .swiper .swiper-button-next,
+.banner .swiper .swiper-button-prev {
+    left: 50%;
+    transform: translateX(50px);
+    top: unset;
+    bottom: 30px;
+    color: #e2bb5a;
+}
+
+.banner .swiper .swiper-button-prev {
+    transform: translateX(-50px);
+}
+
+@media only screen and (min-width: 640px) {
+    .banner .slide-text:before {
+        width: calc(60% + 150px);
+        right: -150px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .banner .slide-text:before {
+
+        width: calc(50% + 150px);
+    }
+}

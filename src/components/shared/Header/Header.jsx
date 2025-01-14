@@ -10,11 +10,22 @@ import {
 } from "flowbite-react";
 import themeOverride from "./parts/theme";
 import NavItem from "./parts/NavItem";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Logo from "../../reusuable/Logo";
+import useAuth from "../../../hooks/useAuth";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [top0, setTop0] = useState(true);
+  const user = useAuth();
+  const { logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => navigate('/login'))
+  }
 
   useEffect(() => {
     let prev;
@@ -30,32 +41,34 @@ const Header = () => {
     <Navbar fluid theme={themeOverride}>
       <Logo />
 
-      <div className="flex lg:order-2">
+      <div className={"flex lg:order-2 " + (user ? '' : 'lg:hidden')}>
         <NavbarToggle />
-        <Dropdown
+
+        {user && <Dropdown
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+            <Avatar alt="User settings" img={user.photoURL} rounded />
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm min-w-40">{user.displayName}</span>
+            <span className="block truncate text-sm font-medium">{user.email}</span>
           </DropdownHeader>
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
           <DropdownItem>Earnings</DropdownItem>
           <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
-        </Dropdown>
+          <DropdownItem onClick={handleLogout} className="text-accent-dark font-semibold">Sign out</DropdownItem>
+        </Dropdown>}
       </div>
+
       <NavbarCollapse className="text-text dark:text-text-dark">
         <NavItem name="Home" />
         <NavItem to="/biodatas" name="Biodatas" />
         <NavItem to="/about" name="About Us" />
         <NavItem to="/contact" name="Contact Us" />
-        <NavItem to="/login" name="Login" />
+        {!user && <NavItem to="/login" name="Login" />}
       </NavbarCollapse>
     </Navbar>
   </header>);

@@ -55,7 +55,7 @@ const SuccessCountup = () => {
                 >
                     {isVisible ? <>{counts.map(((el, i) => (
                         <div key={i} className="border border-line bg-element rounded-md py-5 pb-8">
-                            <p className="w-fit mx-auto text-7xl mb-4 text-accent">
+                            <p className="w-fit mx-auto text-7xl mb-4 text-primary">
                                 {el.icon}
                             </p>
 

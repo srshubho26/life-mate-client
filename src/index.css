@@ -53,20 +53,40 @@ body {
 }
 
 /* Sort Btn CSS */
-.sort-wrap button.group{
+.sort-wrap button.group {
     background: #e2bb5a;
 }
 
-.sort-wrap button.group:hover{
+.sort-wrap button.group:hover {
     background: #a57e1d;
 }
 
-.sort-wrap button.group span{
+.sort-wrap button.group span {
     font-size: 20px;
 }
 
 /* Footer CSS */
-footer input[type="email"]:focus{
-    border-color: #d833db;
+footer input[type="email"]:focus, .biodatas form select:focus {
+    border-color: #d833db!important;
     box-shadow: none;
+}
+
+
+/* Biodata filter css */
+
+.biodatas form input[type=range]{
+    appearance: none;
+    background: #e2bb5a;
+}
+
+.biodatas form input[type=range]::-webkit-slider-thumb {
+    background: #d833db;
+}
+
+.biodatas form input[type=range]::-moz-range-thumb{
+    background: #d833db;
+}
+
+.biodatas form input[type=range]::-ms-thumb {
+    background: #d833db;
 }

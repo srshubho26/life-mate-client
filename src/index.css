@@ -51,3 +51,16 @@ body {
         right: -100vw;
     }
 }
+
+/* Sort Btn CSS */
+.sort-wrap button.group{
+    background: #e2bb5a;
+}
+
+.sort-wrap button.group:hover{
+    background: #a57e1d;
+}
+
+.sort-wrap button.group span{
+    font-size: 20px;
+}

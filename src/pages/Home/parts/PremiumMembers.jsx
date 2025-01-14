@@ -1,11 +1,12 @@
 import Title from "../../../components/reusuable/Title";
 import PremiumMemberCard from "../../../components/reusuable/PremiumMemberCard";
+import SortBtns from "../../../components/reusuable/SortBtns";
 
 const users = [
     {
         name: "Sima",
         age: "20",
-        occupation: "Student",
+        occupation: "Teacher",
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "3",
         gender: "F",
@@ -18,16 +19,16 @@ const users = [
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "5",
         gender: "F",
-        division: "Rajhshahi"
+        division: "Mymensingh"
     },
     {
         name: "Mina",
         age: "20",
-        occupation: "Student",
+        occupation: "Govt. Job",
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "7",
         gender: "F",
-        division: "Rajhshahi"
+        division: "Chattagram"
     },
     {
         name: "Sarmin",
@@ -36,25 +37,25 @@ const users = [
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "9",
         gender: "F",
-        division: "Rajhshahi"
+        division: "Rangpur"
     },
     {
         name: "Ety",
         age: "20",
-        occupation: "Student",
+        occupation: "Housewife",
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "11",
         gender: "F",
-        division: "Rajhshahi"
+        division: "Sylhet"
     },
     {
         name: "Jhuma",
         age: "20",
-        occupation: "Student",
+        occupation: "Engineer",
         img: "https://sadtalkerai.com/wp-content/uploads/2024/04/sadtalker-ai-1.webp",
         id: "14",
         gender: "F",
-        division: "Rajhshahi"
+        division: "Barisal"
     }
 ]
 
@@ -64,7 +65,11 @@ const PremiumMembers = () => {
             <Title title="Our Premium Members" />
 
 
-            <div className="max-w-60 mx-auto sm:max-w-full grid sm:grid-cols-3 mt-10 gap-4 text-center lg:text-left">
+            <div className="mt-10 mb-4 sort-wrap">
+            <SortBtns />
+            </div>
+
+            <div className="max-w-60 mx-auto sm:max-w-full grid sm:grid-cols-3 gap-4 text-center lg:text-left">
                 {users.map(member => (<PremiumMemberCard key={member.id} member={member} />))}
 
             </div>

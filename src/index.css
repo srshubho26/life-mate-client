@@ -64,3 +64,9 @@ body {
 .sort-wrap button.group span{
     font-size: 20px;
 }
+
+/* Footer CSS */
+footer input[type="email"]:focus{
+    border-color: #d833db;
+    box-shadow: none;
+}

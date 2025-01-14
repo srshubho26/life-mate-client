@@ -9,10 +9,9 @@ import {
   NavbarToggle,
 } from "flowbite-react";
 import themeOverride from "./parts/theme";
-import { Link } from "react-router-dom";
-import logo from '../../../assets/img/logo.png';
 import NavItem from "./parts/NavItem";
 import { useEffect, useState } from "react";
+import Logo from "../../reusuable/Logo";
 
 const Header = () => {
   const [top0, setTop0] = useState(true);
@@ -29,12 +28,7 @@ const Header = () => {
     className={(top0 ? 'top-0' : '-top-28') + " fixed left-0 w-full z-30 bg-clear-lite dark:bg-clear-dark px-2 py-3 border-b border-accent-deep transition-[top]"}
   >
     <Navbar fluid theme={themeOverride}>
-      <Link style={{
-      }} className="flex items-center text-xl sm:text-2xl font-bold font-playwrite bg-gradient-to-t from-primary to-accent-deep bg-clip-text text-transparent">
-        <img className="w-10 sm:w-14" src={logo} alt="Logo" />
-        <span className="">Life</span>
-        <span className="">Mate</span>
-      </Link>
+      <Logo />
 
       <div className="flex lg:order-2">
         <NavbarToggle />

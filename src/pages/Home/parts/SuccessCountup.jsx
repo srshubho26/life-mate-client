@@ -63,7 +63,7 @@ const SuccessCountup = () => {
                                 <CountUp duration={3} end={el.limit} />
                             </span>
 
-                            <h3 className="text-primary text-3xl font-playwrite font-bold">
+                            <h3 className="text-primary text-3xl uppercase font-bold">
                                 {el.name}
                             </h3>
                         </div>

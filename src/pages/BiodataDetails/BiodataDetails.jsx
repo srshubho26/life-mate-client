@@ -7,17 +7,41 @@ import moment from "moment";
 import Title from "../../components/reusuable/Title";
 import useBiodatas from "../../hooks/useBiodatas";
 import BiodataCard from "../../components/reusuable/BiodataCard";
+import { useState } from "react";
+import useAxiosWithCredentials from "../../hooks/useAxiosWithCredentials";
+import useAuth from "../../hooks/useAuth";
+import swal from "sweetalert";
+import useIsFavourite from "../../hooks/useIsFavourite";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
 const BiodataDetails = () => {
     const { id } = useParams();
+    const {email} = useAuth();
     const { details, loading } = useBiodataDetails(id);
+    const axiosWithCredentials = useAxiosWithCredentials();
+    const [favLoading, setFavLoading] = useState(false);
     const { isExists, checking } = useIsRequestExists(details?.biodata_id);
+    const {isFavourite, checking: isFavouriteChecking, recheckFav} = useIsFavourite(details?.biodata_id);
     const {biodatas: suggestions, loading: loadingSuggestions} = useBiodatas({
         type: details.type,
         id
     }, 3);
+
+    const handleAddToFavourite = ()=>{
+        if(isFavouriteChecking)return;
+        setFavLoading(true);
+        axiosWithCredentials.post(`/favourites/`, {biodata_id: details.biodata_id, email })
+        .then(res=>{
+            if(res.data.insertedId){
+                swal('Done', 'Biodata added as favourite.', 'success');
+            }
+            setFavLoading(false);
+            recheckFav();
+        }).catch(()=>{
+            setFavLoading(false)
+        })
+    }
 
     return (<section className="px-2 py-20 bg-lite biodatas">
         <Helmet>
@@ -25,7 +49,7 @@ const BiodataDetails = () => {
         </Helmet>
 
         <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
-            <Loading loading={loading} />
+            <Loading loading={loading || favLoading ||isFavouriteChecking} />
             <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
             <div className="text-center">
@@ -34,9 +58,11 @@ const BiodataDetails = () => {
                     <span className="text-accent ml-2">#{details.biodata_id}</span>
                 </h3>
                 <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
+
+                {isFavourite && <span className="text-primary font-semibold">Added As Favourite</span>}
             </div>
 
-            <div className="flex gap-2 justify-center mt-5">
+            <div className="flex items-center gap-2 justify-center mt-5">
                 {!isExists && !checking && <Link
                     state={{ _id: details._id }}
                     to={`/checkout/${details.biodata_id}`}
@@ -44,9 +70,11 @@ const BiodataDetails = () => {
                     Request Contact
                 </Link>}
 
-                <button className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
+                {!isFavourite && <button
+                onClick={handleAddToFavourite}
+                 className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
                     Add To Favourite
-                </button>
+                </button>}
             </div>
 
             <div className="mt-5 text-left capitalize text-sm sm:text-lg">

@@ -15,7 +15,25 @@ const MyFavBiodatas = () => {
         const [deleteLoading, setDeleteLoading] = useState(false);
 
     const handleDelete = id => {
-
+        swal({
+            title: "Are you sure?",
+            text: "Your favourite biodata will be removed permanently.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(isConfirmed => {
+                if(!isConfirmed)return;
+                setDeleteLoading(true);
+                axiosWithCredentials.delete(`/favourites/${id}?email=${email}`)
+                    .then(res => {
+                        setDeleteLoading(false);
+                        if (res.data.acknowledged && res.data.deletedCount>0) {
+                            swal('Done', 'Your favourite biodata is removed successfully', 'success');
+                            refetch();
+                        }
+                    })
+            })
     }
 
     return (<section className="relative">

@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Biodatas from "../pages/Biodatas/Biodatas";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import BiodataDetails from "../pages/BiodataDetails/BiodataDetails";
+import Checkout from "../pages/Checkout/Checkout";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />
+            },
+            {
+                path: '/details/:id',
+                element: <BiodataDetails />
+            },
+            {
+                path: '/checkout/:biodataId',
+                element: <Checkout />
             }
         ]
     }

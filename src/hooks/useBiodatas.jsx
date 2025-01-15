@@ -4,16 +4,17 @@ import { useQuery } from '@tanstack/react-query';
 
 const useBiodatas = (filter={}, limit=0, page=0) => {
     const axiosPublic = useAxiosPublic();
-    const {type='', minAge=0, maxAge=0, division=''} = filter;
+    const {type='', minAge=0, maxAge=0, division='', sortAge=''} = filter;
 
     const {data: biodatas=[], isPending: loading, refetch} = useQuery({
-        queryKey: ['biodatas', type, minAge, maxAge, division, limit, page],
+        queryKey: ['biodatas', type, minAge, maxAge, division, sortAge, limit, page],
         queryFn: async()=>{
             let query = '';
             if(type)query+=`&type=${type}`;
             if(minAge)query+=`&minAge=${minAge}`;
             if(maxAge)query+=`&maxAge=${maxAge}`;
             if(division)query+=`&division=${division}`;
+            if(sortAge)query+=`&sortAge=${sortAge}`;
             if(limit)query+=`&limit=${limit}&page=${page}`;
 
             if(query)query = "?"+query.slice(1);

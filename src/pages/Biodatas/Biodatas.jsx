@@ -1,10 +1,10 @@
 import { FaAngleRight } from "react-icons/fa";
-import PremiumMemberCard from "../../components/reusuable/PremiumMemberCard";
 import Filter from "./parts/Filter";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useBiodatas from "../../hooks/useBiodatas";
 import Loading from "../../components/reusuable/Loading";
+import BiodataCard from "../../components/reusuable/BiodataCard";
 
 
 const Biodatas = () => {
@@ -29,8 +29,8 @@ const Biodatas = () => {
             </div>
 
             <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-center gap-3 p-3 relative items-start min-h-screen">
-                <Loading loading={loading}/>
-                {biodatas?.map(biodata => (<PremiumMemberCard
+                <Loading loading={loading} />
+                {biodatas?.map(biodata => (<BiodataCard
                     key={biodata._id}
                     isLessSpace={true}
                     member={biodata}

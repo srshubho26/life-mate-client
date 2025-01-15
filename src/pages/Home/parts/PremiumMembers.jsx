@@ -6,7 +6,7 @@ import BiodataCard from "../../../components/reusuable/BiodataCard";
 
 const PremiumMembers = () => {
     const [sortAge, setSortAge] = useState('');
-    const {biodatas} = useBiodatas({sortAge}, 6);
+    const {biodatas} = useBiodatas({sortAge, premium: true}, 6);
 
     return (<section className="px-2 py-20 bg-lite">
         <div className="max-w-screen-xl mx-auto">

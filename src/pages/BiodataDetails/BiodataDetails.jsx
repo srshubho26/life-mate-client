@@ -4,6 +4,9 @@ import { Link, useParams } from "react-router-dom";
 import Loading from "../../components/reusuable/Loading";
 import useIsRequestExists from "../../hooks/useIsRequestExists";
 import moment from "moment";
+import Title from "../../components/reusuable/Title";
+import useBiodatas from "../../hooks/useBiodatas";
+import BiodataCard from "../../components/reusuable/BiodataCard";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
@@ -11,18 +14,21 @@ const BiodataDetails = () => {
     const { id } = useParams();
     const { details, loading } = useBiodataDetails(id);
     const { isExists, checking } = useIsRequestExists(details?.biodata_id);
+    const {biodatas: suggestions, loading: loadingSuggestions} = useBiodatas({
+        type: details.type
+    }, 3);
 
     return (<section className="px-2 py-20 bg-lite biodatas">
         <Helmet>
             <title>Details || Love Mate</title>
         </Helmet>
 
-        <div className="relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
+        <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
             <Loading loading={loading} />
             <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
             <div className="text-center">
-                <h3 className="text-primary font-semibold text-3xl">
+                <h3 className="text-primary font-semibold text-lg mt-3 sm:text-3xl">
                     {details?.name}
                     <span className="text-accent ml-2">#{details.biodata_id}</span>
                 </h3>
@@ -110,6 +116,13 @@ const BiodataDetails = () => {
                     <span className={detailsTxtCss}>{details.expectedWeight}</span>
                 </p>
             </div>
+        </div>
+
+        
+        <Title title="Recommended" />
+        <div className="grid sm:grid-cols-3 gap-5 min-h-32 relative mt-10 max-w-sm sm:max-w-screen-xl mx-auto">
+                <Loading loading={loadingSuggestions}/>
+                {suggestions.map(member=>(<BiodataCard key={member._id} member={member} />))}
         </div>
     </section>);
 };

@@ -8,8 +8,6 @@ import { TiContacts } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa";
 import NavItem from "../pages/dashboard/components/NavItem";
 import { Outlet } from "react-router-dom";
-import { GoTriangleRight } from "react-icons/go";
-import { MdAddBox } from "react-icons/md";
 import { IoAdd } from "react-icons/io5";
 
 
@@ -19,8 +17,8 @@ const Dashboard = () => {
     const handleClose = () => setIsOpen(false);
 
     return (<>
-        <div className="min-h-screen px-2 bg-lite">
-            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md fixed top-1 left-1 transition-colors"
+        <div className="min-h-screen px-2 bg-lite py-10">
+            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md bg-lite fixed top-1 left-1 transition-colors z-10"
             onClick={() => setIsOpen(true)}>
                 <IoAdd />
             </button>

@@ -52,8 +52,8 @@ const Banner = () => {
                 <div className='h-[450px] sm:h-auto bg-primary max-h-[calc(100vh-130px)] relative'>
                     <div className='absolute px-2 top-0 left-0 w-full h-full bg-clear-dark slide-text'>
                         <div className='max-w-screen-xl mx-auto h-full relative z-20'>
-                            <div className='sm:w-1/2 sm:pl-10 lg:pl-40 ml-auto h-full flex flex-col justify-center'>
-                                <h2 className='px-4 sm:px-0 text-xl sm:text-2xl lg:text-4xl font-bold uppercase text-text-dark '>
+                            <div className='px-4 sm:px-0 sm:w-1/2 h-full flex flex-col justify-center'>
+                                <h2 className='text-xl sm:text-2xl lg:text-4xl font-bold uppercase text-text-dark '>
                                     {slide.title}
                                 </h2>
 

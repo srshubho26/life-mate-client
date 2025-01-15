@@ -5,14 +5,14 @@ import useAxiosWithCredentials from './useAxiosWithCredentials';
 const useIsPremiumRequested = (id) => {
     const axiosWithCredentials = useAxiosWithCredentials();
 
-    const { data: isRequested, isPending: requestChecking } = useQuery({
+    const { data: request={}, isPending: requestChecking } = useQuery({
         queryKey: ['isPremiumRequested-', id],
         queryFn: async () => {
             const res = await axiosWithCredentials(`/is-requested/${id}`);
-            return res.data.isRequested;
+            return res.data;
         }
     })
-    return {isRequested, requestChecking}
+    return {request, requestChecking}
 };
 
 useIsPremiumRequested.propTypes = {

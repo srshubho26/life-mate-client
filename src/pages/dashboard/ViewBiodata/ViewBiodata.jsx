@@ -7,16 +7,18 @@ import moment from "moment";
 import swal from "sweetalert";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
 import { useState } from "react";
+import useIsPremiumRequested from "../../../hooks/useIsPremiumRequested";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
 const ViewBiodata = () => {
-    const {email} = useAuth();
+    const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
-    
     const { details, loading } = useBiodataDetails('own', email);
+    const { request, requestChecking } = useIsPremiumRequested(details._id);
     const [premiumLoading, setPremiumLoading] = useState(false);
-    const handlePremiumReq = ()=>{
+
+    const handlePremiumReq = () => {
         swal({
             title: "Are you sure?",
             text: "Your biodata will be premium & you'll be a premium user as well.",
@@ -24,31 +26,31 @@ const ViewBiodata = () => {
             buttons: true,
             dangerMode: true,
         })
-        .then(isConfirmed=>{
-            if(isConfirmed){
-                setPremiumLoading(true);
-                axiosWithCredentials.post('/premium-request', {email, biodata: details._id})
-                .then(res=>{
-                    if(res.data.acknowledged){
-                setPremiumLoading(false);
-                swal("Done", "You are under admin approval.", "success");
-                    }
-                }).catch(()=>{
-                    setPremiumLoading(false);
-                    swal("Oops!", "Something went wrong!", "error");
-                })
-            }
-        })
+            .then(isConfirmed => {
+                if (isConfirmed) {
+                    setPremiumLoading(true);
+                    axiosWithCredentials.post('/premium-request', { email, biodata: details._id })
+                        .then(res => {
+                            if (res.data.acknowledged) {
+                                setPremiumLoading(false);
+                                swal("Done", "You are under admin approval.", "success");
+                            }
+                        }).catch(() => {
+                            setPremiumLoading(false);
+                            swal("Oops!", "Something went wrong!", "error");
+                        })
+                }
+            })
     }
 
     return (<section className="py-5 ">
-            <Helmet>
-                <title>View Your Biodata || Love Mate</title>
-            </Helmet>
+        <Helmet>
+            <title>View Your Biodata || Love Mate</title>
+        </Helmet>
 
-            <Title title="View Your Biodata" />
+        <Title title="View Your Biodata" />
 
-            <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
+        <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
             <Loading loading={loading || premiumLoading} />
             <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
@@ -60,13 +62,16 @@ const ViewBiodata = () => {
                 <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
             </div>
 
-            <div className="flex gap-2 justify-center mt-2">
-                <button 
-                onClick={handlePremiumReq}
-                className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
+            {!requestChecking && <div className="flex gap-2 justify-center mt-2">
+                {request?.isRequested && request?.status === 'pending' && <span>Your biodata is under review</span>}
+
+                {!request?.isRequested && <button
+                    onClick={handlePremiumReq}
+                    className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
                     Make Biodata Premium
                 </button>
-            </div>
+                }
+            </div>}
 
             <div className="mt-5 text-left text-sm sm:text-lg">
                 <p className="flex gap-2 mt-2">

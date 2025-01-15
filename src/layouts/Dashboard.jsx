@@ -1,4 +1,4 @@
-import { Button, Drawer } from "flowbite-react";
+import { Drawer } from "flowbite-react";
 import { useState } from "react";
 import Logo from "../components/reusuable/Logo";
 import { RxCross2 } from "react-icons/rx";
@@ -8,16 +8,23 @@ import { TiContacts } from "react-icons/ti";
 import { FaRegHeart } from "react-icons/fa";
 import NavItem from "../pages/dashboard/components/NavItem";
 import { Outlet } from "react-router-dom";
+import { GoTriangleRight } from "react-icons/go";
+import { MdAddBox } from "react-icons/md";
+import { IoAdd } from "react-icons/io5";
 
 
 const Dashboard = () => {
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleClose = () => setIsOpen(false);
 
     return (<>
         <div className="min-h-screen px-2 bg-lite">
-            <Button onClick={() => setIsOpen(true)}>Show drawer</Button>
+            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md fixed top-1 left-1 transition-colors"
+            onClick={() => setIsOpen(true)}>
+                <IoAdd />
+            </button>
+
             <div className="max-w-screen-xl mx-auto h-full">
                 <Outlet />
             </div>

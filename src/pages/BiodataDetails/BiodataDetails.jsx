@@ -15,7 +15,8 @@ const BiodataDetails = () => {
     const { details, loading } = useBiodataDetails(id);
     const { isExists, checking } = useIsRequestExists(details?.biodata_id);
     const {biodatas: suggestions, loading: loadingSuggestions} = useBiodatas({
-        type: details.type
+        type: details.type,
+        id
     }, 3);
 
     return (<section className="px-2 py-20 bg-lite biodatas">

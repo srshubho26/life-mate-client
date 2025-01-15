@@ -70,7 +70,7 @@ const Filter = ({setFilter}) => {
       <Select name="division" required>
         <option>Division</option>
         <option>Dhaka</option>
-        <option>Chattagra</option>
+        <option>Chattagram</option>
         <option>Rangpur</option>
         <option>Barisal</option>
         <option>Khulna</option>

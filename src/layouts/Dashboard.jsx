@@ -58,7 +58,7 @@ const Dashboard = () => {
                     <NavItem
                         closeDrawer={handleClose}
                         icon={<TiContacts />}
-                        to=""
+                        to="my-contact-requests"
                         name="My Contact Request"
                     />
 

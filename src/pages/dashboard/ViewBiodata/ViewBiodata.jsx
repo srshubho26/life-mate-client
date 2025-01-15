@@ -6,8 +6,9 @@ import useAuth from "../../../hooks/useAuth";
 import moment from "moment";
 import swal from "sweetalert";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useIsPremiumRequested from "../../../hooks/useIsPremiumRequested";
+import { useNavigate } from "react-router-dom";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
@@ -17,6 +18,17 @@ const ViewBiodata = () => {
     const { details, loading } = useBiodataDetails('own', email);
     const { request, requestChecking } = useIsPremiumRequested(details._id);
     const [premiumLoading, setPremiumLoading] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(loading)return;
+        if(!Object.keys(details).length){
+            swal('Wait!', 'Please create your biodata first.', 'warning')
+            .then(()=>{
+                navigate('/dashboard/edit-biodata')
+            })
+        }
+    }, [details, loading, navigate])
 
     const handlePremiumReq = () => {
         swal({
@@ -43,7 +55,7 @@ const ViewBiodata = () => {
             })
     }
 
-    return (<section className="py-5 ">
+    return (<section className="py-5">
         <Helmet>
             <title>View Your Biodata || Love Mate</title>
         </Helmet>

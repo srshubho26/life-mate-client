@@ -65,15 +65,8 @@ const Dashboard = () => {
                     <NavItem
                         closeDrawer={handleClose}
                         icon={<FaRegHeart />}
-                        to=""
+                        to="my-favourite-biodatas"
                         name="Favourites Biodata"
-                    />
-
-                    <NavItem
-                        closeDrawer={handleClose}
-                        icon={<FiEdit />}
-                        to=""
-                        name="Edit Biodata"
                     />
 
                     <li className="my-2">

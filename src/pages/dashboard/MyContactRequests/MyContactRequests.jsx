@@ -76,7 +76,7 @@ const MyContactRequests = () => {
                         </TableCell>
                         <TableCell>
                             <button
-                                onClick={() => handleDelete(req._id,)}
+                                onClick={() => handleDelete(req._id)}
                                 className="font-medium text-red-600 ">
                                 Delete
                             </button>

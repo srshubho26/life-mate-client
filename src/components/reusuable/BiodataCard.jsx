@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const BiodataCard = ({ member, isLessSpace = false }) => {
-    const isMale = member.type==='male';
+    const isMale = member.type==='Male';
     return (<div className={"border border-line bg-element rounded-md p-4 flex flex-col items-center gap-4 " + (isLessSpace ? '' : 'lg:flex-row')}>
         <div className="relative w-28 h-28">
             <img className="rounded-lg border border-accent w-full h-full object-cover" src={member?.profile_img} />

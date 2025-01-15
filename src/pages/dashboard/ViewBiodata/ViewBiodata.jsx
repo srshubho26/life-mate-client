@@ -1,23 +1,42 @@
 import { Helmet } from "react-helmet-async";
-import useBiodataDetails from "../../hooks/useBiodataDetails";
-import { Link, useParams } from "react-router-dom";
-import Loading from "../../components/reusuable/Loading";
-import useIsRequestExists from "../../hooks/useIsRequestExists";
+import Title from "../../../components/reusuable/Title";
+import Loading from "../../../components/reusuable/Loading";
+import useBiodataDetails from "../../../hooks/useBiodataDetails";
+import useAuth from "../../../hooks/useAuth";
 import moment from "moment";
+import swal from "sweetalert";
+import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
-const BiodataDetails = () => {
-    const { id } = useParams();
-    const { details, loading } = useBiodataDetails(id);
-    const { isExists, checking } = useIsRequestExists(details?.biodata_id);
+const ViewBiodata = () => {
+    const {email} = useAuth();
+    const axiosWithCredentials = useAxiosWithCredentials();
+    
+    const { details, loading } = useBiodataDetails('own', email);
+    const handlePremiumReq = ()=>{
+        swal({
+            title: "Are you sure?",
+            text: "Your biodata will be premium & you'll be a premium user as well.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(isConfirmed=>{
+            // if(isConfirmed){
 
-    return (<section className="px-2 py-20 bg-lite biodatas">
-        <Helmet>
-            <title>Details || Love Mate</title>
-        </Helmet>
+            // }
+        })
+    }
 
-        <div className="relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
+    return (<section className="py-5 ">
+            <Helmet>
+                <title>View Your Biodata || Love Mate</title>
+            </Helmet>
+
+            <Title title="View Your Biodata" />
+
+            <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
             <Loading loading={loading} />
             <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
@@ -29,20 +48,25 @@ const BiodataDetails = () => {
                 <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
             </div>
 
-            <div className="flex gap-2 justify-center mt-5">
-                {!isExists && !checking && <Link
-                    state={{ _id: details._id }}
-                    to={`/checkout/${details.biodata_id}`}
-                    className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
-                    Request Contact
-                </Link>}
-
-                <button className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
-                    Add To Favourite
+            <div className="flex gap-2 justify-center mt-2">
+                <button 
+                onClick={handlePremiumReq}
+                className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite">
+                    Make Biodata Premium
                 </button>
             </div>
 
-            <div className="mt-5 text-left capitalize text-sm sm:text-lg">
+            <div className="mt-5 text-left text-sm sm:text-lg">
+                <p className="flex gap-2 mt-2">
+                    <span className={detailsTxtCss + ' font-semibold'}>Email: </span>
+                    <span className={detailsTxtCss}>{details.contact.email}</span>
+                </p>
+
+                <p className="flex gap-2 mt-2">
+                    <span className={detailsTxtCss + ' font-semibold'}>Phone: </span>
+                    <span className={detailsTxtCss}>{details.contact.phone}</span>
+                </p>
+
                 <p className="flex gap-2 mt-2">
                     <span className={detailsTxtCss + ' font-semibold'}>Age: </span>
                     <span className={detailsTxtCss}>{details.age}Y</span>
@@ -114,4 +138,4 @@ const BiodataDetails = () => {
     </section>);
 };
 
-export default BiodataDetails;
+export default ViewBiodata;

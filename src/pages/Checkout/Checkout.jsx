@@ -8,7 +8,7 @@ import { Navigate, useLocation, useParams } from 'react-router-dom';
 import Loading from '../../components/reusuable/Loading'
 import useIsRequestExists from '../../hooks/useIsRequestExists';
 
-const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK)
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const {state} = useLocation();

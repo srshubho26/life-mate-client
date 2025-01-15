@@ -55,9 +55,7 @@ const Header = () => {
             <span className="block text-sm min-w-40">{user.displayName}</span>
             <span className="block truncate text-sm font-medium">{user.email}</span>
           </DropdownHeader>
-          <DropdownItem>Dashboard</DropdownItem>
-          <DropdownItem>Settings</DropdownItem>
-          <DropdownItem>Earnings</DropdownItem>
+
           <DropdownDivider />
           <DropdownItem onClick={handleLogout} className="text-accent-dark font-semibold">Sign out</DropdownItem>
         </Dropdown>}
@@ -68,7 +66,7 @@ const Header = () => {
         <NavItem to="/biodatas" name="Biodatas" />
         <NavItem to="/about" name="About Us" />
         <NavItem to="/contact" name="Contact Us" />
-        {!user && <NavItem to="/login" name="Login" />}
+        <NavItem to={user ? "/dashboard" : "/login"} name={user ? "Dahsboard" : "Login"} />
       </NavbarCollapse>
     </Navbar>
   </header>);

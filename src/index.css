@@ -69,7 +69,9 @@ body {
 footer input[type="email"]:focus,
 .biodatas form select:focus,
 .login input[type="email"]:focus,
-.login input[type="password"]:focus {
+.login input[type="password"]:focus,
+.edit-biodata form input:focus,
+.edit-biodata form select:focus {
     border-color: #d833db!important;
     box-shadow: none;
 }

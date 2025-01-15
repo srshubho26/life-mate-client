@@ -3,6 +3,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import useAxiosWithCredentials from "../hooks/useAxiosWithCredentials";
+import Loading from "../components/reusuable/Loading";
 
 export const AuthContext = createContext();
 const googleAuth = new GoogleAuthProvider();
@@ -11,16 +12,15 @@ const AuthProvider = ({ children }) => {
     const axiosWithCredentials = useAxiosWithCredentials();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [dark, setDark] = useState(JSON.parse(localStorage.getItem('dark')) || false);
 
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            if(currentUser){
+            if (currentUser) {
                 axiosWithCredentials.post("/jwt", { email: currentUser.email })
-                .then(()=>setLoading(false))
-            }else{
+                    .then(() => setLoading(false))
+            } else {
                 setLoading(false)
             }
         });
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
     const createNewUser = (email, password, name, photoURL) => {
         return createUserWithEmailAndPassword(auth, email, password)
             .then(() => {
-                axiosWithCredentials.post("/create-user", {name, email})
+                axiosWithCredentials.post("/create-user", { name, email })
 
                 const updateFields = { displayName: name, photoURL };
                 updateProfile(auth.currentUser, updateFields)
@@ -49,20 +49,18 @@ const AuthProvider = ({ children }) => {
     const loginUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
-    
+
     // Logout function
     const logOut = () => {
         return signOut(auth)
-        .then(()=>axiosWithCredentials.post("/logout"))
+            .then(() => axiosWithCredentials.post("/logout"))
     }
 
-    const values = {user, logOut, loginUser, createNewUser, googleSignin, setDark, dark}
+    const values = { user, logOut, loginUser, createNewUser, googleSignin }
 
-    return (<div className={dark  ? "dark" : ""}>
-        <AuthContext.Provider value={values}>
-            {!loading && children}
-        </AuthContext.Provider>
-    </div>);
+    return (<AuthContext.Provider value={values}>
+        {loading ? < Loading loading={loading} /> : children}
+    </AuthContext.Provider>);
 };
 
 AuthProvider.propTypes = {

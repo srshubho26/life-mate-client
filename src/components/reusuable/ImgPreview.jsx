@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { LiaTimesSolid } from 'react-icons/lia';
 
-const ImgPreview = ({ photoInputRef, setPreviewImg, previewImg, className }) => {
+const ImgPreview = ({ photoInputRef, setPreviewImg, previewImg, className="" }) => {
     const handleClick = () => {
         photoInputRef.current.value = '';
         setPreviewImg(null);

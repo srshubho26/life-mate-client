@@ -89,6 +89,7 @@ const Filter = ({setFilter}) => {
         onClick={()=>{
             _setMaxAge(0);
             _setMinAge(0);
+            setFilter({});
         }}
          className="grow text-sm border border-accent-dark rounded-md px-4 py-2 uppercase text-accent-dark hover:bg-accent-dark hover:text-lite transition-colors font-semibold">
             Clear Filter

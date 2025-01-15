@@ -5,14 +5,14 @@ import useAxiosWithCredentials from "./useAxiosWithCredentials";
 const useMyContactRequests = () => {
     const {email} = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
-    const {data: myContactReqs, isPending: loading} = useQuery({
+    const {data: myContactReqs, isPending: loading, refetch} = useQuery({
         queryKey: ['my-contact-request-', email],
         queryFn: async()=>{
             const res = await axiosWithCredentials(`/contact-requests/${email}`);
             return res.data;
         }
     })
-    return {myContactReqs, loading}
+    return {myContactReqs, loading, refetch}
 };
 
 export default useMyContactRequests;

@@ -6,31 +6,53 @@ import Loading from "../../../components/reusuable/Loading";
 import swal from "sweetalert";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
 import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const MyContactRequests = () => {
     const { email } = useAuth();
-    const { myContactReqs, loading } = useMyContactRequests();
+    const { myContactReqs, loading ,refetch} = useMyContactRequests();
     const axiosWithCredentials = useAxiosWithCredentials();
+    const [deleteLoading, setDeleteLoading] = useState(false);
 
     const handleDelete = id => {
-
+        swal({
+            title: "Are you sure?",
+            text: "Your request will be removed permanently.",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then(isConfirmed => {
+                if(!isConfirmed)return;
+                setDeleteLoading(true);
+                axiosWithCredentials.delete(`/contact-requests/${id}?email=${email}`)
+                    .then(res => {
+                        setDeleteLoading(false);
+                        if (res.data.acknowledged && res.data.deletedCount>0) {
+                            swal('Done', 'Your contact request is deleted successfully', 'success');
+                            refetch();
+                        }
+                    })
+            })
     }
 
     return (<section className="relative">
-        <Loading loading={loading} />
+        <Loading loading={loading || deleteLoading} />
         <Helmet>
             <title>My Contact Requests || Love Mate</title>
         </Helmet>
 
         <Title title="Contact Requests" />
 
-        <div className="overflow-x-auto min-h-screen mt-10">
+        {!myContactReqs?.length && !loading && <h2 className="text-center my-10 text-lg font-semibold">No Contact Request Available!</h2>}
+ 
+        {myContactReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
                     <TableHeadCell>Name</TableHeadCell>
-                    <TableHeadCell>Biodata ID</TableHeadCell>
+                    <TableHeadCell className="text-nowrap">Biodata ID</TableHeadCell>
                     <TableHeadCell>Status</TableHeadCell>
-                    <TableHeadCell>Contact Info</TableHeadCell>
+                    <TableHeadCell className="text-nowrap">Contact Info</TableHeadCell>
                     <TableHeadCell>
                         <span className="sr-only">Edit</span>
                     </TableHeadCell>
@@ -39,7 +61,7 @@ const MyContactRequests = () => {
 
                     {myContactReqs?.map(req => <TableRow key={req._id}
                         className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
-                        <TableCell>{req.name}</TableCell>
+                        <TableCell className="text-nowrap">{req.name}</TableCell>
                         <TableCell>#{req.biodata_id}</TableCell>
 
                         <TableCell className='capitalize font-semibold'>
@@ -63,7 +85,7 @@ const MyContactRequests = () => {
 
                 </TableBody>
             </Table>
-        </div>
+        </div> : null}
     </section>);
 };
 

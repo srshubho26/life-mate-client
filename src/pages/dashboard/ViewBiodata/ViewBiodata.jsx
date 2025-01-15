@@ -6,6 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import moment from "moment";
 import swal from "sweetalert";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
+import { useState } from "react";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
@@ -14,6 +15,7 @@ const ViewBiodata = () => {
     const axiosWithCredentials = useAxiosWithCredentials();
     
     const { details, loading } = useBiodataDetails('own', email);
+    const [premiumLoading, setPremiumLoading] = useState(false);
     const handlePremiumReq = ()=>{
         swal({
             title: "Are you sure?",
@@ -23,9 +25,19 @@ const ViewBiodata = () => {
             dangerMode: true,
         })
         .then(isConfirmed=>{
-            // if(isConfirmed){
-
-            // }
+            if(isConfirmed){
+                setPremiumLoading(true);
+                axiosWithCredentials.post('/premium-request', {email, biodata: details._id})
+                .then(res=>{
+                    if(res.data.acknowledged){
+                setPremiumLoading(false);
+                swal("Done", "You are under admin approval.", "success");
+                    }
+                }).catch(()=>{
+                    setPremiumLoading(false);
+                    swal("Oops!", "Something went wrong!", "error");
+                })
+            }
         })
     }
 
@@ -37,7 +49,7 @@ const ViewBiodata = () => {
             <Title title="View Your Biodata" />
 
             <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
-            <Loading loading={loading} />
+            <Loading loading={loading || premiumLoading} />
             <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
             <div className="text-center">
@@ -59,12 +71,12 @@ const ViewBiodata = () => {
             <div className="mt-5 text-left text-sm sm:text-lg">
                 <p className="flex gap-2 mt-2">
                     <span className={detailsTxtCss + ' font-semibold'}>Email: </span>
-                    <span className={detailsTxtCss}>{details.contact.email}</span>
+                    <span className={detailsTxtCss}>{details?.contact?.email}</span>
                 </p>
 
                 <p className="flex gap-2 mt-2">
                     <span className={detailsTxtCss + ' font-semibold'}>Phone: </span>
-                    <span className={detailsTxtCss}>{details.contact.phone}</span>
+                    <span className={detailsTxtCss}>{details?.contact?.phone}</span>
                 </p>
 
                 <p className="flex gap-2 mt-2">

@@ -44,15 +44,15 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoute><Dashboard /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/edit-biodata',
-                element: <EditBiodata />
+                element: <PrivateRoute><EditBiodata /></PrivateRoute>
             },
             {
                 path: '/dashboard/view-biodata',
-                element: <ViewBiodata />
+                element: <PrivateRoute><ViewBiodata /></PrivateRoute>
             }
         ]
     }

@@ -48,11 +48,11 @@ const MyFavBiodatas = () => {
                     {myFavReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
                         <Table>
                             <TableHead>
-                                <TableHeadCell>Name</TableHeadCell>
-                                <TableHeadCell className="text-nowrap">Biodata ID</TableHeadCell>
-                                <TableHeadCell>Address</TableHeadCell>
-                                <TableHeadCell>Occupation</TableHeadCell>
-                                <TableHeadCell>
+                                <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
+                                <TableHeadCell className="text-nowrap bg-element py-5">Biodata ID</TableHeadCell>
+                                <TableHeadCell className="py-5 bg-element">Address</TableHeadCell>
+                                <TableHeadCell className="py-5 bg-element">Occupation</TableHeadCell>
+                                <TableHeadCell className="py-5 bg-element">
                                     <span className="sr-only">Delete</span>
                                 </TableHeadCell>
                             </TableHead>

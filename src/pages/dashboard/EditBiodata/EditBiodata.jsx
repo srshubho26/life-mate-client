@@ -120,7 +120,7 @@ const EditBiodata = () => {
         </Helmet>
         <Title title="Edit Your Biodata" />
 
-        <form onSubmit={handleSubmit} className="w-full mt-10 grid sm:grid-cols-2 border border-line rounded-lg p-5 gap-5 relative min-h-96">
+        <form onSubmit={handleSubmit} className="bg-element w-full mt-10 grid sm:grid-cols-2 border border-line rounded-lg p-5 gap-5 relative min-h-96">
             <Loading loading={detailsLoading || loading} />
             {!detailsLoading && <>
                 <ImageInput {...imgInputVals} />

@@ -36,7 +36,7 @@ const MyContactRequests = () => {
             })
     }
 
-    return (<section className="relative">
+    return (<section className="relative min-h-screen">
         <Loading loading={loading || deleteLoading} />
         <Helmet>
             <title>My Contact Requests || Love Mate</title>
@@ -49,11 +49,11 @@ const MyContactRequests = () => {
         {myContactReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell>Name</TableHeadCell>
-                    <TableHeadCell className="text-nowrap">Biodata ID</TableHeadCell>
-                    <TableHeadCell>Status</TableHeadCell>
-                    <TableHeadCell className="text-nowrap">Contact Info</TableHeadCell>
-                    <TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element py-5">Biodata ID</TableHeadCell>
+                    <TableHeadCell className="bg-element py-5">Status</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element py-5">Contact Info</TableHeadCell>
+                    <TableHeadCell className="bg-element py-5 rounded-tr-md">
                         <span className="sr-only">Edit</span>
                     </TableHeadCell>
                 </TableHead>

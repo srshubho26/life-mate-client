@@ -15,9 +15,11 @@ import Logo from "../../reusuable/Logo";
 import useAuth from "../../../hooks/useAuth";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import useIsAdmin from "../../../hooks/useIsAdmin";
 
 const Header = () => {
   const [top0, setTop0] = useState(true);
+  const { isAdmin, adminChecking } = useIsAdmin();
   const user = useAuth();
   const { logOut } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -66,7 +68,10 @@ const Header = () => {
         <NavItem to="/biodatas" name="Biodatas" />
         <NavItem to="/about" name="About Us" />
         <NavItem to="/contact" name="Contact Us" />
-        <NavItem to={user ? "/dashboard" : "/login"} name={user ? "Dahsboard" : "Login"} />
+        {!adminChecking && isAdmin ? <NavItem to="/dashboard/admin" name="Dashboard" /> : <NavItem
+          to={user ? "/dashboard" : "/login"}
+          name={user ? "Dahsboard" : "Login"}
+        />}
       </NavbarCollapse>
     </Navbar>
   </header>);

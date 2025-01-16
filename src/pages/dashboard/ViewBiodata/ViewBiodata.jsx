@@ -16,7 +16,7 @@ const ViewBiodata = () => {
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const { details, loading } = useBiodataDetails('own', email);
-    const { request, requestChecking } = useIsPremiumRequested(details._id);
+    const { request, requestChecking, recheck } = useIsPremiumRequested(details.biodata_id);
     const [premiumLoading, setPremiumLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -41,11 +41,12 @@ const ViewBiodata = () => {
             .then(isConfirmed => {
                 if (isConfirmed) {
                     setPremiumLoading(true);
-                    axiosWithCredentials.post('/premium-request', { email, biodata: details._id })
+                    axiosWithCredentials.post('/premium-request', {name: details.name, email, biodata: details.biodata_id })
                         .then(res => {
                             if (res.data.acknowledged) {
                                 setPremiumLoading(false);
                                 swal("Done", "You are under admin approval.", "success");
+                                recheck();
                             }
                         }).catch(() => {
                             setPremiumLoading(false);

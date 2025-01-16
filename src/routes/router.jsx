@@ -14,6 +14,8 @@ import MyContactRequests from "../pages/dashboard/MyContactRequests/MyContactReq
 import MyFavBiodatas from "../pages/dashboard/MyFavBiodatas/MyFavBiodatas";
 import AdminDashboard from "../pages/dashboard/AdminDashboard/AdminDashboard";
 import AdminRoute from "./AdminRoute";
+import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
+import PremiumBioRequests from "../pages/dashboard/PremiumBioRequests/PremiumBioRequests";
 
 const router = createBrowserRouter([
     {
@@ -70,11 +72,26 @@ const router = createBrowserRouter([
                 path: '/dashboard',
                 element: <PrivateRoute>
                     <AdminRoute>
-                    <AdminDashboard />
+                        <AdminDashboard />
                     </AdminRoute>
-                    </PrivateRoute>
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/manage-users',
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <ManageUsers />
+                    </AdminRoute>
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/premium-bio-reqs',
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <PremiumBioRequests />
+                    </AdminRoute>
+                </PrivateRoute>
             }
-
         ]
     }
 ])

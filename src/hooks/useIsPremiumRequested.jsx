@@ -2,17 +2,17 @@ import { useQuery } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import useAxiosWithCredentials from './useAxiosWithCredentials';
 
-const useIsPremiumRequested = (id) => {
+const useIsPremiumRequested = (biodata_id) => {
     const axiosWithCredentials = useAxiosWithCredentials();
 
-    const { data: request={}, isPending: requestChecking } = useQuery({
-        queryKey: ['isPremiumRequested-', id],
+    const { data: request={}, isPending: requestChecking, refetch: recheck } = useQuery({
+        queryKey: ['isPremiumRequested-', biodata_id],
         queryFn: async () => {
-            const res = await axiosWithCredentials(`/is-requested/${id}`);
+            const res = await axiosWithCredentials(`/is-requested/${biodata_id}`);
             return res.data;
         }
     })
-    return {request, requestChecking}
+    return {request, requestChecking, recheck}
 };
 
 useIsPremiumRequested.propTypes = {

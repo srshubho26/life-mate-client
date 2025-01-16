@@ -65,15 +65,15 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<RiUserSettingsLine />}
-                                to="admin"
+                                to="manage-users"
                                 name="Manage Users"
                             />
 
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<FiUserCheck />}
-                                to=""
-                                name="Approved Premium"
+                                to="premium-bio-reqs"
+                                name="Premium Bio Requests"
                             />
 
                             <NavItem

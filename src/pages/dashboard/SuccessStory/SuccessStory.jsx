@@ -11,6 +11,8 @@ import StarRatings from "react-star-ratings";
 import swal from "sweetalert";
 import { uploadImg } from "../../../assets/utils";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
+import { useQuery } from "@tanstack/react-query";
+import EditModal from "./parts/EditModal";
 
 const SuccessStory = () => {
     const { email } = useAuth();
@@ -21,6 +23,7 @@ const SuccessStory = () => {
     const { details: partner, loading: partnerLoading } = useBiodataDetails(partnerBio);
     const [rating, setRating] = useState(0);
     const [submitLoading, setSubmitLoading] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
 
     const photoInputRef = useRef();
     const imgPrevVals = {
@@ -40,34 +43,42 @@ const SuccessStory = () => {
         setPreviewImg
     }
 
-    const handleSubmit = async e =>{
+    const { data: story, isPending: gettingStory } = useQuery({
+        queryKey: ['success-story-', email, details?.biodata_id],
+        queryFn: async () => {
+            const res = await axiosWithCredentials(`/success-stories/${details?.biodata_id}`);
+            return res.data;
+        }
+    })
+
+    const handleSubmit = async e => {
         e.preventDefault();
         const form = e.target;
-        if(!Object.keys(partner).length){
+        if (!Object.keys(partner).length) {
             swal("Wait!", "Please enter your partner's biodata ID correctly!", "warning");
             return;
         }
 
         const partner_bio = partner.biodata_id;
         const self_bio = details.biodata_id;
-        if(partner_bio===self_bio){
+        if (partner_bio === self_bio) {
             swal("Wait!", "Self and partner's biodata ID can't be the same!", "warning");
             return;
         }
 
-        if(partner.type === details.type){
+        if (partner.type === details.type) {
             swal("Wait!", "Gender can't be the same", "warning");
             return;
         }
 
-        if(rating<1){
+        if (rating < 1) {
             swal("Wait!", "Please rate us between 1 to 5", "warning");
             return;
         }
 
         setSubmitLoading(true);
         const res = await uploadImg(form.couple_img.files[0]);
-        if(!res.success){
+        if (!res.success) {
             swal("Error!", res.message, "error");
             setSubmitLoading(false);
             return
@@ -77,30 +88,60 @@ const SuccessStory = () => {
         const name = details.name;
         const marriage_date = new Date(form.marriage_date.value).getTime();
         const review = form.review.value;
-        const data = {name, email, self_bio, partner_bio, marriage_date, review, rating, couple_img}
-        try{
+        const data = { name, email, self_bio, partner_bio, marriage_date, review, rating, couple_img }
+        try {
             const publishRes = await axiosWithCredentials.post("/success-story", data);
-            if(publishRes.data.insertedId){
+            if (publishRes.data.insertedId) {
                 swal("Done", "Your success story is published.", "success");
                 setSubmitLoading(false);
             }
 
-        }catch(err){
+        } catch (err) {
             swal("Error!", `Something went wrong! Note: ${err.message}`, "error");
             setSubmitLoading(false);
-            return
         }
 
     }
 
-    return (<section>
+    return (<section className="relative">
+        <Loading loading={loading || submitLoading || gettingStory} />
         <Helmet>
             <title>Success Story || Love Mate</title>
         </Helmet>
         <Title title="Success Story" />
 
-        <form onSubmit={handleSubmit} className="bg-element w-full mt-10 grid border border-line rounded-lg p-5 gap-5 relative min-h-96 max-w-screen-md mx-auto">
-            <Loading loading={loading || submitLoading} />
+        {story?.self_bio ? <div className="max-w-screen-md mx-auto mt-14 flex gap-5">
+            <img src={story?.couple_img} className="p-2 w-full max-w-80 border border-line rounded-md" />
+
+            <div className="grow">
+                <button
+                onClick={()=>setOpenModal(true)}
+                    className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-8 py-2 hover:text-lite">
+                    Edit Review
+                </button>
+
+                <h3 className="flex-col sm:flex-row border-b border-line pb-2 text-2xl font-semibold text-text flex sm:items-center sm:gap-5 my-5">
+                    <span>{story?.name}</span>
+
+                    <StarRatings
+                        rating={story?.rating}
+                        starEmptyColor="#f5dca0"
+                        starRatedColor="#d833db"
+                        starDimension="30px"
+                        starSpacing="2px"
+                        starHoverColor="#d833db"
+                        numberOfStars={5}
+                    />
+                </h3>
+                <p>{story?.review}</p>
+            </div>
+
+            <EditModal
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+                story={story}
+            />
+        </div> : <form onSubmit={handleSubmit} className="bg-element w-full mt-10 grid border border-line rounded-lg p-5 gap-5 min-h-96 max-w-screen-md mx-auto">
 
             <ImageInput {...imgInputVals} />
             <ImgPreview {...imgPrevVals} />
@@ -138,7 +179,6 @@ const SuccessStory = () => {
                 <Datepicker name="marriage_date" maxDate={new Date()} />
             </div>
 
-
             <div >
                 <div className="mb-2 block">
                     <Label className="text-lg" value="Review" />
@@ -147,23 +187,23 @@ const SuccessStory = () => {
             </div>
 
             <div className="flex items-center gap-5">
-            <StarRatings
-                                rating={rating}
-                                starEmptyColor="#f5dca0"
-                                starRatedColor="#d833db"
-                                starDimension="30px"
-                                starSpacing="2px"
-                                starHoverColor="#d833db"
-                                numberOfStars={5}
-                                changeRating={rate=>setRating(rate)}
-                            />
+                <StarRatings
+                    rating={rating}
+                    starEmptyColor="#f5dca0"
+                    starRatedColor="#d833db"
+                    starDimension="30px"
+                    starSpacing="2px"
+                    starHoverColor="#d833db"
+                    numberOfStars={5}
+                    changeRating={rate => setRating(rate)}
+                />
 
                 <button className="w-fit text-primary border border-primary transition-colors hover:bg-primary font-semibold text-lg rounded-lg px-3 sm:px-6 py-2 hover:text-lite uppercase">
                     Publish
                 </button>
             </div>
 
-        </form>
+        </form>}
     </section>)
 };
 

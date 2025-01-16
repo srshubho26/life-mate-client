@@ -10,7 +10,7 @@ const useBiodataDetails = (biodataId, email='') => {
         queryFn: async()=>{
             let query = biodataId;
             if(email){
-                query += `?email=${email}`
+                query += `?email=${email}`;
             }
             const res= await axiosWithCredentials(`/biodatas/${query}`);
             return res.data;

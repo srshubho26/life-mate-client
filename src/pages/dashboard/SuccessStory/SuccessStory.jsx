@@ -43,7 +43,7 @@ const SuccessStory = () => {
         setPreviewImg
     }
 
-    const { data: story, isPending: gettingStory } = useQuery({
+    const { data: story, isPending: gettingStory, refetch } = useQuery({
         queryKey: ['success-story-', email, details?.biodata_id],
         queryFn: async () => {
             const res = await axiosWithCredentials(`/success-stories/${details?.biodata_id}`);
@@ -88,19 +88,19 @@ const SuccessStory = () => {
         const name = details.name;
         const marriage_date = new Date(form.marriage_date.value).getTime();
         const review = form.review.value;
-        const data = { name, email, self_bio, partner_bio, marriage_date, review, rating, couple_img }
+        const data = { type: details.type, name, email, self_bio, partner_bio, marriage_date, review, rating, couple_img }
         try {
             const publishRes = await axiosWithCredentials.post("/success-story", data);
             if (publishRes.data.insertedId) {
                 swal("Done", "Your success story is published.", "success");
                 setSubmitLoading(false);
+                refetch();
             }
 
         } catch (err) {
             swal("Error!", `Something went wrong! Note: ${err.message}`, "error");
             setSubmitLoading(false);
         }
-
     }
 
     return (<section className="relative">
@@ -111,7 +111,7 @@ const SuccessStory = () => {
         <Title title="Success Story" />
 
         {story?.self_bio ? <div className="max-w-screen-md mx-auto mt-14 flex gap-5">
-            <img src={story?.couple_img} className="p-2 w-full max-w-80 border border-line rounded-md" />
+            <img src={story?.couple_img} className="p-2 w-full max-w-80 aspect-square object-cover border border-line rounded-md" />
 
             <div className="grow">
                 <button

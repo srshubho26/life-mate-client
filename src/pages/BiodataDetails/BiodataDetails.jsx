@@ -47,115 +47,119 @@ const BiodataDetails = () => {
 
     return (<section className="px-2 py-20 bg-lite biodatas">
         <Helmet>
-            <title>Details || Love Mate</title>
+            <title>{details?.name || 'Details'} || Love Mate</title>
         </Helmet>
 
-        <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
+        <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md min-h-96">
             <Loading loading={loading || favLoading || isFavouriteChecking} />
-            <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
-            <div className="text-center">
-                <h3 className="text-primary font-semibold text-lg mt-3 sm:text-3xl">
-                    {details?.name}
-                    <span className="text-accent ml-2">#{details.biodata_id}</span>
-                </h3>
-                <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
+            {checking || isFavouriteChecking || loading ? null : <>
+                <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
 
-                {isFavourite && <span className="text-primary font-semibold">Added As Favourite</span>}
-            </div>
+                <div className="text-center">
+                    <h3 className="text-primary font-semibold text-lg mt-3 sm:text-3xl">
+                        {details?.name}
+                        <span className="text-accent ml-2">#{details.biodata_id}</span>
+                    </h3>
+                    <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
 
-            <div className="flex items-center gap-2 justify-center mt-5">
-                {details?.contact ? <>
-                    <Dropdown
-                         renderTrigger={()=><button className={buttonCss}>Contact Info</button>}
-                         dismissOnClick={false}>
-                        <DropdownItem>{details.contact.email}</DropdownItem>
-                        <DropdownItem>{details.contact.phone}</DropdownItem>
-                    </Dropdown>
-                </> : <>{
-                    !isExists && !checking && <Link
-                        state={{ _id: details._id }}
-                        to={`/checkout/${details.biodata_id}`}
+                    {isFavourite && <span className="text-primary font-semibold">Added As Favourite</span>}
+                </div>
+
+                <div className="flex items-center gap-2 justify-center mt-5">
+                    {details?.contact ? <>
+                        <Dropdown
+                            renderTrigger={() => <button className={buttonCss}>Contact Info</button>}
+                            dismissOnClick={false}>
+                            <DropdownItem>{details.contact.email}</DropdownItem>
+                            <DropdownItem>{details.contact.phone}</DropdownItem>
+                        </Dropdown>
+                    </> : <>{
+                        !isExists && !checking && <Link
+                            state={{ _id: details._id }}
+                            to={`/checkout/${details.biodata_id}`}
+                            className={buttonCss}>
+                            Request Contact
+                        </Link>}
+                    </>}
+
+                    {!isFavourite && <button
+                        onClick={handleAddToFavourite}
                         className={buttonCss}>
-                        Request Contact
-                    </Link>}
-                </>}
+                        Add To Favourite
+                    </button>}
+                </div>
 
-                {!isFavourite && <button
-                    onClick={handleAddToFavourite}
-                    className={buttonCss}>
-                    Add To Favourite
-                </button>}
-            </div>
+                <div className="mt-5 text-left capitalize text-sm sm:text-lg">
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Age: </span>
+                        <span className={detailsTxtCss}>{details.age}Y</span>
+                    </p>
 
-            <div className="mt-5 text-left capitalize text-sm sm:text-lg">
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Age: </span>
-                    <span className={detailsTxtCss}>{details.age}Y</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Gender: </span>
+                        <span className={detailsTxtCss}>{details.type}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Gender: </span>
-                    <span className={detailsTxtCss}>{details.type}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Height: </span>
+                        <span className={detailsTxtCss}>{details.height}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Height: </span>
-                    <span className={detailsTxtCss}>{details.height}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Weight: </span>
+                        <span className={detailsTxtCss}>{details.weight}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Weight: </span>
-                    <span className={detailsTxtCss}>{details.weight}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Skin Color: </span>
+                        <span className={detailsTxtCss}>{details.race}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Skin Color: </span>
-                    <span className={detailsTxtCss}>{details.race}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Division: </span>
+                        <span className={detailsTxtCss}>{details.division}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Division: </span>
-                    <span className={detailsTxtCss}>{details.division}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Present Division: </span>
+                        <span className={detailsTxtCss}>{details.current_division}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Present Division: </span>
-                    <span className={detailsTxtCss}>{details.current_division}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Date Of Birth: </span>
+                        <span className={detailsTxtCss}>
+                            {moment(details.dob).format('MMM Do, YYYY')}
+                        </span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Date Of Birth: </span>
-                    <span className={detailsTxtCss}>
-                        {moment(details.dob).format('MMM Do, YYYY')}
-                    </span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Father&apos;s Name: </span>
+                        <span className={detailsTxtCss}>{details.father}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Father&apos;s Name: </span>
-                    <span className={detailsTxtCss}>{details.father}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Mother&apos;s Name: </span>
+                        <span className={detailsTxtCss}>{details.mother}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Mother&apos;s Name: </span>
-                    <span className={detailsTxtCss}>{details.mother}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Age: </span>
+                        <span className={detailsTxtCss}>{details.expectedAge}Y</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Age: </span>
-                    <span className={detailsTxtCss}>{details.expectedAge}Y</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Height: </span>
+                        <span className={detailsTxtCss}>{details.expectedHeight}</span>
+                    </p>
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Height: </span>
-                    <span className={detailsTxtCss}>{details.expectedHeight}</span>
-                </p>
+                    <p className="flex gap-2 mt-2">
+                        <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Weight: </span>
+                        <span className={detailsTxtCss}>{details.expectedWeight}</span>
+                    </p>
+                </div>
+            </>}
 
-                <p className="flex gap-2 mt-2">
-                    <span className={detailsTxtCss + ' font-semibold'}>Expected Partner&apos;s Weight: </span>
-                    <span className={detailsTxtCss}>{details.expectedWeight}</span>
-                </p>
-            </div>
         </div>
 
 

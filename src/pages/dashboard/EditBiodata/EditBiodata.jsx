@@ -261,6 +261,7 @@ const EditBiodata = () => {
                         <option>Khulna</option>
                         <option>Mymensingh</option>
                         <option>Sylhet</option>
+                        <option>Rajshahi</option>
                     </Select>
                 </div>
 
@@ -278,6 +279,7 @@ const EditBiodata = () => {
                         <option>Khulna</option>
                         <option>Mymensingh</option>
                         <option>Sylhet</option>
+                        <option>Rajshahi</option>
                     </Select>
                 </div>
 

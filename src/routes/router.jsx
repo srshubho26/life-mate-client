@@ -18,6 +18,7 @@ import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
 import PremiumBioRequests from "../pages/dashboard/PremiumBioRequests/PremiumBioRequests";
 import ContactReqs from "../pages/dashboard/ContactReqs/ContactReqs";
 import SuccessStory from "../pages/dashboard/SuccessStory/SuccessStory";
+import SuccessStories from "../pages/dashboard/SuccessStories/SuccessStories";
 
 const router = createBrowserRouter([
     {
@@ -103,6 +104,14 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <AdminRoute>
                         <ContactReqs />
+                    </AdminRoute>
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/success-stories',
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <SuccessStories />
                     </AdminRoute>
                 </PrivateRoute>
             }

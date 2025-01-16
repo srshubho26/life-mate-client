@@ -26,10 +26,10 @@ const Footer = () => {
                         <h3 className="text-primary text-2xl font-semibold mb-2">Useful Links</h3>
                         
                         <ul className="text-text dark:text-text-dark text-base">
-                            <li><Link className="hover:text-primary">Home</Link></li>
-                            <li><Link className="hover:text-primary">Biodatas</Link></li>
-                            <li><Link className="hover:text-primary">About Us</Link></li>
-                            <li><Link className="hover:text-primary">Contact Us</Link></li>
+                            <li className="my-1"><Link className="hover:text-primary">Home</Link></li>
+                            <li className="my-1"><Link className="hover:text-primary">Biodatas</Link></li>
+                            <li className="my-1"><Link className="hover:text-primary">About Us</Link></li>
+                            <li className="my-1"><Link className="hover:text-primary">Contact Us</Link></li>
                         </ul>
                     </div>
 
@@ -46,7 +46,7 @@ const Footer = () => {
         </div>
 
         <p className="text-center w-full border-t bg-element border-accent-dark sm:text-lg font-semibold text-text dark:text-text-dark py-5">
-            <span className="font-bold">&copy;LifeMate</span> All Rights Reserved
+        &copy; All Rights Reserved By <span className="font-bold">LifeMate</span>
         </p>
     </FooterWrap>);
 };

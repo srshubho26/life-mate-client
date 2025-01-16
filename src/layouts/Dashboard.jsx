@@ -75,12 +75,18 @@ const Dashboard = () => {
                                 to="premium-bio-reqs"
                                 name="Premium Bio Requests"
                             />
-
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<LiaAddressCardSolid />}
                                 to="contact-requests"
                                 name="Contact Requests"
+                            />
+
+                            <NavItem
+                                closeDrawer={handleClose}
+                                icon={<AiOutlineSafetyCertificate />}
+                                to="success-stories"
+                                name="Success Stories"
                             />
                         </> : <>
                             <NavItem
@@ -110,7 +116,7 @@ const Dashboard = () => {
                                 to="my-favourite-biodatas"
                                 name="Favourites Biodata"
                             />
-                            
+
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<AiOutlineSafetyCertificate />}

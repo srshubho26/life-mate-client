@@ -56,7 +56,10 @@ const CheckoutForm = ({setLoading, biodataId}) => {
 
         if (paymentIntent.status === 'succeeded') {
             const payment = {
-                requestedBy: user.email,
+                requestedBy: {
+                    name: user.displayName,
+                    email: user.email
+                },
                 requestedFor: biodataId,
                 transactionId: paymentIntent.id,
                 status: 'pending',

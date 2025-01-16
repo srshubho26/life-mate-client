@@ -16,6 +16,7 @@ import AdminDashboard from "../pages/dashboard/AdminDashboard/AdminDashboard";
 import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
 import PremiumBioRequests from "../pages/dashboard/PremiumBioRequests/PremiumBioRequests";
+import ContactReqs from "../pages/dashboard/ContactReqs/ContactReqs";
 
 const router = createBrowserRouter([
     {
@@ -89,6 +90,14 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <AdminRoute>
                         <PremiumBioRequests />
+                    </AdminRoute>
+                </PrivateRoute>
+            },
+            {
+                path: '/dashboard/contact-requests',
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <ContactReqs />
                     </AdminRoute>
                 </PrivateRoute>
             }

@@ -4,6 +4,7 @@ import useAxiosWithCredentials from '../../../hooks/useAxiosWithCredentials';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import Title from '../../../components/reusuable/Title';
 
 const ManageUsers = () => {
     const {email} = useAuth();
@@ -25,6 +26,7 @@ const ManageUsers = () => {
             <Helmet>
                 <title>Manage Users || Love Mate</title>
             </Helmet>
+                    <Title title="Manage users" />
 
             {!users?.length && !loading && <h2 className="text-center my-10 text-lg font-semibold">No User Available!</h2>}
             
@@ -45,7 +47,7 @@ const ManageUsers = () => {
                                     <TableCell className='text-nowrap'>
                                         {user.role!==0 && <button
                                             onClick={() => changeRole(user._id)}
-                                            className="font-medium text-primary">
+                                            className="font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary">
                                             Make Admin
                                         </button>}
                                     </TableCell>

@@ -79,8 +79,8 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<LiaAddressCardSolid />}
-                                to=""
-                                name="Approved Contact Requests"
+                                to="contact-requests"
+                                name="Contact Requests"
                             />
                         </> : <>
                             <NavItem

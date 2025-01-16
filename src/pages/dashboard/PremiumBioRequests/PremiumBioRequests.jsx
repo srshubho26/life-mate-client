@@ -4,10 +4,13 @@ import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+import swal from "sweetalert";
+import { useState } from "react";
 
 const PremiumBioRequests = () => {
     const {email} = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
+    const [makingPremiumLoading, setMakingPremiumLoading] = useState(false);
     const {data:reqs, isPending:loading, refetch} = useQuery({
         queryKey: ['premium-biodata-reqs-', email],
         queryFn: async()=>{
@@ -16,12 +19,30 @@ const PremiumBioRequests = () => {
         }
     })
 
-    const changeRole = ()=>{
-        refetch();
+    const makePremium = (id, biodata)=>{        
+        swal({
+        title: "Are you sure?",
+        text: "Your're going to make this biodata premium.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then(isConfirmed => {
+            if (!isConfirmed) return;
+            setMakingPremiumLoading(true);
+            axiosWithCredentials.put(`/premium-requests/update/${id}?biodata=${biodata}`)
+                .then(res => {
+                    setMakingPremiumLoading(false);
+                    if (res.data.acknowledged) {
+                        swal('Done', 'Biodata is premium now', 'success');
+                        refetch();
+                    }
+                })
+        })
     }
 
 return (<section className="relative min-h-screen">
-            <Loading loading={loading} />
+            <Loading loading={loading || makingPremiumLoading} />
             <Helmet>
                 <title>Premium Biodata Requests || Love Mate</title>
             </Helmet>
@@ -48,11 +69,11 @@ return (<section className="relative min-h-screen">
                                     <TableCell>#{req.biodata}</TableCell>
 
                                     <TableCell className='text-nowrap'>
-                                        {req.status==='pending' && <button
-                                            onClick={() => changeRole(req._id)}
+                                        {req.status==='pending' ? <button
+                                            onClick={() => makePremium(req._id, req.biodata)}
                                             className="font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary">
                                             Make Premium
-                                        </button>}
+                                        </button> : <span className="text-primary font-semibold">Approved</span>}
                                     </TableCell>
                                 </TableRow>)}
             

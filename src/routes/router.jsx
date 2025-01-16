@@ -17,6 +17,7 @@ import AdminRoute from "./AdminRoute";
 import ManageUsers from "../pages/dashboard/ManageUsers/ManageUsers";
 import PremiumBioRequests from "../pages/dashboard/PremiumBioRequests/PremiumBioRequests";
 import ContactReqs from "../pages/dashboard/ContactReqs/ContactReqs";
+import SuccessStory from "../pages/dashboard/SuccessStory/SuccessStory";
 
 const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/my-favourite-biodatas',
                 element: <PrivateRoute><MyFavBiodatas /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/success-story',
+                element: <PrivateRoute><SuccessStory /></PrivateRoute>
             },
             {
                 path: '/dashboard',

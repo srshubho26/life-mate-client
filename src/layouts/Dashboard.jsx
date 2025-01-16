@@ -12,7 +12,7 @@ import { IoAdd } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
 import useIsAdmin from "../hooks/useIsAdmin";
 import Loading from "../components/reusuable/Loading";
-import { AiOutlineDashboard } from "react-icons/ai";
+import { AiOutlineDashboard, AiOutlineSafetyCertificate } from "react-icons/ai";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { LiaAddressCardSolid } from "react-icons/lia";
 
@@ -109,6 +109,13 @@ const Dashboard = () => {
                                 icon={<FaRegHeart />}
                                 to="my-favourite-biodatas"
                                 name="Favourites Biodata"
+                            />
+                            
+                            <NavItem
+                                closeDrawer={handleClose}
+                                icon={<AiOutlineSafetyCertificate />}
+                                to="success-story"
+                                name="Success Story"
                             />
                         </>}
                     </>}

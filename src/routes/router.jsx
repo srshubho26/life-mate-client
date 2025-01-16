@@ -37,7 +37,7 @@ const router = createBrowserRouter([
                 element: <Register />
             },
             {
-                path: '/details/:id',
+                path: '/details/:biodataId',
                 element: <PrivateRoute><BiodataDetails /></PrivateRoute>
             },
             {
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><MyFavBiodatas /></PrivateRoute>
             },
             {
-                path: '/dashboard/admin',
+                path: '/dashboard',
                 element: <PrivateRoute>
                     <AdminRoute>
                     <AdminDashboard />

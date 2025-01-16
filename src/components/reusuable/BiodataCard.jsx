@@ -28,7 +28,7 @@ const BiodataCard = ({ member, isLessSpace = false }) => {
                 {member.occupation} <span className='text-primary'>|</span> {member.division}
             </p>
 
-            <Link to={`/details/${member._id}`}
+            <Link to={`/details/${member.biodata_id}`}
             className={"hover:bg-primary border rounded-md px-3 py-1 font-semibold uppercase border-primary text-sm text-primary transition-colors block w-fit hover:text-lite mx-auto " + (isLessSpace ? '' : 'lg:m-0')}>
                 View Profile
             </Link>

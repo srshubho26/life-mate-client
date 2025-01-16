@@ -58,7 +58,7 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<AiOutlineDashboard />}
-                                to="admin"
+                                to=""
                                 name="Dashboard"
                             />
 
@@ -72,14 +72,14 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<FiUserCheck />}
-                                to="admin"
+                                to=""
                                 name="Approved Premium"
                             />
 
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<LiaAddressCardSolid />}
-                                to="admin"
+                                to=""
                                 name="Approved Contact Requests"
                             />
                         </> : <>

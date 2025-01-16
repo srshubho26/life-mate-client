@@ -2,14 +2,14 @@ import { useQuery } from '@tanstack/react-query';
 import PropTypes from 'prop-types';
 import useAxiosWithCredentials from '../hooks/useAxiosWithCredentials';
 
-const useBiodataDetails = (id, email='') => {
+const useBiodataDetails = (biodataId, email='') => {
     const axiosWithCredentials = useAxiosWithCredentials();
 
     const {data: details={}, isPending: loading} = useQuery({
-        queryKey: ['details', id, email],
+        queryKey: ['details', biodataId, email],
         queryFn: async()=>{
-            let query = id;
-            if(id==='own' && email){
+            let query = biodataId;
+            if(email){
                 query += `?email=${email}`
             }
             const res= await axiosWithCredentials(`/biodatas/${query}`);

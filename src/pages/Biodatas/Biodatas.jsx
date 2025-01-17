@@ -5,12 +5,31 @@ import { Helmet } from "react-helmet-async";
 import useBiodatas from "../../hooks/useBiodatas";
 import Loading from "../../components/reusuable/Loading";
 import BiodataCard from "../../components/reusuable/BiodataCard";
+import { Pagination } from "flowbite-react";
 
+// Pagination  style
+const themes = {
+    "pages": {
+      "previous": {
+        "base": "ml-0 rounded-l-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+      },
+      "next": {
+        "base": "rounded-r-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+      },
+      "selector": {
+        "base": "w-10 sm:w-12 border border-line bg-lite py-2 leading-tight enabled:hover:bg-primary enabled:hover:text-lite text-primary",
+        "active": "bg-primary text-lite",
+      }
+    }
+  }
 
 const Biodatas = () => {
     const [open, setOpen] = useState(false);
     const [filter, setFilter] = useState({});
-    const { biodatas, loading } = useBiodatas(filter);
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const { biodatas, loading, total } = useBiodatas(filter, 12, currentPage);
+    const totalPage = Math.ceil(total / 12);
 
     return (<section className="px-2 bg-lite biodatas">
         <Helmet>
@@ -19,7 +38,7 @@ const Biodatas = () => {
 
         <div className="max-w-screen-xl mx-auto flex">
             <div className={(open ? 'left-0' : '-left-72') + " fixed top-0 h-screen lg:h-auto z-40 lg:z-0 w-full max-w-72 bg-element border-r border-clear-dark lg:border-none dark:bg-background-dark lg:static transition-all py-5"}>
-                <Filter setFilter={setFilter} />
+                <Filter setFilter={setFilter} setCurrentPage={setCurrentPage} />
 
                 <button
                     onClick={() => setOpen(!open)}
@@ -35,6 +54,17 @@ const Biodatas = () => {
                     isLessSpace={true}
                     member={biodata}
                 />))}
+
+                {total > 12 ? <div className="col-span-full self-end my-10 flex justify-center">
+                    <Pagination 
+                    theme={themes}
+                     currentPage={currentPage}
+                      totalPages={totalPage} 
+                      onPageChange={setCurrentPage} 
+                      showIcons previousLabel=""
+        nextLabel="" />
+                </div> : null}
+
                 {!loading && !biodatas.length && <h2 className="text-xl text-primary font-semibold col-span-full text-center">No Data Available!</h2>}
             </div>
         </div>

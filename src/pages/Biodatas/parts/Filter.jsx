@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useState } from "react";
 import swal from "sweetalert";
 
-const Filter = ({setFilter}) => {
+const Filter = ({setFilter, setCurrentPage}) => {
     const [_minAge, _setMinAge] = useState(0);
     const [_maxAge, _setMaxAge] = useState(0);
 
@@ -24,6 +24,7 @@ const Filter = ({setFilter}) => {
         }
 
         setFilter(filter);
+        setCurrentPage(1);
     }
 
     return (<form onSubmit={handleSubmit} className="sticky bg-element top-0 p-2 z-50">
@@ -99,7 +100,8 @@ const Filter = ({setFilter}) => {
 };
 
 Filter.propTypes = {
-    setFilter: PropTypes.func
+    setFilter: PropTypes.func,
+    setCurrentPage: PropTypes.func
 }
 
 export default Filter;

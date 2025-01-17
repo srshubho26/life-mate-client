@@ -19,11 +19,14 @@ import PremiumBioRequests from "../pages/dashboard/PremiumBioRequests/PremiumBio
 import ContactReqs from "../pages/dashboard/ContactReqs/ContactReqs";
 import SuccessStory from "../pages/dashboard/SuccessStory/SuccessStory";
 import SuccessStories from "../pages/dashboard/SuccessStories/SuccessStories";
+import Error404 from "../pages/Error404/Error404";
+import AllStories from "../pages/AllStories/AllStories";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <Error404 />,
         children: [
             {
                 path: '/',
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />
+            },
+            {
+                path: '/stories',
+                element: <AllStories />
             },
             {
                 path: '/details/:biodataId',

@@ -56,19 +56,20 @@ const Biodatas = () => {
                 />))}
 
                 {total > 12 ? <div className="col-span-full flex-col sm:flex-row self-end my-10 flex justify-center sm:gap-10 items-center">
-<p className="text-text text-lg">
-    Showing <span className="text-primary font-semibold mx-1">{currentPage}</span>
-    of <span className="text-primary font-semibold mx-1">{totalPage}</span>
-    </p>
+                    <p className="text-text text-lg">
+                        Showing <span className="text-primary font-semibold mx-1">{currentPage}</span>
+                        of <span className="text-primary font-semibold mx-1">{totalPage}</span>
+                    </p>
 
                     <Pagination
                         theme={themes}
                         currentPage={currentPage}
                         totalPages={totalPage}
                         onPageChange={setCurrentPage}
-                        showIcons previousLabel=""
-                        nextLabel="" 
-                        />
+                        showIcons
+                        previousLabel=""
+                        nextLabel=""
+                    />
                 </div> : null}
 
                 {!loading && !biodatas.length && <h2 className="text-xl text-primary font-semibold col-span-full text-center">No Data Available!</h2>}

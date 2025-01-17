@@ -22,31 +22,31 @@ const Footer = () => {
                     <p className="text-text dark:text-text-dark">LifeMate is a platform where people search for their disired life partner. It is platform of dream. Here tons of people have found their dream life partner.</p>
                 </div>
 
-                    <div className="w-full mb-5 sm:mb-0 max-w-40 lg:max-w-48">
-                        <h3 className="text-primary text-2xl font-semibold mb-2">Useful Links</h3>
-                        
-                        <ul className="text-text dark:text-text-dark text-base">
-                            <li className="my-1"><Link className="hover:text-primary">Home</Link></li>
-                            <li className="my-1"><Link className="hover:text-primary">Biodatas</Link></li>
-                            <li className="my-1"><Link className="hover:text-primary">About Us</Link></li>
-                            <li className="my-1"><Link className="hover:text-primary">Contact Us</Link></li>
-                        </ul>
-                    </div>
+                <div className="w-full mb-5 sm:mb-0 max-w-40 lg:max-w-48">
+                    <h3 className="text-primary text-2xl font-semibold mb-2">Useful Links</h3>
 
-                    <div className="grow max-w-md lg:max-w-md">
+                    <ul className="text-text dark:text-text-dark text-base">
+                        <li className="my-1"><Link to="/" className="hover:text-primary">Home</Link></li>
+                        <li className="my-1"><Link to="/biodatas" className="hover:text-primary">Biodatas</Link></li>
+                        <li className="my-1"><Link className="hover:text-primary">About Us</Link></li>
+                        <li className="my-1"><Link className="hover:text-primary">Contact Us</Link></li>
+                    </ul>
+                </div>
+
+                <div className="grow max-w-md lg:max-w-md">
                     <h3 className="text-primary text-2xl font-semibold mb-2">Join Our Newsletter</h3>
-      
-                    <form className="flex w-full gap-x-3">
-            <TextInput id="email" placeholder="Enter your email" required type="email" className="grow border-primary" />
 
-            <button className="border border-primary px-3 lg:px-5 rounded-md text-primary hover:text-lite font-semibold uppercase transition-colors hover:bg-primary" type="submit">Subscribe</button>
-          </form>
-                    </div>
+                    <form className="flex w-full gap-x-3">
+                        <TextInput id="email" placeholder="Enter your email" required type="email" className="grow border-primary" />
+
+                        <button className="border border-primary px-3 lg:px-5 rounded-md text-primary hover:text-lite font-semibold uppercase transition-colors hover:bg-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
             </div>
         </div>
 
         <p className="text-center w-full border-t bg-element border-accent-dark sm:text-lg font-semibold text-text dark:text-text-dark py-5">
-        &copy; All Rights Reserved By <span className="font-bold">LifeMate</span>
+            &copy; All Rights Reserved By <span className="font-bold">LifeMate</span>
         </p>
     </FooterWrap>);
 };

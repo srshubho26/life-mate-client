@@ -25,7 +25,7 @@ const BiodataDetails = () => {
     const axiosWithCredentials = useAxiosWithCredentials();
     const [favLoading, setFavLoading] = useState(false);
     const { isExists, checking } = useIsRequestExists(details?.biodata_id);
-    const {isAdmin, loading: checkingAdmin} = useIsAdmin();
+    const { isAdmin, loading: checkingAdmin } = useIsAdmin();
     const { isFavourite, checking: isFavouriteChecking, recheckFav } = useIsFavourite(details?.biodata_id);
     const { biodatas: suggestions, loading: loadingSuggestions } = useBiodatas({
         type: details.type,

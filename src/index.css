@@ -19,7 +19,7 @@ body {
     left: -120px;
     width: calc(100% + 150px);
     height: 100%;
-    background: #110310c5;
+    background: #1103109d;
     transform: skewX(25deg);
     border-right: 10px solid #c924cc;
 }

@@ -20,13 +20,13 @@ const ViewBiodata = () => {
     const [premiumLoading, setPremiumLoading] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(loading)return;
-        if(!Object.keys(details).length){
+    useEffect(() => {
+        if (loading) return;
+        if (!Object.keys(details).length) {
             swal('Wait!', 'Please create your biodata first.', 'warning')
-            .then(()=>{
-                navigate('/dashboard/edit-biodata')
-            })
+                .then(() => {
+                    navigate('/dashboard/edit-biodata')
+                })
         }
     }, [details, loading, navigate])
 
@@ -41,7 +41,7 @@ const ViewBiodata = () => {
             .then(isConfirmed => {
                 if (isConfirmed) {
                     setPremiumLoading(true);
-                    axiosWithCredentials.post('/premium-request', {name: details.name, email, biodata: details.biodata_id })
+                    axiosWithCredentials.post('/premium-request', { name: details.name, email, biodata: details.biodata_id })
                         .then(res => {
                             if (res.data.acknowledged) {
                                 setPremiumLoading(false);
@@ -65,7 +65,11 @@ const ViewBiodata = () => {
 
         <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
             <Loading loading={loading || premiumLoading} />
-            <img src={details?.profile_img} className="w-64 h-64 mx-auto object-cover rounded-md" />
+            <div className="w-64 h-64 mx-auto relative">
+                {details?.isPremium ? <span className="bg-primary text-lite rounded-md px-3 py-1 font-semibold absolute bottom-0 left-0">Premium</span> : null}
+
+                <img src={details?.profile_img} className="w-full h-full object-cover rounded-md" />
+            </div>
 
             <div className="text-center">
                 <h3 className="text-primary font-semibold text-3xl">

@@ -5,26 +5,18 @@ import { useEffect, useState } from "react";
 import BiodataCard from "../../../components/reusuable/BiodataCard";
 
 const PremiumMembers = () => {
-    const {biodatas, loading} = useBiodatas({premium: true}, 6);
+    const { biodatas, loading } = useBiodatas({ sortAge: 'asc', premium: true }, 6);
     const [sortedBiodatas, setSortedBiodatas] = useState(biodatas);
 
-    useEffect(()=>{
+    useEffect(() => {
         !loading && setSortedBiodatas(biodatas);
     }, [biodatas, loading]);
 
-    const handleSort = sort=>{
-
+    const handleSort = sort => {
         const _biodatas = [...sortedBiodatas];
-let newBiodatas;
-        if(sort==='asc'){
-            newBiodatas = _biodatas.sort((a, b)=>{
-                return a.age - b.age;
-            })
-        }else{
-            newBiodatas = _biodatas.sort((a, b)=>{
-                return b.age - a.age;
-            })
-        }
+        const newBiodatas = _biodatas.sort((a, b) => {
+            return sort === 'asc' ? (a.age - b.age) : (b.age - a.age);
+        })
         setSortedBiodatas(newBiodatas);
     }
 
@@ -34,7 +26,7 @@ let newBiodatas;
 
 
             <div className="mt-10 mb-4 sort-wrap">
-            <SortBtns setSort={handleSort} />
+                <SortBtns setSort={handleSort} />
             </div>
 
             <div className="max-w-60 mx-auto sm:max-w-full grid sm:grid-cols-3 gap-4 text-center lg:text-left">

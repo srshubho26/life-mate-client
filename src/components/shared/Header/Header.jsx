@@ -50,7 +50,7 @@ const Header = () => {
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img={user.photoURL} rounded />
+            <Avatar alt="User settings" className="border-primary border rounded-full" img={user.photoURL} rounded />
           }
         >
           <DropdownHeader>
@@ -67,6 +67,7 @@ const Header = () => {
         <NavItem name="Home" />
         <NavItem to="/biodatas" name="Biodatas" />
         <NavItem to="/about" name="About Us" />
+        <NavItem to="/stories" name="Success Stories" />
         <NavItem to="/contact" name="Contact Us" />
         {!adminChecking && isAdmin ? <NavItem to="/dashboard" name="Dashboard" /> : <NavItem
           to={user ? "/dashboard/edit-biodata" : "/login"}

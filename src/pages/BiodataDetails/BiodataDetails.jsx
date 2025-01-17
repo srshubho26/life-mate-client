@@ -12,6 +12,7 @@ import useAxiosWithCredentials from "../../hooks/useAxiosWithCredentials";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
 import useIsFavourite from "../../hooks/useIsFavourite";
+import useIsAdmin from "../../hooks/useIsAdmin";
 import { Dropdown, DropdownItem } from "flowbite-react";
 
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
@@ -24,6 +25,7 @@ const BiodataDetails = () => {
     const axiosWithCredentials = useAxiosWithCredentials();
     const [favLoading, setFavLoading] = useState(false);
     const { isExists, checking } = useIsRequestExists(details?.biodata_id);
+    const {isAdmin, loading: checkingAdmin} = useIsAdmin();
     const { isFavourite, checking: isFavouriteChecking, recheckFav } = useIsFavourite(details?.biodata_id);
     const { biodatas: suggestions, loading: loadingSuggestions } = useBiodatas({
         type: details.type,
@@ -83,7 +85,7 @@ const BiodataDetails = () => {
                         </Link>}
                     </>}
 
-                    {!isFavourite && <button
+                    {!isFavourite && !checkingAdmin && !isAdmin && <button
                         onClick={handleAddToFavourite}
                         className={buttonCss}>
                         Add To Favourite

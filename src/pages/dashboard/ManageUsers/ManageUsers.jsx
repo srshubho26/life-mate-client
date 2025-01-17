@@ -3,19 +3,41 @@ import Loading from '../../../components/reusuable/Loading';
 import useAxiosWithCredentials from '../../../hooks/useAxiosWithCredentials';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
-import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput } from 'flowbite-react';
 import Title from '../../../components/reusuable/Title';
+import { useState } from 'react';
+
+// Design for search input field
+const theme = {
+    "field": {
+      "input": {
+        "colors": {
+          "custom": "bg-element"
+        }
+      }
+    }
+  }
 
 const ManageUsers = () => {
     const {email} = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
+    const [srchTxt, setSrchTxt] = useState('');
     const {data:users, isPending:loading, refetch} = useQuery({
-        queryKey: ['all-users-', email],
+        queryKey: ['all-users-', email, srchTxt],
         queryFn: async()=>{
-            const res = await axiosWithCredentials('/all-users');
+            const res = await axiosWithCredentials(`/all-users?search=${srchTxt}`);
             return res.data;
         }
-    })
+    });
+
+    let timeout;
+    const handleSearch = e=>{
+        if(timeout)clearTimeout(timeout);
+
+        timeout = setTimeout(()=>{
+            setSrchTxt(e.target.value)
+        }, 500);
+    }
 
     const changeRole = ()=>{
         refetch();
@@ -26,7 +48,12 @@ const ManageUsers = () => {
             <Helmet>
                 <title>Manage Users || Love Mate</title>
             </Helmet>
+                    <div className='flex items-center justify-between'>
                     <Title title="Manage users" />
+                    <form className='grow max-w-md'>
+                    <TextInput theme={theme} color='custom' type="text" sizing="md" placeholder='Search User By Name' defaultValue='' onChange={handleSearch} />
+                    </form>
+                    </div>
 
             {!users?.length && !loading && <h2 className="text-center my-10 text-lg font-semibold">No User Available!</h2>}
             
@@ -52,7 +79,6 @@ const ManageUsers = () => {
                                         </button>}
                                     </TableCell>
                                 </TableRow>)}
-            
                             </TableBody>
                         </Table>
                     </div> : null}

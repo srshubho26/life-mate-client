@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import BiodataCard from "../../../components/reusuable/BiodataCard";
 
 const PremiumMembers = () => {
-    const {biodatas} = useBiodatas({premium: true}, 6);
+    const {biodatas, loading} = useBiodatas({premium: true}, 6);
     const [sortedBiodatas, setSortedBiodatas] = useState(biodatas);
 
     useEffect(()=>{
-        setSortedBiodatas(biodatas);
-    }, [biodatas]);
+        !loading && setSortedBiodatas(biodatas);
+    }, [biodatas, loading]);
 
     const handleSort = sort=>{
 

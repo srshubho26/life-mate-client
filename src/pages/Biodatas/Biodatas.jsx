@@ -10,18 +10,18 @@ import { Pagination } from "flowbite-react";
 // Pagination  style
 const themes = {
     "pages": {
-      "previous": {
-        "base": "ml-0 rounded-l-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
-      },
-      "next": {
-        "base": "rounded-r-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
-      },
-      "selector": {
-        "base": "w-10 sm:w-12 border border-line bg-lite py-2 leading-tight enabled:hover:bg-primary enabled:hover:text-lite text-primary",
-        "active": "bg-primary text-lite",
-      }
+        "previous": {
+            "base": "ml-0 rounded-l-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+        },
+        "next": {
+            "base": "rounded-r-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+        },
+        "selector": {
+            "base": "w-10 sm:w-12 border border-line bg-lite py-2 leading-tight enabled:hover:bg-primary enabled:hover:text-lite text-primary",
+            "active": "bg-primary text-lite",
+        }
     }
-  }
+}
 
 const Biodatas = () => {
     const [open, setOpen] = useState(false);
@@ -42,7 +42,7 @@ const Biodatas = () => {
 
                 <button
                     onClick={() => setOpen(!open)}
-                    className="absolute top-40 -right-7 rounded-md border border-clear-dark bg-white text-accent py-5 text-3xl z-40 lg:hidden">
+                    className="absolute top-40 -right-7 rounded-md border border-clear-dark bg-element text-accent py-5 text-3xl z-40 lg:hidden">
                     <FaAngleRight />
                 </button>
             </div>
@@ -55,14 +55,20 @@ const Biodatas = () => {
                     member={biodata}
                 />))}
 
-                {total > 12 ? <div className="col-span-full self-end my-10 flex justify-center">
-                    <Pagination 
-                    theme={themes}
-                     currentPage={currentPage}
-                      totalPages={totalPage} 
-                      onPageChange={setCurrentPage} 
-                      showIcons previousLabel=""
-        nextLabel="" />
+                {total > 12 ? <div className="col-span-full flex-col sm:flex-row self-end my-10 flex justify-center sm:gap-10 items-center">
+<p className="text-text text-lg">
+    Showing <span className="text-primary font-semibold mx-1">{currentPage}</span>
+    of <span className="text-primary font-semibold mx-1">{totalPage}</span>
+    </p>
+
+                    <Pagination
+                        theme={themes}
+                        currentPage={currentPage}
+                        totalPages={totalPage}
+                        onPageChange={setCurrentPage}
+                        showIcons previousLabel=""
+                        nextLabel="" 
+                        />
                 </div> : null}
 
                 {!loading && !biodatas.length && <h2 className="text-xl text-primary font-semibold col-span-full text-center">No Data Available!</h2>}

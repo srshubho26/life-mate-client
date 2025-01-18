@@ -16,10 +16,15 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            setUser(currentUser);
             if (currentUser) {
                 axiosWithCredentials.post("/jwt", { email: currentUser.email })
-                    .then(() => setLoading(false))
+                    .then(() => {
+                        setUser(currentUser);
+                        setLoading(false);
+                    })
+                    .catch(()=>{
+                        setLoading(false);
+                    })
             } else {
                 setLoading(false)
             }
@@ -51,9 +56,10 @@ const AuthProvider = ({ children }) => {
     }
 
     // Logout function
-    const logOut = () => {
-        return signOut(auth)
-            .then(() => axiosWithCredentials.post("/logout"))
+    const logOut = async () => {
+        await axiosWithCredentials.post("/logout");
+        setUser(null);
+        return signOut(auth);
     }
 
     const values = { user, logOut, loginUser, createNewUser, googleSignin }

@@ -5,8 +5,8 @@ const withCredentials = axios.create({
     baseURL: 'https://life-mate-server.vercel.app',
     withCredentials: true
 });
-withCredentials.interceptors.response.use(null, err => {
-    swal('Oops!', err.message, 'error');
+withCredentials.interceptors.response.use(null, () => {
+    swal('Oops!', "Something went wrong!", 'error');
 })
 
 const useAxiosWithCredentials = () => {

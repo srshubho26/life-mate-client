@@ -19,8 +19,8 @@ import useIsAdmin from "../../../hooks/useIsAdmin";
 
 const Header = () => {
   const [top0, setTop0] = useState(true);
-  const { isAdmin, adminChecking } = useIsAdmin();
   const user = useAuth();
+  const { isAdmin, adminChecking } = useIsAdmin();
   const { logOut } = useContext(AuthContext);
   const navigate = useNavigate();
 

@@ -11,6 +11,7 @@ const theme = {
 }
 
 const Footer = () => {
+
     return (<FooterWrap theme={theme} className="bg-lite border-t border-accent-dark pt-20">
         <div className="px-2">
             <div className="max-w-screen-xl mx-auto pb-20 grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1 gap-2 lg:gap-5 flex-wrap md:flex-nowrap">

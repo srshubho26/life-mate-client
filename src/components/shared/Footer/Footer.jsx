@@ -24,10 +24,21 @@ const Footer = () => {
                     <h3 className="text-primary text-2xl font-semibold mb-2">Useful Links</h3>
 
                     <ul className="text-text dark:text-text-dark text-base">
-                        <li className="my-1"><Link to="/" className="hover:text-primary">Home</Link></li>
-                        <li className="my-1"><Link to="/biodatas" className="hover:text-primary">Biodatas</Link></li>
-                        <li className="my-1"><Link className="hover:text-primary">About Us</Link></li>
-                        <li className="my-1"><Link className="hover:text-primary">Contact Us</Link></li>
+                        <li className="my-1">
+                            <Link to="/" className="hover:text-primary">Home</Link>
+                        </li>
+
+                        <li className="my-1">
+                            <Link to="/biodatas" className="hover:text-primary">Biodatas</Link>
+                        </li>
+
+                        <li className="my-1">
+                            <Link to="/about" className="hover:text-primary">About Us</Link>
+                        </li>
+
+                        <li className="my-1">
+                            <Link to="/contact" className="hover:text-primary">Contact Us</Link>
+                        </li>
                     </ul>
                 </div>
 

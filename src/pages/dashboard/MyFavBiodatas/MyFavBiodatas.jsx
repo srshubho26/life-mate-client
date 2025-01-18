@@ -5,10 +5,14 @@ import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 
 import useMyFavBiodatas from '../../../hooks/useMyFavBiodatas';
 import useAxiosWithCredentials from '../../../hooks/useAxiosWithCredentials';
 import swal from 'sweetalert';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 
 const MyFavBiodatas = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     const { email } = useAuth();
     const { myFavReqs, loading, refetch } = useMyFavBiodatas();
     const axiosWithCredentials = useAxiosWithCredentials();
@@ -36,10 +40,10 @@ const MyFavBiodatas = () => {
             })
     }
 
-    return (<section className="relative">
+    return (<section className="relative min-h-screen">
         <Loading loading={loading || deleteLoading} />
         <Helmet>
-            <title>My Favourite Biodatas || Love Mate</title>
+            <title>My Favourite Biodatas || Life Mate</title>
         </Helmet>
 
         <Title title="Favourite Biodatas" />

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Error404 = () => {
     return (<section className="flex flex-col text-center justify-center items-center gap-5 h-screen bg-element p-2">
         <Helmet>
-            <title>404 Not Found || Love Mate</title>
+            <title>404 Not Found || Life Mate</title>
         </Helmet>
         <span className="text-primary text-[220px]"><TbMoodSadDizzy /></span>
 

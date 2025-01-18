@@ -50,7 +50,7 @@ const Banner = () => {
         >
             {slides.map((slide, i) => (<SwiperSlide key={i}>
                 <div className='h-[450px] sm:h-auto bg-primary max-h-[calc(100vh-130px)] relative'>
-                    <div className='absolute px-2 top-0 left-0 w-full h-full bg-clear-dark slide-text'>
+                    <div className='absolute px-2 top-0 left-0 w-full h-full slide-text'>
                         <div className='max-w-screen-xl mx-auto h-full relative z-20'>
                             <div className='px-4 sm:px-0 sm:w-1/2 h-full flex flex-col justify-center'>
                                 <h2 className='text-xl sm:text-2xl lg:text-4xl font-bold uppercase text-text-dark '>
@@ -64,7 +64,7 @@ const Banner = () => {
                         </div>
                     </div>
 
-                    <img src={slide.img} className='w-full h-full object-cover' />
+                    <img src={slide.img} className='w-full h-full object-right aspect-[3/2] object-cover' />
                 </div>
             </SwiperSlide>))}
 

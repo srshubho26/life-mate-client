@@ -13,6 +13,10 @@ import { useNavigate } from "react-router-dom";
 const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
 
 const ViewBiodata = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const { details, loading } = useBiodataDetails('own', email);
@@ -51,7 +55,6 @@ const ViewBiodata = () => {
                             }
                         }).catch(() => {
                             setPremiumLoading(false);
-                            swal("Oops!", "Something went wrong!", "error");
                         })
                 }
             })
@@ -59,7 +62,7 @@ const ViewBiodata = () => {
 
     return (<section className="py-5">
         <Helmet>
-            <title>View Your Biodata || Love Mate</title>
+            <title>View Your Biodata || Life Mate</title>
         </Helmet>
 
         <Title title="View Your Biodata" />

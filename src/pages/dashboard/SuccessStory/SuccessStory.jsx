@@ -16,6 +16,10 @@ import EditModal from "./parts/EditModal";
 import { useNavigate } from "react-router-dom";
 
 const SuccessStory = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const [previewImg, setPreviewImg] = useState('');
@@ -117,7 +121,7 @@ const SuccessStory = () => {
     return (<section className="relative">
         <Loading loading={loading || submitLoading || gettingStory} />
         <Helmet>
-            <title>Success Story || Love Mate</title>
+            <title>Success Story || Life Mate</title>
         </Helmet>
         <Title title="Success Story" />
 

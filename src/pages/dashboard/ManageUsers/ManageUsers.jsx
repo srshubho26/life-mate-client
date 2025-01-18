@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, TextInput } from 'flowbite-react';
 import Title from '../../../components/reusuable/Title';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 
 // Design for search input field
@@ -22,6 +22,10 @@ const theme = {
 const btnClasses = "font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary";
 
 const ManageUsers = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const [srchTxt, setSrchTxt] = useState('');
@@ -96,7 +100,7 @@ const ManageUsers = () => {
     return (<section className="relative min-h-screen sm:py-10">
         <Loading loading={loading || roleChanging} />
         <Helmet>
-            <title>Manage Users || Love Mate</title>
+            <title>Manage Users || Life Mate</title>
         </Helmet>
         <div className='flex gap-5 sm:gap-10 flex-col sm:flex-row items-center justify-between'>
             <Title title="Manage users" />

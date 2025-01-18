@@ -5,23 +5,27 @@ import Title from "../../../components/reusuable/Title";
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import { Link } from "react-router-dom";
 import ViewModal from "./parts/ViewModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SuccessStories = () => {
-    const {stories, storiesLoading} = useSuccessStories();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    const { stories, storiesLoading } = useSuccessStories();
     const [openModal, setOpenModal] = useState(false);
     const [story, setStory] = useState(null);
 
-    const handleViewStory = _story=>{
+    const handleViewStory = _story => {
         setStory(_story);
         setOpenModal(true);
     }
 
     return (<section className="relative min-h-screen">
         <Loading loading={storiesLoading} />
-        <ViewModal story={story} openModal={openModal} setOpenModal={setOpenModal}/>
+        <ViewModal story={story} openModal={openModal} setOpenModal={setOpenModal} />
         <Helmet>
-            <title>Success Stories || Love Mate</title>
+            <title>Success Stories || Life Mate</title>
         </Helmet>
 
         <Title title="Success Stories" />
@@ -31,6 +35,8 @@ const SuccessStories = () => {
         {stories?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
+                <TableHeadCell className="text-nowrap py-5 bg-element">Serial No.</TableHeadCell>
+
                     <TableHeadCell className="text-nowrap py-5 bg-element">Male Biodata ID</TableHeadCell>
 
                     <TableHeadCell className="text-nowrap bg-element py-5">Female Biodata ID</TableHeadCell>
@@ -39,20 +45,22 @@ const SuccessStories = () => {
                 </TableHead>
                 <TableBody>
 
-                    {stories?.map(story => <TableRow key={story._id}
+                    {stories?.map((story, i) => <TableRow key={story._id}
                         className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
-                        <TableCell className="text-nowrap">
-                            <Link to={`/details/${story.type==='Male' ? story.self_bio : story.partner_bio}`}>
-                            #{story.type==='Male' ? story.self_bio : story.partner_bio}
-                            </Link>
-                            
-                            </TableCell>
+                            <TableCell>{i+1}</TableCell>
 
-                            <TableCell className="text-nowrap">
-                                <Link to={`/details/${story.type==='Male' ? story.partner_bio : story.self_bio}`}>
-                                #{story.type==='Male' ? story.partner_bio : story.self_bio}
-                                </Link>
-                            </TableCell>
+                        <TableCell className="text-nowrap">
+                            <Link to={`/details/${story.type === 'Male' ? story.self_bio : story.partner_bio}`}>
+                                #{story.type === 'Male' ? story.self_bio : story.partner_bio}
+                            </Link>
+
+                        </TableCell>
+
+                        <TableCell className="text-nowrap">
+                            <Link to={`/details/${story.type === 'Male' ? story.partner_bio : story.self_bio}`}>
+                                #{story.type === 'Male' ? story.partner_bio : story.self_bio}
+                            </Link>
+                        </TableCell>
 
                         <TableCell className='text-nowrap'>
                             <button

@@ -22,6 +22,9 @@ import SuccessStories from "../pages/dashboard/SuccessStories/SuccessStories";
 import Error404 from "../pages/Error404/Error404";
 import AllStories from "../pages/AllStories/AllStories";
 import UserDashboard from "../pages/dashboard/UserDashboard/UserDashboard";
+import Contact from "../pages/Contact/Contact";
+import About from "../pages/About/About";
+import UserRoute from "./UserRoute";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +53,14 @@ const router = createBrowserRouter([
                 element: <AllStories />
             },
             {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/about',
+                element: <About />
+            },
+            {
                 path: '/details/:biodataId',
                 element: <PrivateRoute><BiodataDetails /></PrivateRoute>
             },
@@ -61,34 +72,58 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><Dashboard /></PrivateRoute>,
+        element: <Dashboard />,
         children: [
             {
                 path: '/dashboard/edit-biodata',
-                element: <PrivateRoute><EditBiodata /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <EditBiodata />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/view-biodata',
-                element: <PrivateRoute><ViewBiodata /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <ViewBiodata />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/my-contact-requests',
-                element: <PrivateRoute><MyContactRequests /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <MyContactRequests />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/my-favourite-biodatas',
-                element: <PrivateRoute><MyFavBiodatas /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <MyFavBiodatas />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/success-story',
-                element: <PrivateRoute><SuccessStory /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <SuccessStory />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
                 path: '/dashboard/user-dashboard',
-                element: <PrivateRoute><UserDashboard /></PrivateRoute>
+                element: <PrivateRoute>
+                    <UserRoute>
+                        <UserDashboard />
+                    </UserRoute>
+                </PrivateRoute>
             },
             {
-                path: '/dashboard',
+                path: '/dashboard/admin-dashboard',
                 element: <PrivateRoute>
                     <AdminRoute>
                         <AdminDashboard />

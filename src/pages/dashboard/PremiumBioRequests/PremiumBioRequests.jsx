@@ -5,10 +5,14 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import swal from "sweetalert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "../../../components/reusuable/Title";
 
 const PremiumBioRequests = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const [makingPremiumLoading, setMakingPremiumLoading] = useState(false);
@@ -46,7 +50,7 @@ const PremiumBioRequests = () => {
         <Loading loading={loading || makingPremiumLoading} />
         
         <Helmet>
-            <title>Premium Biodata Requests || Love Mate</title>
+            <title>Premium Biodata Requests || Life Mate</title>
         </Helmet>
 
         <Title title="Premium Biodata Requests" />

@@ -97,3 +97,7 @@ form textarea:focus {
 .biodatas form input[type=range]::-ms-thumb {
     background: #d833db;
 }
+
+.biodatas form select{
+    background: #fdf6fd!important;
+}

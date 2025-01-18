@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import Title from '../../components/reusuable/Title';
 import useSuccessStories from '../../hooks/useSuccessStories';
 import SuccessStoryCard from '../../components/reusuable/SuccessStoryCard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pagination } from 'flowbite-react';
 import Loading from '../../components/reusuable/Loading';
 
@@ -27,9 +27,13 @@ const AllStories = () => {
     const { stories, storiesLoading, totalStories } = useSuccessStories(8, currentPage);
     const totalPage = Math.ceil(totalStories / 8);
 
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     return (<section className="px-2 bg-lite min-h-screen py-10">
         <Helmet>
-            <title>Success Stories || Love Mate</title>
+            <title>Success Stories || Life Mate</title>
         </Helmet>
         <Title title="Success Stories" />
 

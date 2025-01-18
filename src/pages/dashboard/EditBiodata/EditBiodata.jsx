@@ -12,6 +12,10 @@ import { uploadImg } from "../../../assets/utils";
 import { Helmet } from "react-helmet-async";
 
 const EditBiodata = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     const { displayName, email } = useAuth();
     const { details: biodataDetails, loading: detailsLoading, refetch } = useBiodataDetails('own', email);
     const [loading, setLoading] = useState(false);
@@ -86,7 +90,7 @@ const EditBiodata = () => {
         try {
             const res = await axiosWithCredentials.post(`/biodatas?isNewBiodata=${isNewBiodata}`, data);
             if (res.data.acknowledged) {
-                swal('Success', "Your Biodata Is Updated", 'success');
+                swal('Success', `Your Biodata Is ${isNewBiodata ? 'Created' : 'Updated'} Successfully.`, 'success');
             }
             refetch();
             setLoading(false);
@@ -117,7 +121,7 @@ const EditBiodata = () => {
 
     return (<section className="edit-biodata">
         <Helmet>
-            <title>Edit Biodata || Love Mate</title>
+            <title>Edit Biodata || Life Mate</title>
         </Helmet>
         <Title title="Edit Your Biodata" />
 
@@ -339,7 +343,7 @@ const EditBiodata = () => {
 
                 <div>
                     <div className="mb-2 block">
-                        <Label className="text-lg" value="Your Email" />
+                        <Label className="text-lg" value="Contact Email" />
                     </div>
                     <TextInput type="email" defaultValue={email} readOnly shadow />
                 </div>

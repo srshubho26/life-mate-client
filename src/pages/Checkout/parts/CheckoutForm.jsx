@@ -77,7 +77,7 @@ const CheckoutForm = ({setLoading, biodataId}) => {
     }
 
     return (<form onSubmit={handleSubmit} className="text-center max-w-screen-md mx-auto mt-10">
-        <div className='flex gap-2 mb-10 text-left'>
+        <div className='flex flex-col sm:flex-row gap-4 mb-10 text-left'>
             <div className="basis-1/2">
                 <div className="mb-2 block">
                     <Label value="Biodata ID" />

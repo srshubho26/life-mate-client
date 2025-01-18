@@ -1,8 +1,12 @@
 import axios from 'axios';
+import swal from 'sweetalert';
 
 const axiosPublic = axios.create({
-    // baseURL : 'https://life-mate-server.vercel.app'
-     baseURL : 'http://localhost:5000'
+    baseURL : 'https://life-mate-server.vercel.app'
+});
+
+axiosPublic.interceptors.response.use(null, err => {
+    swal('Oops!', err.message, 'error');
 })
 
 const useAxiosPublic = () => {

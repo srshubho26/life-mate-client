@@ -4,12 +4,17 @@ import PremiumMembers from "./parts/PremiumMembers";
 import HowItWorks from "./parts/HowItWorks";
 import SuccessCountup from "./parts/SuccessCountup";
 import SuccessStory from "./parts/SuccessStory";
+import { useEffect } from "react";
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <Helmet>
-                <title>Home || Love Mate</title>
+                <title>Home || Life Mate</title>
             </Helmet>
 
             <Banner />

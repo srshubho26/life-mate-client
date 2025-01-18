@@ -30,15 +30,18 @@ const Header = () => {
   }
 
   useEffect(() => {
-    let prev;
-    window.onscroll = () => {
-      setTop0(prev > window.scrollY);
+    let prev=0;
+    const scrollInit = () => {
+      setTop0(prev >= window.scrollY);
       prev = window.scrollY;
     }
+    window.addEventListener('scroll', scrollInit);
+
+    return () => window.removeEventListener('scroll', scrollInit);
   }, []);
 
   return (<header
-    className={(top0 ? 'top-0' : '-top-28') + " fixed left-0 w-full z-30 bg-clear-lite dark:bg-clear-dark px-2 py-3 border-b border-accent-deep transition-[top]"}
+    className={(top0 ? 'top-0' : '-top-64') + " fixed left-0 w-full z-30 bg-clear-lite dark:bg-clear-dark px-2 py-3 border-b border-accent-deep transition-[top]"}
   >
     <Navbar fluid theme={themeOverride}>
       <Logo />
@@ -69,8 +72,8 @@ const Header = () => {
         <NavItem to="/about" name="About Us" />
         <NavItem to="/stories" name="Success Stories" />
         <NavItem to="/contact" name="Contact Us" />
-        {user ? <NavItem name="Dashboard" to={!adminChecking && isAdmin ? "/dashboard" : "/dashboard/user-dashboard"}/> : 
-      <NavItem to="/login" name="Login" />}
+        {user ? <NavItem name="Dashboard" to={!adminChecking && isAdmin ? "/dashboard/admin-dashboard" : "/dashboard/user-dashboard"} /> :
+          <NavItem to="/login" name="Login" />}
       </NavbarCollapse>
     </Navbar>
   </header>);

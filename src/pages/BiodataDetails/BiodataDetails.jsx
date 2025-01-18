@@ -7,7 +7,7 @@ import moment from "moment";
 import Title from "../../components/reusuable/Title";
 import useBiodatas from "../../hooks/useBiodatas";
 import BiodataCard from "../../components/reusuable/BiodataCard";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosWithCredentials from "../../hooks/useAxiosWithCredentials";
 import useAuth from "../../hooks/useAuth";
 import swal from "sweetalert";
@@ -20,6 +20,11 @@ const buttonCss = "text-primary border border-primary transition-colors hover:bg
 
 const BiodataDetails = () => {
     const { biodataId } = useParams();
+
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, [biodataId]);
+
     const { email } = useAuth();
     const { details, loading } = useBiodataDetails(biodataId, email);
     const axiosWithCredentials = useAxiosWithCredentials();
@@ -49,7 +54,7 @@ const BiodataDetails = () => {
 
     return (<section className="px-2 py-20 bg-lite biodatas">
         <Helmet>
-            <title>{details?.name || 'Details'} || Love Mate</title>
+            <title>{details?.name || 'Details'} || Life Mate</title>
         </Helmet>
 
         <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md min-h-96">

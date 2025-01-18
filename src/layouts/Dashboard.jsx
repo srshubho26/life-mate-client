@@ -60,6 +60,7 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<AiOutlineDashboard />}
+                                to="admin-dashboard"
                                 name="Dashboard"
                             />
 
@@ -92,6 +93,13 @@ const Dashboard = () => {
                         </> : <>
                             <NavItem
                                 closeDrawer={handleClose}
+                                icon={<AiOutlineDashboard />}
+                                to="user-dashboard"
+                                name="Dashboard"
+                            />
+
+                            <NavItem
+                                closeDrawer={handleClose}
                                 icon={<FiEdit />}
                                 to="edit-biodata"
                                 name="Edit Biodata"
@@ -108,14 +116,14 @@ const Dashboard = () => {
                                 closeDrawer={handleClose}
                                 icon={<TiContacts />}
                                 to="my-contact-requests"
-                                name="My Contact Request"
+                                name="My Contact Requests"
                             />
 
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<FaRegHeart />}
                                 to="my-favourite-biodatas"
-                                name="Favourites Biodata"
+                                name="Favourite Biodatas"
                             />
 
                             <NavItem

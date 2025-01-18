@@ -12,6 +12,10 @@ import ImageInput from "../../components/reusuable/ImageInput";
 import ImgPreview from "../../components/reusuable/ImgPreview";
 
 const Register = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { createNewUser, user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -80,7 +84,7 @@ const Register = () => {
 
     return (<section className="py-20 px-2 bg-lite dark:bg-gray-900">
         <Helmet>
-            <title>Register || Love Mate</title>
+            <title>Register || Life Mate</title>
         </Helmet>
 
         <div className="max-w-screen-xl flex-col-reverse md:flex-row gap-5 justify-between items-center mx-auto flex">

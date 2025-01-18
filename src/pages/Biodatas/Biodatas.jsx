@@ -1,6 +1,6 @@
 import { FaAngleRight } from "react-icons/fa";
 import Filter from "./parts/Filter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useBiodatas from "../../hooks/useBiodatas";
 import Loading from "../../components/reusuable/Loading";
@@ -24,6 +24,10 @@ const themes = {
 }
 
 const Biodatas = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [open, setOpen] = useState(false);
     const [filter, setFilter] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
@@ -33,7 +37,7 @@ const Biodatas = () => {
 
     return (<section className="px-2 bg-lite biodatas">
         <Helmet>
-            <title>Biodatas || Love Mate</title>
+            <title>Biodatas || Life Mate</title>
         </Helmet>
 
         <div className="max-w-screen-xl mx-auto flex">
@@ -47,7 +51,7 @@ const Biodatas = () => {
                 </button>
             </div>
 
-            <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-center gap-3 p-3 relative items-start min-h-screen">
+            <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-center gap-3 p-3 content-start relative items-start min-h-screen">
                 <Loading loading={loading} />
                 {biodatas?.map(biodata => (<BiodataCard
                     key={biodata._id}
@@ -55,7 +59,7 @@ const Biodatas = () => {
                     member={biodata}
                 />))}
 
-                {total > 12 ? <div className="col-span-full flex-col sm:flex-row self-end my-10 flex justify-center sm:gap-10 items-center">
+                {total < 12 || loading ? null : <div className="col-span-full flex-col sm:flex-row self-end my-10 flex justify-center sm:gap-10 items-center">
                     <p className="text-text text-lg">
                         Showing <span className="text-primary font-semibold mx-1">{currentPage}</span>
                         of <span className="text-primary font-semibold mx-1">{totalPage}</span>
@@ -70,7 +74,7 @@ const Biodatas = () => {
                         previousLabel=""
                         nextLabel=""
                     />
-                </div> : null}
+                </div>}
 
                 {!loading && !biodatas.length && <h2 className="text-xl text-primary font-semibold col-span-full text-center">No Data Available!</h2>}
             </div>

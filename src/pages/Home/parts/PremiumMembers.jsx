@@ -3,6 +3,7 @@ import SortBtns from "../../../components/reusuable/SortBtns";
 import useBiodatas from '../../../hooks/useBiodatas';
 import { useEffect, useState } from "react";
 import BiodataCard from "../../../components/reusuable/BiodataCard";
+import Loading from "../../../components/reusuable/Loading";
 
 const PremiumMembers = () => {
     const { biodatas, loading } = useBiodatas({ sortAge: 'asc', premium: true }, 6);
@@ -29,7 +30,8 @@ const PremiumMembers = () => {
                 <SortBtns setSort={handleSort} />
             </div>
 
-            <div className="max-w-60 mx-auto sm:max-w-full grid sm:grid-cols-3 gap-4 text-center lg:text-left">
+            <div className="max-w-60 mx-auto sm:max-w-full grid sm:grid-cols-3 gap-4 text-center lg:text-left min-h-60 items-start relative">
+                <Loading loading={loading}/>
                 {sortedBiodatas.map(member => (<BiodataCard key={member._id} member={member} />))}
 
             </div>

@@ -9,6 +9,10 @@ import loginImg from '../../assets/img/login.svg';
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const { loginUser, user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -48,7 +52,7 @@ const Login = () => {
 
     return (<section className="py-20 px-2 bg-lite dark:bg-gray-900 login">
         <Helmet>
-            <title>Login || Love Mate</title>
+            <title>Login || Life Mate</title>
         </Helmet>
 
         <div className="max-w-screen-xl mx-auto flex-col-reverse md:flex-row flex items-center gap-5 justify-between">

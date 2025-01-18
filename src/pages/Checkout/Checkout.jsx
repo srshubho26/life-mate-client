@@ -3,13 +3,17 @@ import Title from '../../components/reusuable/Title';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './parts/CheckoutForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, useLocation, useParams } from 'react-router-dom';
 import Loading from '../../components/reusuable/Loading'
 import useIsRequestExists from '../../hooks/useIsRequestExists';
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
 const Checkout = () => {
+    useEffect(()=>{
+        window.scrollTo(0, 0);
+    }, []);
+
     const [loading, setLoading] = useState(false);
     const {state} = useLocation();
     const {biodataId} = useParams();
@@ -21,7 +25,7 @@ const Checkout = () => {
         <Loading loading={loading} />
 
             <Helmet>
-                <title>Checkout || Love Mate</title>
+                <title>Checkout || Life Mate</title>
             </Helmet>
 
             <Title title="Checkout"/>

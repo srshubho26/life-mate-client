@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet-async";
 
 const EditBiodata = () => {
     const { displayName, email } = useAuth();
-    const { details: biodataDetails, loading: detailsLoading } = useBiodataDetails('own', email);
+    const { details: biodataDetails, loading: detailsLoading, refetch } = useBiodataDetails('own', email);
     const [loading, setLoading] = useState(false);
     const axiosWithCredentials = useAxiosWithCredentials();
     const isNewBiodata = !Object.keys(biodataDetails).length;
@@ -88,6 +88,7 @@ const EditBiodata = () => {
             if (res.data.acknowledged) {
                 swal('Success', "Your Biodata Is Updated", 'success');
             }
+            refetch();
             setLoading(false);
 
         } catch (err) {

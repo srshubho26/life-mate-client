@@ -69,10 +69,8 @@ const Header = () => {
         <NavItem to="/about" name="About Us" />
         <NavItem to="/stories" name="Success Stories" />
         <NavItem to="/contact" name="Contact Us" />
-        {!adminChecking && isAdmin ? <NavItem to="/dashboard" name="Dashboard" /> : <NavItem
-          to={user ? "/dashboard/edit-biodata" : "/login"}
-          name={user ? "Dahsboard" : "Login"}
-        />}
+        {user ? <NavItem name="Dashboard" to={!adminChecking && isAdmin ? "/dashboard" : "/dashboard/user-dashboard"}/> : 
+      <NavItem to="/login" name="Login" />}
       </NavbarCollapse>
     </Navbar>
   </header>);

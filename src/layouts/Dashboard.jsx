@@ -1,4 +1,4 @@
-import { Drawer } from "flowbite-react";
+import { Drawer, Tooltip } from "flowbite-react";
 import { useContext, useState } from "react";
 import Logo from "../components/reusuable/Logo";
 import { RxCross2 } from "react-icons/rx";
@@ -42,7 +42,9 @@ const Dashboard = () => {
 
         <Drawer open={isOpen} onClose={handleClose} className="bg-lite">
             <div className="relative">
-                <Logo />
+                <Tooltip content="Visit Site">
+                    <Logo />
+                </Tooltip>
 
                 <button
                     onClick={handleClose}
@@ -58,7 +60,6 @@ const Dashboard = () => {
                             <NavItem
                                 closeDrawer={handleClose}
                                 icon={<AiOutlineDashboard />}
-                                to=""
                                 name="Dashboard"
                             />
 

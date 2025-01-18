@@ -21,6 +21,7 @@ import SuccessStory from "../pages/dashboard/SuccessStory/SuccessStory";
 import SuccessStories from "../pages/dashboard/SuccessStories/SuccessStories";
 import Error404 from "../pages/Error404/Error404";
 import AllStories from "../pages/AllStories/AllStories";
+import UserDashboard from "../pages/dashboard/UserDashboard/UserDashboard";
 
 const router = createBrowserRouter([
     {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/success-story',
                 element: <PrivateRoute><SuccessStory /></PrivateRoute>
+            },
+            {
+                path: '/dashboard/user-dashboard',
+                element: <PrivateRoute><UserDashboard /></PrivateRoute>
             },
             {
                 path: '/dashboard',

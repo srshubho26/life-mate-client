@@ -14,9 +14,8 @@ const SuccessCountup = () => {
     const [isVisible, setIsVisible] = useState(false);
     const axiosPublic = useAxiosPublic();
     const { data: stats } = useQuery({
-        queryKey: ['stats-', isVisible],
+        queryKey: ['stats-home'],
         queryFn: async () => {
-            if (!isVisible) return {};
             const res = await axiosPublic('/stats');
             return res.data;
         }
@@ -43,7 +42,7 @@ const SuccessCountup = () => {
                         </p>
 
                         <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={stats?.totalBiodata} />
+                            <CountUp duration={2} end={isVisible && stats?.totalBiodata} />
                         </span>
 
                         <h3 className="text-primary text-3xl uppercase font-bold">
@@ -57,7 +56,7 @@ const SuccessCountup = () => {
                         </p>
 
                         <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={stats?.maleBiodata} />
+                            <CountUp duration={2} end={isVisible && stats?.maleBiodata} />
                         </span>
 
                         <h3 className="text-primary text-3xl uppercase font-bold">
@@ -71,7 +70,7 @@ const SuccessCountup = () => {
                         </p>
 
                         <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={stats?.femaleBiodata} />
+                            <CountUp duration={2} end={isVisible && stats?.femaleBiodata} />
                         </span>
 
                         <h3 className="text-primary text-3xl uppercase font-bold">
@@ -85,7 +84,7 @@ const SuccessCountup = () => {
                         </p>
 
                         <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={stats?.totalMarriage} />
+                            <CountUp duration={2} end={isVisible && stats?.totalMarriage} />
                         </span>
 
                         <h3 className="text-primary text-3xl uppercase font-bold">

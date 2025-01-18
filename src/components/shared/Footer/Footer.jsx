@@ -1,10 +1,8 @@
-import {
-    Footer as FooterWrap,
-    TextInput,
-} from "flowbite-react";
+import { Footer as FooterWrap } from "flowbite-react";
 
 import Logo from "../../reusuable/Logo";
 import { Link } from "react-router-dom";
+import Newsletter from "./Newsletter";
 
 const theme = {
     "root": {
@@ -36,11 +34,7 @@ const Footer = () => {
                 <div className="grow max-w-md lg:max-w-md">
                     <h3 className="text-primary text-2xl font-semibold mb-2">Join Our Newsletter</h3>
 
-                    <form className="flex w-full gap-x-3">
-                        <TextInput id="email" placeholder="Enter your email" required type="email" className="grow border-primary" />
-
-                        <button className="border border-primary px-3 lg:px-5 rounded-md text-primary hover:text-lite font-semibold uppercase transition-colors hover:bg-primary" type="submit">Subscribe</button>
-                    </form>
+                    <Newsletter />
                 </div>
             </div>
         </div>

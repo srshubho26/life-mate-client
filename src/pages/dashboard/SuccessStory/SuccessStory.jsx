@@ -4,7 +4,7 @@ import { Datepicker, Label, Textarea, TextInput } from "flowbite-react";
 import Loading from "../../../components/reusuable/Loading";
 import ImageInput from "../../../components/reusuable/ImageInput";
 import ImgPreview from "../../../components/reusuable/ImgPreview";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useBiodataDetails from "../../../hooks/useBiodataDetails";
 import useAuth from "../../../hooks/useAuth";
 import StarRatings from "react-star-ratings";
@@ -13,6 +13,7 @@ import { uploadImg } from "../../../assets/utils";
 import useAxiosWithCredentials from "../../../hooks/useAxiosWithCredentials";
 import { useQuery } from "@tanstack/react-query";
 import EditModal from "./parts/EditModal";
+import { useNavigate } from "react-router-dom";
 
 const SuccessStory = () => {
     const { email } = useAuth();
@@ -24,6 +25,16 @@ const SuccessStory = () => {
     const [rating, setRating] = useState(0);
     const [submitLoading, setSubmitLoading] = useState(false);
     const [openModal, setOpenModal] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+        if(!loading && !Object.keys(details).length){
+            swal("Wait!", "Please create your biodata first.", "warning")
+            .then(()=>{
+                navigate('/dashboard/edit-biodata');
+            })
+        }
+    }, [loading, details, navigate])
 
     const photoInputRef = useRef();
     const imgPrevVals = {

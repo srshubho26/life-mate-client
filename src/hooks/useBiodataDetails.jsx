@@ -5,7 +5,7 @@ import useAxiosWithCredentials from '../hooks/useAxiosWithCredentials';
 const useBiodataDetails = (biodataId, email='') => {
     const axiosWithCredentials = useAxiosWithCredentials();
 
-    const {data: details={}, isPending: loading} = useQuery({
+    const {data: details={}, isPending: loading, refetch} = useQuery({
         queryKey: ['details', biodataId, email],
         queryFn: async()=>{
             let query = biodataId;
@@ -17,7 +17,7 @@ const useBiodataDetails = (biodataId, email='') => {
         }
     })
 
-    return {details, loading}
+    return {details, loading, refetch}
 };
 
 useBiodataDetails.propTypes = {

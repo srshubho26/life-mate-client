@@ -16,19 +16,20 @@ const ViewBiodata = () => {
     const { email } = useAuth();
     const axiosWithCredentials = useAxiosWithCredentials();
     const { details, loading } = useBiodataDetails('own', email);
+
     const { request, requestChecking, recheck } = useIsPremiumRequested(details.biodata_id);
     const [premiumLoading, setPremiumLoading] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (loading) return;
-        if (!Object.keys(details).length) {
-            swal('Wait!', 'Please create your biodata first.', 'warning')
-                .then(() => {
-                    navigate('/dashboard/edit-biodata')
-                })
+    useEffect(()=>{
+        if(loading)return;
+        if(!Object.keys(details).length){
+            swal("Warning", "Please create your biodata first!", "warning")
+            .then(()=>{
+                navigate("/dashboard/edit-biodata")
+            })
         }
-    }, [details, loading, navigate])
+    }, [details, navigate, loading]);
 
     const handlePremiumReq = () => {
         swal({

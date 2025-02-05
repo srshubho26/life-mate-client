@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
 
     // Logout function
     const logOut = async () => {
+        setLoading(true);
         await axiosWithCredentials.post("/logout");
         setUser(null);
         return signOut(auth);

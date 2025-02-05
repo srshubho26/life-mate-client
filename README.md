@@ -1,3 +1,5 @@
+![Life Mate](https://github.com/srshubho26/srshubho26/blob/main/life-mate.png?raw=true)
+
 # LifeMate
 
 LifeMate a web based matrimony platform where anyone can search for his/her desired life partner. A user can publish his/her biodata here so that other can search for it as well. Besides it provides managable dashboard for a user where user can manage own activities on this platform.

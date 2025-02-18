@@ -33,13 +33,13 @@ const HowItWorks = () => {
             <Title title="How it works" />
 
             <div className='max-w-sm sm:max-w-screen-md mx-auto lg:max-w-full mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-2 xl:gap-5 text-center'>
-                {techniques.map((el, i) => (<div key={i} className='bg-lite py-10 border border-line px-2 xl:px-4 rounded-md flex flex-col'>
-                    <span className='text-8xl mx-auto w-fit block text-accent-deep'>
+                {techniques.map((el, i) => (<div key={i} className='py-10 px-2 xl:px-4 rounded-md flex flex-col neomorphism-outset text-primary'>
+                    <span className='text-8xl mx-auto w-fit block'>
                         {el.icon}
                     </span>
 
                     <div className='flex flex-col grow'>
-                        <h2 className='text-xl xl:text-2xl capitalize my-5 font-semibold font-playwrite  text-primary'>
+                        <h2 className='text-xl xl:text-2xl capitalize my-5 font-semibold font-playwrite'>
                             {el.title}
                         </h2>
                         <p className='text-text text-base xl:text-lg'>{el.desc}</p>

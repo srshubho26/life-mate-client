@@ -9,9 +9,11 @@ const Newsletter = () => {
     }
 
     return (<form className="flex w-full gap-x-3" onSubmit={handleSubmit}>
-        <TextInput placeholder="Enter your email" required type="email" className="grow border-primary" />
+        <TextInput placeholder="Enter your email" required type="email" className="grow neomorphism-outset rounded-md" />
 
-        <button className="border border-primary px-3 lg:px-5 rounded-md text-primary hover:text-lite font-semibold uppercase transition-colors hover:bg-primary" type="submit">Subscribe</button>
+        <button className="px-3 lg:px-5 rounded-md text-primary hover:text-lite font-semibold uppercase transition-all relative neomorphism-outset bg-expand" type="submit">
+            <span className="relative z-20">Subscribe</span>
+            </button>
     </form>);
 };
 

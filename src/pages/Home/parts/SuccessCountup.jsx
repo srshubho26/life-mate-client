@@ -1,13 +1,9 @@
 import { useState } from "react";
 import Title from "../../../components/reusuable/Title";
-import CountUp from "react-countup";
 import { Fade } from "react-awesome-reveal";
-import { IoWoman } from "react-icons/io5";
-import { LuHeartHandshake } from "react-icons/lu";
-import { FaRegAddressCard } from "react-icons/fa";
-import { IoIosPerson } from "react-icons/io";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import SuccessCountCard from "../../../components/reusuable/SuccessCountCard";
 
 let timeout;
 const SuccessCountup = () => {
@@ -36,61 +32,29 @@ const SuccessCountup = () => {
                 <div
                     className={"max-w-sm sm:max-w-full mx-auto mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-center"}
                 >
-                    <div className="border border-line bg-element rounded-md py-5 pb-8">
-                        <p className="w-fit mx-auto text-7xl mb-4 text-primary">
-                            <FaRegAddressCard />
-                        </p>
+                    <SuccessCountCard
+                        stat={stats?.totalBiodata}
+                        isVisible={isVisible}
+                        name="Biodatas"
+                    />
 
-                        <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={isVisible && stats?.totalBiodata} />
-                        </span>
+                    <SuccessCountCard
+                        stat={stats?.maleBiodata}
+                        isVisible={isVisible}
+                        name="Men"
+                    />
 
-                        <h3 className="text-primary text-3xl uppercase font-bold">
-                            Biodatas
-                        </h3>
-                    </div>
+                    <SuccessCountCard
+                        stat={stats?.femaleBiodata}
+                        isVisible={isVisible}
+                        name="Women"
+                    />
 
-                    <div className="border border-line bg-element rounded-md py-5 pb-8">
-                        <p className="w-fit mx-auto text-7xl mb-4 text-primary">
-                            <IoIosPerson />
-                        </p>
-
-                        <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={isVisible && stats?.maleBiodata} />
-                        </span>
-
-                        <h3 className="text-primary text-3xl uppercase font-bold">
-                            Men
-                        </h3>
-                    </div>
-
-                    <div className="border border-line bg-element rounded-md py-5 pb-8">
-                        <p className="w-fit mx-auto text-7xl mb-4 text-primary">
-                            <IoWoman />
-                        </p>
-
-                        <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={isVisible && stats?.femaleBiodata} />
-                        </span>
-
-                        <h3 className="text-primary text-3xl uppercase font-bold">
-                            Women
-                        </h3>
-                    </div>
-
-                    <div className="border border-line bg-element rounded-md py-5 pb-8">
-                        <p className="w-fit mx-auto text-7xl mb-4 text-primary">
-                            <LuHeartHandshake />
-                        </p>
-
-                        <span className="text-text text-3xl mt-5 block font-bold">
-                            <CountUp duration={2} end={isVisible && stats?.totalMarriage} />
-                        </span>
-
-                        <h3 className="text-primary text-3xl uppercase font-bold">
-                            Marriages
-                        </h3>
-                    </div>
+                    <SuccessCountCard
+                        stat={stats?.totalMarriage}
+                        isVisible={isVisible}
+                        name="Marriages"
+                    />
                 </div>
             </Fade>
         </div>

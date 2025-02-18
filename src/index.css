@@ -11,6 +11,57 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+.neomorphism-inset {
+    box-shadow: 2px 2px 3px rgba(51, 51, 51, 0.422) inset,
+        -2px -2px 3px #fff inset;
+}
+
+.neomorphism-inset-reverse {
+    box-shadow: 2px 2px 3px rgba(51, 51, 51, 0.422),
+        -2px -2px 3px #fff;
+}
+
+.bg-expand:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0;
+    background: #d833db;
+    transition: .2s ease-in;
+    border-radius: 4px;
+}
+
+.bg-expand:hover:before {
+    height: 100%;
+}
+
+.neomorphism-outset {
+    box-shadow: 4px 4px 4px rgba(51, 51, 51, 0.1),
+        -4px -4px 4px rgb(255, 255, 255);
+}
+
+.neomorphism-outset-lite {
+    box-shadow: 4px 4px 4px rgba(51, 51, 51, 0.1),
+        -4px -4px 4px #ececec;
+}
+
+.neomorphism-outset-sm {
+    box-shadow: 2px 2px 2px rgba(51, 51, 51, 0.1),
+        -2px -2px 2px rgb(255, 255, 255);
+}
+
+.text-shadow {
+    text-shadow: 1px 1px 2px #000000;
+}
+
+.text-shadow-sm {
+    text-shadow: 1px 1px 1px #000000;
+}
+
+
+
 /* Banner css */
 .banner .slide-text:before {
     content: '';
@@ -53,12 +104,19 @@ body {
 }
 
 /* Sort Btn CSS */
-.sort-wrap button.group {
+/* .sort-wrap button.group {
     background: #e2bb5a;
 }
 
-.sort-wrap button.group:hover {
-    background: #a57e1d;
+
+
+.sort-wrap button.group span {
+    font-size: 20px;
+} */
+
+.sort-wrap button.group {
+    background: transparent!important;
+    border: none;
 }
 
 .sort-wrap button.group span {
@@ -74,14 +132,14 @@ form input[type="password"]:focus,
 form input:focus,
 form select:focus,
 form textarea:focus {
-    border-color: #d833db!important;
+    border-color: #d833db !important;
     box-shadow: none;
 }
 
 
 /* Biodata filter css */
 
-.biodatas form input[type=range]{
+.biodatas form input[type=range] {
     appearance: none;
     background: #e2bb5a;
 }
@@ -90,7 +148,7 @@ form textarea:focus {
     background: #d833db;
 }
 
-.biodatas form input[type=range]::-moz-range-thumb{
+.biodatas form input[type=range]::-moz-range-thumb {
     background: #d833db;
 }
 
@@ -98,6 +156,6 @@ form textarea:focus {
     background: #d833db;
 }
 
-.biodatas form select{
-    background: #fdf6fd!important;
+.biodatas form select {
+    background: #fdf6fd !important;
 }

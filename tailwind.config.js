@@ -13,7 +13,7 @@ export default {
         'text': '#160415',
         'text-dark': '#fbe9fa',
         'background': '#fceefb',
-        'lite': '#fdf6fd',
+        'lite': '#f9f9f9',
         'clear-lite': '#fff6ffeb',
         'background-dark': '#110310',
         'clear-dark': '#11031066',

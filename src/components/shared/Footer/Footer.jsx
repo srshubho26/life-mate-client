@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
 
                 <div className="w-full mb-5 sm:mb-0 max-w-40 lg:max-w-48">
-                    <h3 className="text-primary text-2xl font-semibold mb-2">Useful Links</h3>
+                    <h3 className="text-primary text-2xl font-semibold mb-2 text-shadow-sm">Useful Links</h3>
 
                     <ul className="text-text dark:text-text-dark text-base">
                         <li className="my-1">
@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
 
                 <div className="grow max-w-md lg:max-w-md">
-                    <h3 className="text-primary text-2xl font-semibold mb-2">Join Our Newsletter</h3>
+                    <h3 className="text-primary text-2xl font-semibold mb-2 text-shadow-sm">Join Our Newsletter</h3>
 
                     <Newsletter />
                 </div>

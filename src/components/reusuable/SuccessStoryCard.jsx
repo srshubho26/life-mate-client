@@ -4,7 +4,7 @@ import { MdDateRange } from 'react-icons/md';
 import StarRatings from 'react-star-ratings';
 
 const SuccessStoryCard = ({story}) => {
-    return (<div className="bg-lite p-4 text-text rounded-md border border-line flex flex-col gap-2">
+    return (<div className="bg-element p-4 text-text rounded-md neomorphism-outset flex flex-col gap-2">
         <img src={story.couple_img} className="w-full aspect-square object-cover rounded-md" />
 
         <div className="grow flex flex-col">

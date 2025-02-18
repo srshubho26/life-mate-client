@@ -16,8 +16,8 @@ const SuccessStory = () => {
                 {stories?.map(story => <SuccessStoryCard key={story._id} story={story} />)}
             </div>
 
-            <Link to="/stories" className="w-fit block mt-10 mx-auto text-primary border border-primary transition-colors hover:bg-primary font-semibold text-lg rounded-lg px-6 py-2 hover:text-lite uppercase">
-                View All
+            <Link to="/stories" className="w-fit block mt-10 mx-auto text-primary transition-colors font-semibold text-lg rounded-lg px-6 py-2 hover:text-lite uppercase neomorphism-outset bg-expand relative">
+                <span className="relative z-20">View All</span>
             </Link>
         </div>
     </section>);

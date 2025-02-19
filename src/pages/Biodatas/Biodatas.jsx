@@ -40,8 +40,8 @@ const Biodatas = () => {
             <title>Biodatas || Life Mate</title>
         </Helmet>
 
-        <div className="max-w-screen-xl mx-auto flex">
-            <div className={(open ? 'left-0' : '-left-72') + " fixed top-0 h-screen lg:h-auto z-40 lg:z-0 w-full max-w-72 border-r dark:bg-background-dark lg:static transition-all py-5"}>
+        <div className="max-w-screen-xl mx-auto flex gap-3 py-3">
+            <div className={(open ? 'left-0' : '-left-72') + " fixed top-0 h-screen lg:h-auto z-40 lg:z-0 w-full max-w-72 neomorphism-outset dark:neomorphism-outset-sm-dark bg-element dark:bg-background-dark lg:static transition-all py-5 rounded-md"}>
                 <Filter setFilter={setFilter} setCurrentPage={setCurrentPage} />
 
                 <button
@@ -51,7 +51,7 @@ const Biodatas = () => {
                 </button>
             </div>
 
-            <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-center gap-3 p-3 content-start relative items-start min-h-screen">
+            <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 text-center gap-3 content-start relative items-start min-h-screen">
                 <Loading loading={loading} />
                 {biodatas?.map(biodata => (<BiodataCard
                     key={biodata._id}

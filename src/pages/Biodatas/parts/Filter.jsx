@@ -38,7 +38,7 @@ const Filter = ({setFilter, setCurrentPage}) => {
           <span className="text-primary ml-2 font-bold">{_minAge}</span>
         </div>
 
-        <RangeSlider className="w-full" min={0} max={70} defaultValue={0} onChange={e=>_setMinAge(parseInt(e.target.value))} />
+        <RangeSlider min={0} max={70} defaultValue={0} onChange={e=>_setMinAge(parseInt(e.target.value))} />
         
       </div>
 
@@ -48,7 +48,7 @@ const Filter = ({setFilter, setCurrentPage}) => {
           <span className="text-primary ml-2 font-bold">{_maxAge}</span>
         </div>
 
-        <RangeSlider className="w-full" min={0} max={70} defaultValue={0} onChange={e=>_setMaxAge(parseInt(e.target.value))} />
+        <RangeSlider min={0} max={70} defaultValue={0} onChange={e=>_setMaxAge(parseInt(e.target.value))} />
       </div>
 
       <div className="my-5">
@@ -81,8 +81,8 @@ const Filter = ({setFilter, setCurrentPage}) => {
     </div>
 
     <div className="flex gap-2">
-    <button className="grow text-sm border border-primary rounded-md px-4 py-2 uppercase text-primary hover:bg-primary hover:text-lite transition-colors font-semibold">
-        Apply Filter
+    <button className="grow text-sm rounded-md px-4 py-2 uppercase text-primary-dark transition-colors hover:text-lite font-semibold relative bg-expand neomorphism-outset dark:neomorphism-outset-dark">
+        <span className="relative z-20">Apply Filter</span>
         </button>
 
         <button 
@@ -92,8 +92,8 @@ const Filter = ({setFilter, setCurrentPage}) => {
             _setMinAge(0);
             setFilter({});
         }}
-         className="grow text-sm border border-accent-dark rounded-md px-4 py-2 uppercase text-accent-dark hover:bg-accent-dark hover:text-lite transition-colors font-semibold">
-            Clear Filter
+         className="grow text-sm rounded-md px-4 py-2 uppercase text-secondary transition-colors hover:text-text font-semibold relative bg-expand-secondary neomorphism-outset dark:neomorphism-outset-dark">
+            <span className="relative z-20">Clear Filter</span>
             </button>
     </div>
     </form>);

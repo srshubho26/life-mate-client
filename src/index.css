@@ -40,7 +40,7 @@ body {
     .text-shadow {
         text-shadow: 1px 1px 2px #000000;
     }
-    
+
     .text-shadow-special-dark {
         text-shadow: 1px 1px 2px #000000;
     }
@@ -58,15 +58,38 @@ body {
     }
 
     .neomorphism-inset {
-        box-shadow: 2px 2px 3px rgba(51, 51, 51, 0.422) inset,
-            -2px -2px 3px #fff inset;
+        box-shadow: 1px 1px 1px rgba(51, 51, 51, 0.422) inset,
+            -1px -1px 1px #fff inset;
     }
 
-    .neomorphism-inset-reverse {
-        box-shadow: 2px 2px 3px rgba(51, 51, 51, 0.422),
-            -2px -2px 3px #fff;
+    .neomorphism-inset-dark {
+        box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.422)inset,
+        1px 1px 1px rgba(14, 13, 13, 0.844)inset;
     }
 
+
+    /* Biodata filter css */
+
+    .biodatas form input[type=range] {
+        @apply w-full appearance-none bg-transparent neomorphism-inset dark:neomorphism-inset-dark rounded-full h-2;
+    }
+
+    .biodatas form input[type=range]::-webkit-slider-thumb {
+        background: transparent;
+        @apply neomorphism-outset-sm bg-lite hover:bg-primary transition-colors;
+    }
+
+    .biodatas form input[type=range]::-moz-range-thumb {
+        background: #d833db;
+    }
+
+    .biodatas form input[type=range]::-ms-thumb {
+        background: #d833db;
+    }
+
+    .biodatas form select {
+        @apply neomorphism-outset dark:neomorphism-outset-dark focus:neomorphism-inset;
+    }
 }
 
 .bg-expand::before,
@@ -157,31 +180,10 @@ form textarea:focus {
 }
 
 
-/* Biodata filter css */
 
-.biodatas form input[type=range] {
-    appearance: none;
-    background: #e2bb5a;
-}
-
-.biodatas form input[type=range]::-webkit-slider-thumb {
-    background: #d833db;
-}
-
-.biodatas form input[type=range]::-moz-range-thumb {
-    background: #d833db;
-}
-
-.biodatas form input[type=range]::-ms-thumb {
-    background: #d833db;
-}
-
-.biodatas form select {
-    background: #fdf6fd !important;
-}
-
- form input[type=text],
- form input[type=email] {
-    background-color: transparent!important;
+form input[type=text],
+form input[type=email],
+form select {
+    background-color: transparent !important;
     border: none;
 }

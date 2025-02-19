@@ -50,13 +50,13 @@ const Login = () => {
             })
     }
 
-    return (<section className="py-20 px-2  dark:bg-gray-900 login">
+    return (<section className="py-20 px-2 login">
         <Helmet>
             <title>Login || Life Mate</title>
         </Helmet>
 
         <div className="max-w-screen-xl mx-auto flex-col-reverse md:flex-row flex items-center gap-5 justify-between">
-            <Card className="max-w-sm md:max-w-md border border-line bg-element w-full relative overflow-hidden">
+            <Card className="max-w-sm md:max-w-md border-none rounded neomorphism-outset dark:neomorphism-outset-dark bg-element dark:bg-background-dark w-full relative overflow-hidden">
                 <Loading loading={loading} />
 
                 <h3 className="text-primary font-playwrite text-4xl mb-5 font-bold">Login</h3>
@@ -75,13 +75,13 @@ const Login = () => {
                         <TextInput name="pass" type="password" placeholder="Enter your password" required />
                     </div>
 
-                    <button className="w-fit text-primary border border-primary transition-colors hover:bg-primary font-semibold text-lg rounded-lg px-6 py-2 hover:text-lite uppercase">
-                        Login
+                    <button className="w-fit text-primary transition-colors font-semibold text-lg rounded neomorphism-outset dark:neomorphism-outset-dark px-6 py-2 hover:text-lite uppercase bg-expand relative">
+                        <span className="relative z-20">Login</span>
                     </button>
                 </form>
                 <Label className="text-desc text-sm sm:text-base">
                     Don&apos;t have an account?
-                    <Link to="/register" className="ml-2 text-title dark:text-lite">Register</Link>
+                    <Link to="/register" className="ml-2 text-primary">Register</Link>
                 </Label>
 
                 <h3 className="text-center dark:text-lite text-lg font-semibold">OR</h3>

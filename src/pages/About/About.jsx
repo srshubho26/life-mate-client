@@ -16,7 +16,7 @@ const About = () => {
         <Title title="About Us" />
 
         <div className="mt-10 flex-col-reverse lg:flex-row max-w-screen-xl mx-auto flex items-center gap-5">
-            <div className="text-text text-justify flex flex-col gap-4 w-full lg:w-1/2">
+            <div className="text-text dark:text-text-dark text-justify flex flex-col gap-4 w-full lg:w-1/2">
                 <p>Welcome to LifeMate, a trusted and compassionate matrimonial platform dedicated to helping individuals find their perfect match. We understand that the journey to finding a life partner is personal and unique, and we are here to make that journey smoother, safer, and more successful.</p>
 
                 <p>At LifeMate, we focus on meaningful connections based on shared values, mutual respect, and long-term compatibility. We bring together individuals from diverse backgrounds, cultures, and traditions, offering a space where people can find a partner who truly complements their personality and life goals.</p>

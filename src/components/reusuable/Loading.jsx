@@ -9,7 +9,7 @@ const loaderTheme = {
 }
 
 const Loading = ({ loading }) => {
-    return (<div className={(loading ? 'flex' : 'hidden') + ' absolute top-0 left-0 w-full h-full justify-center z-20 items-center bg-clear-dark'}>
+    return (<div className={(loading ? 'flex' : 'hidden') + ' absolute top-0 left-0 w-full h-full justify-center z-20 items-center bg-[#1103107e]'}>
         <Spinner theme={loaderTheme} color='primary' size="xl" aria-label="Info spinner example" />
     </div>);
 };

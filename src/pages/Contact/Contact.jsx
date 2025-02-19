@@ -24,7 +24,7 @@ const Contact = () => {
         <Title title="Contact Us" />
 
         <div className="flex flex-col-reverse md:flex-row items-center max-w-md md:max-w-screen-xl mx-auto md:mt-10 md:justify-between">
-            <form onSubmit={handleSubmit} className="w-full max-w-xl bg-element border border-line rounded-md px-4 sm:p-4">
+            <form onSubmit={handleSubmit} className="w-full max-w-xl bg-element dark:bg-background-dark neomorphism-outset dark:neomorphism-outset-dark rounded-md px-4 sm:p-4">
                 <div className="mb-6 mt-3">
                     <Label className="mb-2 block text-primary-dark text-lg">
                         Email
@@ -47,7 +47,9 @@ const Contact = () => {
                 </div>
 
                 <div className="mb-6">
-                    <button className="w-fit text-primary border border-primary transition-colors hover:bg-primary font-semibold text-lg rounded-lg px-10 py-2 hover:text-lite uppercase">Send</button>
+                    <button className="w-fit neomorphism-outset dark:neomorphism-outset-sm-dark text-primary bg-expand relative transition-colors font-semibold text-lg rounded px-10 py-2 hover:text-lite uppercase">
+                        <span className="relative z-20">Send</span>
+                    </button>
                 </div>
             </form>
 

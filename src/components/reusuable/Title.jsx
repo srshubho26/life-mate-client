@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const titleCss = ' text-center font-playwrite capitalize font-bold text-transparent text-2xl sm:text-3xl md:text-5xl relative ';
+const titleCss = ' text-center font-playwrite capitalize font-bold text-transparent text-2xl sm:text-3xl md:text-5xl relative tracking-wide mb-16 ';
 
 const Title = ({ title, extraCss = "" }) => {
     return (<h2 className={titleCss + extraCss}>
@@ -8,7 +8,7 @@ const Title = ({ title, extraCss = "" }) => {
             {title}
             </span>
 
-        <span className='absolute left-1/2 -translate-x-1/2 w-full text-shadow'>{title}</span>
+        <span className='absolute top-0 left-1/2 -translate-x-1/2 w-full text-shadow'>{title}</span>
     </h2>);
 };
 

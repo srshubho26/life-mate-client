@@ -30,7 +30,7 @@ const SuccessCountup = () => {
 
             <Fade delay={80} triggerOnce={true} onVisibilityChange={handleVisiblility}>
                 <div
-                    className={"max-w-sm sm:max-w-full mx-auto mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-center"}
+                    className={"max-w-sm sm:max-w-full mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5 text-center"}
                 >
                     <SuccessCountCard
                         stat={stats?.totalBiodata}

@@ -4,6 +4,7 @@ import PremiumMembers from "./parts/PremiumMembers";
 import HowItWorks from "./parts/HowItWorks";
 import SuccessCountup from "./parts/SuccessCountup";
 import SuccessStory from "./parts/SuccessStory";
+import Speciality from "./parts/Speciality";
 import { useEffect } from "react";
 import Biodatas from "./parts/Biodatas";
 
@@ -19,6 +20,7 @@ const Home = () => {
             </Helmet>
 
             <Banner />
+            <Speciality />
             <PremiumMembers />
             <HowItWorks />
             <Biodatas />

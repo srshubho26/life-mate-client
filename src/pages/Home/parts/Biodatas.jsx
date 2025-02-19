@@ -11,7 +11,7 @@ const Biodatas = () => {
         <div className="max-w-screen-xl mx-auto">
             <Title title="Biodatas" />
 
-            <div className="mt-10 max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-center gap-5 relative min-h-80">
+            <div className="max-w-sm mx-auto sm:max-w-full grow grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-center gap-5 relative min-h-80">
                 <Loading loading={loading} />
                 {biodatas?.map(biodata => (<BiodataCard
                     key={biodata._id}

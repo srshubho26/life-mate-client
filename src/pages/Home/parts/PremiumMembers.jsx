@@ -26,7 +26,7 @@ const PremiumMembers = () => {
             <Title title="Our Premium Members" />
 
 
-            <div className="mt-10 mb-4 sort-wrap">
+            <div className="mb-4 sort-wrap">
                 <SortBtns setSort={handleSort} />
             </div>
 

@@ -11,13 +11,13 @@ import { Pagination } from "flowbite-react";
 const themes = {
     "pages": {
         "previous": {
-            "base": "ml-0 rounded-l-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+            "base": "ml-0 rounded-l-lg border border-line  px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
         },
         "next": {
-            "base": "rounded-r-lg border border-line bg-lite px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
+            "base": "rounded-r-lg border border-line  px-2 sm:px-3 py-2 leading-tight text-primary enabled:hover:bg-primary enabled:hover:text-lite"
         },
         "selector": {
-            "base": "w-10 sm:w-12 border border-line bg-lite py-2 leading-tight enabled:hover:bg-primary enabled:hover:text-lite text-primary",
+            "base": "w-10 sm:w-12 border border-line  py-2 leading-tight enabled:hover:bg-primary enabled:hover:text-lite text-primary",
             "active": "bg-primary text-lite",
         }
     }
@@ -35,13 +35,13 @@ const Biodatas = () => {
     const { biodatas, loading, total } = useBiodatas(filter, 12, currentPage);
     const totalPage = Math.ceil(total / 12);
 
-    return (<section className="px-2 bg-lite biodatas">
+    return (<section className="px-2  biodatas">
         <Helmet>
             <title>Biodatas || Life Mate</title>
         </Helmet>
 
         <div className="max-w-screen-xl mx-auto flex">
-            <div className={(open ? 'left-0' : '-left-72') + " fixed top-0 h-screen lg:h-auto z-40 lg:z-0 w-full max-w-72 bg-element border-r border-clear-dark lg:border-none dark:bg-background-dark lg:static transition-all py-5"}>
+            <div className={(open ? 'left-0' : '-left-72') + " fixed top-0 h-screen lg:h-auto z-40 lg:z-0 w-full max-w-72 border-r dark:bg-background-dark lg:static transition-all py-5"}>
                 <Filter setFilter={setFilter} setCurrentPage={setCurrentPage} />
 
                 <button

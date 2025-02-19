@@ -27,7 +27,7 @@ const Filter = ({setFilter, setCurrentPage}) => {
         setCurrentPage(1);
     }
 
-    return (<form onSubmit={handleSubmit} className="sticky bg-element top-0 p-2 z-50">
+    return (<form onSubmit={handleSubmit} className="sticky top-0 p-2 z-50">
         <h3 className="text-lg font-semibold text-text dark:text-text-dark border-b border-primary pb-2">
         Filter Biodatas
         </h3>

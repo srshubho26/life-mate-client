@@ -8,7 +8,7 @@ const About = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    return (<section className="px-2 pt-10 pb-20 bg-lite biodatas min-h-screen">
+    return (<section className="px-2 pt-10 pb-20  biodatas min-h-screen">
         <Helmet>
             <title>About || Life Mate</title>
         </Helmet>

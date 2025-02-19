@@ -21,7 +21,7 @@ const PremiumMembers = () => {
         setSortedBiodatas(newBiodatas);
     }
 
-    return (<section className="px-2 py-20 bg-lite">
+    return (<section className="px-2 py-20">
         <div className="max-w-screen-xl mx-auto">
             <Title title="Our Premium Members" />
 

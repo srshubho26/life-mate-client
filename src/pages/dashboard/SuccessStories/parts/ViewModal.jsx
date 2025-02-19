@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ViewModal = ({ openModal, setOpenModal, story }) => {
     return (<Modal show={openModal} onClose={() => setOpenModal(false)}>
-        <div className='bg-lite rounded-lg relative'>
+        <div className=' rounded-lg relative'>
             <Modal.Header>{story?.name}</Modal.Header>
 
             <Modal.Body className='bg-element'>

@@ -16,7 +16,7 @@ const Contact = () => {
         swal("Done", "Thanks for your message. We will contact your asap.", "success");
     }
 
-    return (<section className="px-2 py-10 bg-lite biodatas min-h-screen">
+    return (<section className="px-2 py-10  biodatas min-h-screen">
         <Helmet>
             <title>Contact || Life Mate</title>
         </Helmet>

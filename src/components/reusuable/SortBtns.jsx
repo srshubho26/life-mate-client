@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const theme = {
   "arrowIcon": "ml-2 h-4 w-4 hover:text-lite z-30",
   "floating": {
-    "target": "w-fit neomorphism-outset text-primary hover:text-lite bg-expand",
+    "target": "w-fit neomorphism-outset dark:neomorphism-outset-sm-dark text-primary hover:text-lite bg-expand",
   }
 }
 

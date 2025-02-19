@@ -7,7 +7,7 @@ import useBiodatas from "../../../hooks/useBiodatas";
 const Biodatas = () => {
     const { biodatas, loading } = useBiodatas({}, 8);
 
-    return (<section className="px-2 py-20 bg-lite">
+    return (<section className="px-2 py-20 ">
         <div className="max-w-screen-xl mx-auto">
             <Title title="Biodatas" />
 

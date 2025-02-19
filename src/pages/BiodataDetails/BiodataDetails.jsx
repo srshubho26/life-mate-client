@@ -15,7 +15,7 @@ import useIsFavourite from "../../hooks/useIsFavourite";
 import useIsAdmin from "../../hooks/useIsAdmin";
 import { Dropdown, DropdownItem } from "flowbite-react";
 
-const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
+const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 ";
 const buttonCss = "text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite";
 
 const BiodataDetails = () => {
@@ -52,7 +52,7 @@ const BiodataDetails = () => {
             })
     }
 
-    return (<section className="px-2 py-20 bg-lite biodatas">
+    return (<section className="px-2 py-20  biodatas">
         <Helmet>
             <title>{details?.name || 'Details'} || Life Mate</title>
         </Helmet>

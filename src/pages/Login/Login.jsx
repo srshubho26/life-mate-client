@@ -50,7 +50,7 @@ const Login = () => {
             })
     }
 
-    return (<section className="py-20 px-2 bg-lite dark:bg-gray-900 login">
+    return (<section className="py-20 px-2  dark:bg-gray-900 login">
         <Helmet>
             <title>Login || Life Mate</title>
         </Helmet>

@@ -40,7 +40,7 @@ const EditModal = ({ openModal, setOpenModal, story }) => {
                         <div className="mb-2 block">
                             <Label className="text-lg" value="Review" />
                         </div>
-                        <Textarea className='bg-lite' name="review" defaultValue={story.review} placeholder="Write your review" required rows={8} />
+                        <Textarea className='' name="review" defaultValue={story.review} placeholder="Write your review" required rows={8} />
                     </div>
                 </Modal.Body>
 

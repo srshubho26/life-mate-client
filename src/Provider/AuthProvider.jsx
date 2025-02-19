@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
     const axiosWithCredentials = useAxiosWithCredentials();
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [dark, setDark] = useState(JSON.parse(localStorage.getItem('dark')) || false);
 
     useEffect(() => {
         setLoading(true);
@@ -63,10 +64,12 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const values = { user, logOut, loginUser, createNewUser, googleSignin }
+    const values = { user, logOut, loginUser, createNewUser, googleSignin, setDark, dark }
 
     return (<AuthContext.Provider value={values}>
+        <div className={(dark ? "dark bg-lite-dark" : " bg-lite")}>
         {loading ? < Loading loading={loading} /> : children}
+        </div>
     </AuthContext.Provider>);
 };
 

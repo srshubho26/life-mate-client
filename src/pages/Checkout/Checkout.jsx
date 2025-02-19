@@ -21,7 +21,7 @@ const Checkout = () => {
 
     if((!state?._id || !biodataId) || (!checking && isExists))return <Navigate to="/"/>
 
-    return (<section className="px-2 py-20 bg-lite biodatas min-h-screen relative">
+    return (<section className="px-2 py-20  biodatas min-h-screen relative">
         <Loading loading={loading} />
 
             <Helmet>

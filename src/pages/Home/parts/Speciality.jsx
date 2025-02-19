@@ -22,21 +22,21 @@ const techniques = [
 ]
 
 const Speciality = () => {
-    return (<section className="px-2 py-20 bg-element">
+    return (<section className="px-2 py-20 bg-element dark:bg-background-dark">
             <div className="max-w-screen-xl mx-auto">
                 <Title title="Our Speciality" />
 
                 <div className='max-w-sm sm:max-w-full mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-5 text-center xl:text-left'>
-                    {techniques.map((el, i) => (<div key={i} className='px-2 py-3 xl:px-4 xl:py-5 rounded-md flex flex-col xl:flex-row items-center gap-4 neomorphism-outset text-primary'>
+                    {techniques.map((el, i) => (<div key={i} className={'px-2 py-3 xl:px-4 xl:py-5 rounded-md flex flex-col xl:flex-row items-center gap-4 text-primary neomorphism-outset dark:neomorphism-outset-dark '}>
                         <span className='text-6xl mx-auto w-fit text-secondary'>
                             {el.icon}
                         </span>
     
                         <div className='flex flex-col grow'>
-                            <h2 className='lg:text-xl mb-4 capitalize tracking-wide font-playwrite text-shadow-sm'>
+                            <h2 className={'lg:text-xl mb-4 capitalize tracking-wide font-playwrite text-shadow-sm dark:text-shadow-sm-dark'}>
                                 {el.title}
                             </h2>
-                            <p className='text-text'>{el.desc}</p>
+                            <p className='text-text dark:text-text-dark'>{el.desc}</p>
                         </div>
                     </div>))}
                 </div>

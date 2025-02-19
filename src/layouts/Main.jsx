@@ -3,11 +3,11 @@ import Header from "../components/shared/Header/Header";
 import Footer from "../components/shared/Footer/Footer";
 
 const Main = () => {
-    return (<div className="">
+    return (<>
         <Header />
-        <main className="pt-[65px] sm:pt-[81px]"><Outlet /></main>
+        <main className="pt-[64px] sm:pt-[80px]"><Outlet /></main>
         <Footer />
-    </div>);
+    </>);
 };
 
 export default Main;

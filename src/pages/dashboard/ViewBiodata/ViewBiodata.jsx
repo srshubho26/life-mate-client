@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import useIsPremiumRequested from "../../../hooks/useIsPremiumRequested";
 import { useNavigate } from "react-router-dom";
 
-const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 bg-lite";
+const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 ";
 
 const ViewBiodata = () => {
     useEffect(() => {

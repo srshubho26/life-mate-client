@@ -82,7 +82,7 @@ const Register = () => {
             })
     }
 
-    return (<section className="py-20 px-2 bg-lite dark:bg-gray-900">
+    return (<section className="py-20 px-2  dark:bg-gray-900">
         <Helmet>
             <title>Register || Life Mate</title>
         </Helmet>

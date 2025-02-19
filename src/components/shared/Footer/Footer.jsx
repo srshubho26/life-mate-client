@@ -12,7 +12,7 @@ const theme = {
 
 const Footer = () => {
 
-    return (<FooterWrap theme={theme} className="bg-lite border-t border-accent-dark pt-20">
+    return (<FooterWrap theme={theme} className="border-t border-accent-dark pt-20">
         <div className="px-2">
             <div className="max-w-screen-xl mx-auto pb-20 grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1 gap-2 lg:gap-5 flex-wrap md:flex-nowrap">
                 <div className="mb-5 md:mb-0 md:max-w-80 lg:max-w-md">
@@ -51,7 +51,7 @@ const Footer = () => {
             </div>
         </div>
 
-        <p className="text-center w-full border-t bg-element border-accent-dark sm:text-lg font-semibold text-text dark:text-text-dark py-5">
+        <p className="text-center w-full border-t bg-element dark:bg-background-dark border-accent-dark sm:text-lg font-semibold text-text dark:text-text-dark py-5">
             &copy; All Rights Reserved By <span className="font-bold">LifeMate</span>
         </p>
     </FooterWrap>);

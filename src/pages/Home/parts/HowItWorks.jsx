@@ -28,12 +28,12 @@ const techniques = [
 ]
 
 const HowItWorks = () => {
-    return (<section className="px-2 py-20 bg-element">
+    return (<section className="px-2 py-20 bg-element dark:bg-background-dark">
         <div className="max-w-screen-xl mx-auto">
             <Title title="How it works" />
 
             <div className='max-w-sm sm:max-w-screen-md mx-auto lg:max-w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-2 xl:gap-5 text-center'>
-                {techniques.map((el, i) => (<div key={i} className='py-10 px-2 xl:px-4 rounded-md flex flex-col neomorphism-outset text-primary'>
+                {techniques.map((el, i) => (<div key={i} className='py-10 px-2 xl:px-4 rounded-md flex flex-col neomorphism-outset dark:neomorphism-outset-dark text-primary'>
                     <span className='text-8xl mx-auto w-fit block'>
                         {el.icon}
                     </span>
@@ -42,7 +42,7 @@ const HowItWorks = () => {
                         <h2 className='text-xl xl:text-2xl capitalize my-5 font-semibold font-playwrite'>
                             {el.title}
                         </h2>
-                        <p className='text-text text-base xl:text-lg'>{el.desc}</p>
+                        <p className='text-text dark:text-text-dark text-base xl:text-lg'>{el.desc}</p>
                     </div>
                 </div>))}
             </div>

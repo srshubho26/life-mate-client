@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const cardCss = "neomorphism-outset rounded-md p-4 flex flex-col items-center gap-4 ";
+const cardCss = "neomorphism-outset dark:neomorphism-outset-dark rounded-md p-4 flex flex-col items-center gap-4 ";
 const thumbCss = "border border-line rounded-lg w-full h-full object-cover";
-const linkCss = "neomorphism-outset-sm bg-expand relative rounded px-3 py-1 font-semibold uppercase text-sm transition-all block w-fit text-primary hover:text-lite mx-auto ";
+const linkCss = "neomorphism-outset-sm dark:neomorphism-outset-sm-dark bg-expand relative rounded px-3 py-1 font-semibold uppercase text-sm transition-all block w-fit text-primary hover:text-lite mx-auto ";
 
 // 2nd parameter is used to use this component in biodatas page
 const BiodataCard = ({ member, isLessSpace = false }) => {
@@ -30,7 +30,7 @@ const BiodataCard = ({ member, isLessSpace = false }) => {
                 </span>
             </div>
 
-            <p className={"text-text text-sm font-medium grow mb-3 " + (isLessSpace ? '' : 'xl:text-lg')}>
+            <p className={"text-text dark:text-text-dark text-sm font-medium grow mb-3 " + (isLessSpace ? '' : 'xl:text-lg')}>
                 {member.occupation} <span className='text-primary'>|</span> {member.division}
             </p>
 

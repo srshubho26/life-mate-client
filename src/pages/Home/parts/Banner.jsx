@@ -23,7 +23,7 @@ const slides = [
         img: s1,
         actionBtn: {
             name: 'About Us',
-            icon: <BsFillInfoSquareFill/>,
+            icon: <BsFillInfoSquareFill />,
             link: "/about"
         }
     },
@@ -33,7 +33,7 @@ const slides = [
         img: s2,
         actionBtn: {
             name: 'Success Stories',
-            icon: <SiStorybook/>,
+            icon: <SiStorybook />,
             link: "/stories"
         }
     },
@@ -43,7 +43,7 @@ const slides = [
         img: s3,
         actionBtn: {
             name: 'Contact Us',
-            icon: <MdMarkEmailUnread/>,
+            icon: <MdMarkEmailUnread />,
             link: "/contact"
         }
     },
@@ -53,7 +53,7 @@ const slides = [
         img: s4,
         actionBtn: {
             name: 'Browse Biodatas',
-            icon: <RiFileUserFill/>,
+            icon: <RiFileUserFill />,
             link: "/biodatas"
         }
     }
@@ -86,12 +86,12 @@ const Banner = () => {
                                     {slide.desc}
                                 </p>
 
-                                <Link 
-                                to={slide.actionBtn.link} 
-                                className='text-secondary neomorphism-outset-sm-dark bg-background-dark w-fit rounded-md flex gap-4 items-center mt-5 px-4 py-3 text-xl bg-expand-secondary relative hover:text-text transition-all'
+                                <Link
+                                    to={slide.actionBtn.link}
+                                    className='text-secondary neomorphism-outset-sm-dark bg-background-dark w-fit rounded-md flex gap-4 items-center mt-5 px-4 py-3 md:text-xl bg-expand-secondary relative hover:text-text transition-all mx-auto sm:mx-0'
                                 >
-                                <span className='text-3xl relative z-20'>{slide.actionBtn.icon}</span>
-                                <span className='relative z-20 font-semibold'>{slide.actionBtn.name}</span>
+                                    <span className='text-xl md:text-3xl relative z-20'>{slide.actionBtn.icon}</span>
+                                    <span className='relative z-20 font-semibold'>{slide.actionBtn.name}</span>
                                 </Link>
                             </div>
                         </div>

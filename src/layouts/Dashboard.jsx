@@ -29,8 +29,8 @@ const Dashboard = () => {
     }
 
     return (<>
-        <div className="min-h-screen px-2 bg-lite py-10">
-            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md bg-lite fixed top-1 left-1 transition-colors z-10"
+        <div className="min-h-screen px-2  py-10">
+            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md  fixed top-1 left-1 transition-colors z-10"
                 onClick={() => setIsOpen(true)}>
                 <IoAdd />
             </button>
@@ -40,7 +40,7 @@ const Dashboard = () => {
             </div>
         </div>
 
-        <Drawer open={isOpen} onClose={handleClose} className="bg-lite">
+        <Drawer open={isOpen} onClose={handleClose} className="">
             <div className="relative">
                 <Tooltip content="Visit Site">
                     <Logo />

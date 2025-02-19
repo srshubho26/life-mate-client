@@ -16,12 +16,13 @@ import useAuth from "../../../hooks/useAuth";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import useIsAdmin from "../../../hooks/useIsAdmin";
+import ThemeToggler from "./parts/ThemeToggler";
 
 const Header = () => {
   const [top0, setTop0] = useState(true);
   const user = useAuth();
   const { isAdmin, adminChecking } = useIsAdmin();
-  const { logOut } = useContext(AuthContext);
+  const { logOut, setDark } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -30,7 +31,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    let prev=0;
+    let prev = 0;
     const scrollInit = () => {
       setTop0(prev >= window.scrollY);
       prev = window.scrollY;
@@ -41,10 +42,13 @@ const Header = () => {
   }, []);
 
   return (<header
-    className={(top0 ? 'top-0' : '-top-64') + " fixed left-0 w-full z-30 bg-white dark:bg-clear-dark px-2 py-3 drop-shadow-md transition-[top]"}
+    className={(top0 ? 'top-0' : '-top-64') + " fixed left-0 w-full z-30 bg-white dark:bg-clear-dark px-2 py-3 drop-shadow-md transition-all"}
   >
     <Navbar fluid theme={themeOverride}>
-      <Logo />
+      <div className="flex gap-2 items-center">
+        <Logo />
+        <ThemeToggler setDark={setDark} />
+      </div>
 
       <div className={"flex lg:order-2 " + (user ? '' : 'lg:hidden')}>
         <NavbarToggle />

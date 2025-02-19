@@ -69,7 +69,7 @@ const Login = () => {
 
                 <h3 className="text-primary font-playwrite text-4xl mb-5 font-bold">Login</h3>
 
-                <div className="flex gap-2 justify-between">
+                <div className="flex gap-3 flex-wrap">
                     <button onClick={()=>fillFormVal("z@gmail.com", "aA123456")} type="button" className={btnCss}>
                         <span className="relative z-20 text-sm">Normal</span>
                     </button>

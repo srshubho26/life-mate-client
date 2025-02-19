@@ -10,27 +10,52 @@ import s1 from '../../../assets/img/s1.jpg';
 import s2 from '../../../assets/img/s2.jpg';
 import s3 from '../../../assets/img/s3.jpg';
 import s4 from '../../../assets/img/s4.jpg';
+import { Link } from 'react-router-dom';
+import { RiFileUserFill } from 'react-icons/ri';
+import { BsFillInfoSquareFill } from 'react-icons/bs';
+import { SiStorybook } from 'react-icons/si';
+import { MdMarkEmailUnread } from 'react-icons/md';
 
 const slides = [
     {
         title: 'Get the reliable soul mate',
         desc: 'We analize your criteria and search for the best match for you. You can find someone who matches your criteria. So do not worry and search for your best match.',
-        img: s1
+        img: s1,
+        actionBtn: {
+            name: 'About Us',
+            icon: <BsFillInfoSquareFill/>,
+            link: "/about"
+        }
     },
     {
         title: 'The best solution for you',
         desc: 'We provide tons verified profiles to get the best match for you. May be there is someone looking for you as well and trying to find the best match like you are doing.',
-        img: s2
+        img: s2,
+        actionBtn: {
+            name: 'Success Stories',
+            icon: <SiStorybook/>,
+            link: "/stories"
+        }
     },
     {
         title: 'You privacy is our concern',
         desc: 'As an individual, we respect your privacy. So we will never compromise your activity outside our platform. You privacy is our responsibility and we will always protect it.',
-        img: s3
+        img: s3,
+        actionBtn: {
+            name: 'Contact Us',
+            icon: <MdMarkEmailUnread/>,
+            link: "/contact"
+        }
     },
     {
         title: 'Someone is looking for you',
         desc: 'May be there is someone else who is looking for you like you are doing. So get ready to be the dream of someone. We are eagerly waiting to see your success story.',
-        img: s4
+        img: s4,
+        actionBtn: {
+            name: 'Browse Biodatas',
+            icon: <RiFileUserFill/>,
+            link: "/biodatas"
+        }
     }
 ]
 
@@ -60,6 +85,14 @@ const Banner = () => {
                                 <p className='text-white text-base xl:text-lg mt-4'>
                                     {slide.desc}
                                 </p>
+
+                                <Link 
+                                to={slide.actionBtn.link} 
+                                className='text-primary-dark border border-primary bg-lite w-fit rounded-md flex gap-4 items-center mt-5 px-4 py-3 text-xl bg-expand relative hover:text-lite transition-all'
+                                >
+                                <span className='text-3xl relative z-20'>{slide.actionBtn.icon}</span>
+                                <span className='relative z-20 font-semibold'>{slide.actionBtn.name}</span>
+                                </Link>
                             </div>
                         </div>
                     </div>

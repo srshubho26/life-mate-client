@@ -41,7 +41,7 @@ const Header = () => {
   }, []);
 
   return (<header
-    className={(top0 ? 'top-0' : '-top-64') + " fixed left-0 w-full z-30 bg-clear-lite dark:bg-clear-dark px-2 py-3 border-b border-accent-deep transition-[top]"}
+    className={(top0 ? 'top-0' : '-top-64') + " fixed left-0 w-full z-30 bg-white dark:bg-clear-dark px-2 py-3 drop-shadow-md transition-[top]"}
   >
     <Navbar fluid theme={themeOverride}>
       <Logo />

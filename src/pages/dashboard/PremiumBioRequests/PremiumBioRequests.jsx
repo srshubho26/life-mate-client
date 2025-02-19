@@ -60,18 +60,18 @@ const PremiumBioRequests = () => {
         {reqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Name</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap bg-element py-5">Email</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Email</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap bg-element py-5">Biodata ID</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Biodata ID</TableHeadCell>
 
-                    <TableHeadCell className="py-5 bg-element">Action</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Action</TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {reqs?.map(req => <TableRow key={req._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base dark:even:bg-background-dark">
                         <TableCell className="text-nowrap">{req.name}</TableCell>
                         <TableCell>{req.email}</TableCell>
                         <TableCell>#{req.biodata}</TableCell>
@@ -79,8 +79,8 @@ const PremiumBioRequests = () => {
                         <TableCell className='text-nowrap'>
                             {req.status === 'pending' ? <button
                                 onClick={() => makePremium(req._id, req.biodata)}
-                                className="font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary">
-                                Make Premium
+                                className="font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark hover:text-lite text-primary">
+                                <span className="relative z-50">Make Premium</span>
                             </button> : <span className="text-primary font-semibold">Approved</span>}
                         </TableCell>
                     </TableRow>)}

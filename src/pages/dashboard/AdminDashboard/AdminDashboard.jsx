@@ -15,7 +15,7 @@ import { TbReportMoney } from 'react-icons/tb';
 import { MdWorkspacePremium } from 'react-icons/md';
 import { Fade } from 'react-awesome-reveal';
 
-const cardCss = "flex items-center gap-4 py-5 border border-line rounded-md bg-element px-5";
+const cardCss = "flex items-center gap-4 py-5 neomorphism-outset dark:neomorphism-outset-dark rounded px-5";
 
 const AdminDashboard = () => {
     useEffect(() => {
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
 
         <Title title={`Welcome ${displayName} (Admin)`} />
 
-        <p className='text-center flex-wrap text-lg text-text mb-3 flex items-center gap-2 justify-center mt-10'>
+        <p className='text-center flex-wrap text-lg text-text dark:text-text-dark mb-3 flex items-center gap-2 justify-center mt-10'>
             Click the <span className='inline-flex items-center gap-2 text-primary font-semibold'>
                 <BsArrow90DegLeft className='text-2xl' />
                 Top-Left

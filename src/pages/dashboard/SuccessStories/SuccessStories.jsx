@@ -35,18 +35,18 @@ const SuccessStories = () => {
         {stories?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                <TableHeadCell className="text-nowrap py-5 bg-element">Serial No.</TableHeadCell>
+                <TableHeadCell className="text-nowrap py-5 bg-element dark:bg-clear-dark">Serial No.</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap py-5 bg-element">Male Biodata ID</TableHeadCell>
+                    <TableHeadCell className="text-nowrap py-5 bg-element dark:bg-clear-dark">Male Biodata ID</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap bg-element py-5">Female Biodata ID</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Female Biodata ID</TableHeadCell>
 
-                    <TableHeadCell className="py-5 bg-element">Action</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Action</TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {stories?.map((story, i) => <TableRow key={story._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base dark:even:bg-background-dark">
                             <TableCell>{i+1}</TableCell>
 
                         <TableCell className="text-nowrap">
@@ -65,8 +65,8 @@ const SuccessStories = () => {
                         <TableCell className='text-nowrap'>
                             <button
                                 onClick={() => handleViewStory(story)}
-                                className="font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary">
-                                View Story
+                                className="font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark hover:text-lite text-primary">
+                                <span className="relative z-50">View Story</span>
                             </button>
                         </TableCell>
                     </TableRow>)}

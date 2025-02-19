@@ -15,8 +15,8 @@ import useIsFavourite from "../../hooks/useIsFavourite";
 import useIsAdmin from "../../hooks/useIsAdmin";
 import { Dropdown, DropdownItem } from "flowbite-react";
 
-const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 ";
-const buttonCss = "text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-2 sm:px-6 py-2 hover:text-lite";
+const detailsTxtCss = "neomorphism-outset-sm dark:neomorphism-outset-sm-dark rounded px-3 sm:px-5 py-2 basis-1/2 ";
+const buttonCss = "text-primary neomorphism-outset-sm bg-expand relative dark:neomorphism-outset-sm-dark transition-colorsd font-semibold text-sm sm:text-lg rounded px-2 sm:px-6 py-2 hover:text-lite";
 
 const BiodataDetails = () => {
     const { biodataId } = useParams();
@@ -57,7 +57,7 @@ const BiodataDetails = () => {
             <title>{details?.name || 'Details'} || Life Mate</title>
         </Helmet>
 
-        <div className="mb-20 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md min-h-96">
+        <div className="mb-10 relative max-w-xl mx-auto p-2 bg-element dark:bg-background-dark neomorphism-outset dark:neomorphism-outset-dark rounded min-h-96">
             <Loading loading={loading || favLoading || isFavouriteChecking} />
 
             {checking || isFavouriteChecking || loading ? null : <>
@@ -76,7 +76,9 @@ const BiodataDetails = () => {
                 <div className="flex items-center gap-2 justify-center mt-5">
                     {details?.contact ? <>
                         <Dropdown
-                            renderTrigger={() => <button className={buttonCss}>Contact Info</button>}
+                            renderTrigger={() => <button className={buttonCss}>
+                                <span className="relative z-10">Contact Info</span>
+                            </button>}
                             dismissOnClick={false}>
                             <DropdownItem>{details.contact.email}</DropdownItem>
                             <DropdownItem>{details.contact.phone}</DropdownItem>
@@ -86,18 +88,18 @@ const BiodataDetails = () => {
                             state={{ _id: details._id }}
                             to={`/checkout/${details.biodata_id}`}
                             className={buttonCss}>
-                            Request Contact
+                            <span className="relative z-10">Request Contact</span>
                         </Link>}
                     </>}
 
                     {!isFavourite && !checkingAdmin && !isAdmin && <button
                         onClick={handleAddToFavourite}
                         className={buttonCss}>
-                        Add To Favourite
+                        <span className="relative z-10">Add To Favourite</span>
                     </button>}
                 </div>
 
-                <div className="mt-5 text-left capitalize text-sm sm:text-lg">
+                <div className="mt-5 text-left capitalize text-sm sm:text-lg dark:text-text-dark">
                     <p className="flex gap-2 mt-2">
                         <span className={detailsTxtCss + ' font-semibold'}>Age: </span>
                         <span className={detailsTxtCss}>{details.age}Y</span>

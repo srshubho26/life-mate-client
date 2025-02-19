@@ -106,6 +106,7 @@ form textarea:focus {
 form input[type=text],
 form input[type=email],
 form input[type="password"],
+form input[type="number"],
 form input[type="file"],
 form textarea,
 form select {

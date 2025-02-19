@@ -1,12 +1,14 @@
 import { Card, Label, TextInput } from "flowbite-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleBtn from '../../components/reusuable/GoogleBtn';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import swal from "sweetalert";
 import { Helmet } from "react-helmet-async";
 import Loading from "../../components/reusuable/Loading";
 import loginImg from '../../assets/img/login.svg';
 import { AuthContext } from "../../Provider/AuthProvider";
+
+const btnCss = "w-fit text-primary transition-colors font-semibold text-lg rounded neomorphism-outset dark:neomorphism-outset-dark px-6 py-2 hover:text-lite uppercase bg-expand relative";
 
 const Login = () => {
     useEffect(() => {
@@ -18,6 +20,7 @@ const Login = () => {
     const navigate = useNavigate();
     const [formProcessing, setFormProcessing] = useState(false);
     const { state } = useLocation();
+    const formRef = useRef();
 
     useEffect(() => {
         if (formProcessing) return;
@@ -50,6 +53,11 @@ const Login = () => {
             })
     }
 
+    const fillFormVal = (email, pass)=>{
+        formRef.current.email.value = email;
+        formRef.current.pass.value = pass;
+    }
+
     return (<section className="py-20 px-2 login">
         <Helmet>
             <title>Login || Life Mate</title>
@@ -61,7 +69,21 @@ const Login = () => {
 
                 <h3 className="text-primary font-playwrite text-4xl mb-5 font-bold">Login</h3>
 
-                <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+                <div className="flex gap-2 justify-between">
+                    <button onClick={()=>fillFormVal("z@gmail.com", "aA123456")} type="button" className={btnCss}>
+                        <span className="relative z-20 text-sm">Normal</span>
+                    </button>
+
+                    <button onClick={()=>fillFormVal("a@gmail.com", "aA123456")} type="button" className={btnCss}>
+                        <span className="relative z-20 text-sm">Premium</span>
+                    </button>
+
+                    <button onClick={()=>fillFormVal("admin@gmail.com", "Admin123456")} type="button" className={btnCss}>
+                        <span className="relative z-20 text-sm">Admin</span>
+                    </button>
+                </div>
+
+                <form ref={formRef} className="flex flex-col gap-4" onSubmit={handleLogin}>
                     <div>
                         <div className="mb-2 block">
                             <Label value="Email" />
@@ -75,8 +97,8 @@ const Login = () => {
                         <TextInput name="pass" type="password" placeholder="Enter your password" required />
                     </div>
 
-                    <button className="w-fit text-primary transition-colors font-semibold text-lg rounded neomorphism-outset dark:neomorphism-outset-dark px-6 py-2 hover:text-lite uppercase bg-expand relative">
-                        <span className="relative z-20">Login</span>
+                    <button className={btnCss}>
+                        <span className="relative z-10">Login</span>
                     </button>
                 </form>
                 <Label className="text-desc text-sm sm:text-base">

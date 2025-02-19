@@ -61,18 +61,18 @@ const ContactReqs = () => {
         {contactReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell className="py-5 text-nowrap bg-element">Applicant&apos;s Name</TableHeadCell>
+                    <TableHeadCell className="py-5 text-nowrap bg-element dark:bg-clear-dark">Applicant&apos;s Name</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap bg-element py-5">Applicant&apos;s Email</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Applicant&apos;s Email</TableHeadCell>
 
-                    <TableHeadCell className="text-nowrap bg-element py-5">Requested For</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Requested For</TableHeadCell>
 
-                    <TableHeadCell className="py-5 bg-element">Action</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Action</TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {contactReqs?.map(req => <TableRow key={req._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base dark:even:bg-background-dark">
                         <TableCell className="text-nowrap">{req.requestedBy.name}</TableCell>
                         <TableCell>{req.requestedBy.email}</TableCell>
                         <TableCell>#{req.requestedFor}</TableCell>
@@ -80,8 +80,8 @@ const ContactReqs = () => {
                         <TableCell className='text-nowrap'>
                             {req.status === 'pending' ? <button
                                 onClick={() => approveReq(req._id)}
-                                className="font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary">
-                                Approve
+                                className="font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark hover:text-lite text-primary">
+                                <span className="relative z-50">Approve</span>
                             </button> : <span className="text-primary font-semibold">Approved</span>}
                         </TableCell>
                     </TableRow>)}

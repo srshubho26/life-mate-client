@@ -131,11 +131,11 @@ const SuccessStory = () => {
             <div className="grow">
                 <button
                 onClick={()=>setOpenModal(true)}
-                    className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-8 py-2 hover:text-lite">
-                    Edit Review
+                    className="font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark text-sm sm:text-lg hover:text-lite text-primary">
+                    <span className="relative z-20">Edit Review</span>
                 </button>
 
-                <h3 className="flex-col sm:flex-row border-b border-line pb-2 text-2xl font-semibold text-text flex sm:items-center sm:gap-5 my-5">
+                <h3 className="flex-col sm:flex-row border-b border-line pb-2 text-2xl font-semibold text-text flex sm:items-center dark:text-lite sm:gap-5 my-5">
                     <span>{story?.name}</span>
 
                     <StarRatings
@@ -148,7 +148,7 @@ const SuccessStory = () => {
                         numberOfStars={5}
                     />
                 </h3>
-                <p>{story?.review}</p>
+                <p className="dark:text-text-dark">{story?.review}</p>
             </div>
 
             <EditModal

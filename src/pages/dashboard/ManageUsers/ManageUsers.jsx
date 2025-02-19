@@ -19,7 +19,7 @@ const theme = {
     }
 }
 
-const btnClasses = "font-medium border border-primary rounded-md px-3 py-1 hover:bg-primary hover:text-lite text-primary";
+const btnClasses = "font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark hover:text-lite text-primary";
 
 const ManageUsers = () => {
     useEffect(()=>{
@@ -115,15 +115,15 @@ const ManageUsers = () => {
         {users?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Email</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Role</TableHeadCell>
-                    <TableHeadCell className="py-5 bg-element">Action</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Name</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Email</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Role</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Action</TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {users?.map(user => <TableRow key={user._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base  dark:even:bg-background-dark">
                         <TableCell className="text-nowrap">{user.name}</TableCell>
                         <TableCell>{user.email}</TableCell>
 
@@ -135,13 +135,13 @@ const ManageUsers = () => {
                             {user.role !== 0 && <button
                                 onClick={() => makeAdmin(user.email, user.biodata_id, user?.premiumRequest)}
                                 className={btnClasses}>
-                                Make Admin
+                                <span className='relative z-40'>Make Admin</span>
                             </button>}
 
                             {user?.premiumRequest === 'pending' && <button
                                 onClick={() => makePremium(user._id, user.biodata_id)}
                                 className={btnClasses + " ml-2"}>
-                                Make Premium
+                                <span className='relative z-40'>Make Premium</span>
                             </button>}
                         </TableCell>
                     </TableRow>)}

@@ -34,8 +34,8 @@ const GoogleBtn = ({ setLoading, setFormProcessing, to }) => {
     return (<button
         className="uppercase text-primary text-base font-semibold flex items-center gap-2 mx-auto px-5 py-2 rounded bg-expand neomorphism-outset dark:neomorphism-outset-dark relative hover:text-lite transition-colors"
         onClick={handleGoogleLogin}>
-        <img src={googleImg} alt="Google" className='relative z-40' />
-        <span className='relative z-40'>Login With Google</span>
+        <img src={googleImg} alt="Google" className='relative z-10' />
+        <span className='relative z-10'>Login With Google</span>
     </button>)
 };
 

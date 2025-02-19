@@ -125,7 +125,7 @@ const EditBiodata = () => {
         </Helmet>
         <Title title="Edit Your Biodata" />
 
-        <form onSubmit={handleSubmit} className="bg-element w-full mt-10 grid sm:grid-cols-2 border border-line rounded-lg p-5 gap-5 relative min-h-96">
+        <form onSubmit={handleSubmit} className="bg-element dark:bg-background-dark neomorphism-outset dark:neomorphism-outset-dark w-full mt-10 grid sm:grid-cols-2 rounded p-5 gap-5 relative min-h-96">
             <Loading loading={detailsLoading || loading} />
             {!detailsLoading && <>
                 <ImageInput {...imgInputVals} />
@@ -357,8 +357,8 @@ const EditBiodata = () => {
                 </div>
 
                 <div className="col-span-full">
-                    <button className="w-fit text-primary border border-primary transition-colors hover:bg-primary font-semibold text-lg rounded-lg px-3 sm:px-6 py-2 hover:text-lite uppercase">
-                        Save And Publish Now
+                    <button className="flex items-center gap-2 rounded px-5 py-3 neomorphism-outset dark:neomorphism-outset-dark bg-expand dark:text-text-dark relative hover:text-lite transition-colors">
+                        <span className="relative z-20">Save And Publish Now</span>
                     </button>
                 </div>
             </>}

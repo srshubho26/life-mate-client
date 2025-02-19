@@ -53,19 +53,19 @@ const MyContactRequests = () => {
         {myContactReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Biodata ID</TableHeadCell>
-                    <TableHeadCell className="bg-element py-5">Status</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Email</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Phone</TableHeadCell>
-                    <TableHeadCell className="bg-element py-5 rounded-tr-md">
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Name</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Biodata ID</TableHeadCell>
+                    <TableHeadCell className="bg-element dark:bg-clear-dark py-5">Status</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Email</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Phone</TableHeadCell>
+                    <TableHeadCell className="bg-element dark:bg-clear-dark py-5 rounded-tr-md">
                         <span className="sr-only">Edit</span>
                     </TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {myContactReqs?.map(req => <TableRow key={req._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base dark:even:bg-background-dark">
                         <TableCell className="text-nowrap">{req.name}</TableCell>
                         <TableCell>#{req.biodata_id}</TableCell>
 
@@ -84,7 +84,7 @@ const MyContactRequests = () => {
                         <TableCell>
                             <button
                                 onClick={() => handleDelete(req._id)}
-                                className="font-medium text-red-600 ">
+                                className="font-medium text-red-600 hover:text-red-800">
                                 Delete
                             </button>
                         </TableCell>

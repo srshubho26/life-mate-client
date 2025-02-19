@@ -52,18 +52,18 @@ const MyFavBiodatas = () => {
         {myFavReqs?.length ? <div className="overflow-x-auto min-h-screen mt-10">
             <Table>
                 <TableHead>
-                    <TableHeadCell className="py-5 bg-element">Name</TableHeadCell>
-                    <TableHeadCell className="text-nowrap bg-element py-5">Biodata ID</TableHeadCell>
-                    <TableHeadCell className="py-5 bg-element">Address</TableHeadCell>
-                    <TableHeadCell className="py-5 bg-element">Occupation</TableHeadCell>
-                    <TableHeadCell className="py-5 bg-element">
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Name</TableHeadCell>
+                    <TableHeadCell className="text-nowrap bg-element dark:bg-clear-dark py-5">Biodata ID</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Address</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">Occupation</TableHeadCell>
+                    <TableHeadCell className="py-5 bg-element dark:bg-clear-dark">
                         <span className="sr-only">Delete</span>
                     </TableHeadCell>
                 </TableHead>
                 <TableBody>
 
                     {myFavReqs?.map(req => <TableRow key={req._id}
-                        className="even:bg-element text-primary text-base dark:border-gray-700 dark:bg-gray-800">
+                        className="even:bg-element text-text dark:text-text-dark text-base dark:even:bg-background-dark">
                         <TableCell className="text-nowrap">{req.favs[0].name}</TableCell>
                         <TableCell>#{req.biodata_id}</TableCell>
 
@@ -79,7 +79,7 @@ const MyFavBiodatas = () => {
                         <TableCell>
                             <button
                                 onClick={() => handleDelete(req._id)}
-                                className="font-medium text-red-600 ">
+                                className="font-medium text-red-600 hover:text-red-800">
                                 Delete
                             </button>
                         </TableCell>

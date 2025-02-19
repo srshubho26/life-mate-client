@@ -32,10 +32,10 @@ const EditModal = ({ openModal, setOpenModal, story }) => {
         <div className='bg-element rounded-lg relative'>
             <Loading loading={loading} />
 
-            <Modal.Header>{story.name}</Modal.Header>
+            <Modal.Header className='dark:bg-lite-dark'>{story.name}</Modal.Header>
 
             <form onSubmit={handleUpdate}>
-                <Modal.Body>
+                <Modal.Body className='bg-background-dark'>
                     <div>
                         <div className="mb-2 block">
                             <Label className="text-lg" value="Review" />
@@ -44,10 +44,10 @@ const EditModal = ({ openModal, setOpenModal, story }) => {
                     </div>
                 </Modal.Body>
 
-                <Modal.Footer>
+                <Modal.Footer className='dark:bg-lite-dark'>
                     <button
-                        className="text-primary border border-primary transition-colors hover:bg-primary font-semibold text-sm sm:text-lg rounded-lg px-8 py-2 hover:text-lite">
-                        Update
+                        className="font-medium rounded px-3 py-1 relative bg-expand neomorphism-outset-sm dark:neomorphism-outset-sm-dark text-sm sm:text-lg hover:text-lite text-primary">
+                        <span className='relative z-20'>Update</span>
                     </button>
                 </Modal.Footer>
             </form>

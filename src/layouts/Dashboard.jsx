@@ -15,6 +15,13 @@ import Loading from "../components/reusuable/Loading";
 import { AiOutlineDashboard, AiOutlineSafetyCertificate } from "react-icons/ai";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { LiaAddressCardSolid } from "react-icons/lia";
+import Header from "../components/shared/Header/Header";
+
+const theme = {
+    "root": {
+      "base": "fixed z-40 overflow-y-auto bg-lite p-4 transition-transform dark:bg-background-dark",
+    }
+  }
 
 const Dashboard = () => {
     const { isAdmin, adminChecking } = useIsAdmin();
@@ -28,19 +35,21 @@ const Dashboard = () => {
             .then(() => navigate('/login'))
     }
 
-    return (<>
-        <div className="min-h-screen px-2  py-10">
-            <button className="border border-primary text-4xl p-0 text-primary hover:text-lite hover:bg-primary rounded-md  fixed top-1 left-1 transition-colors z-10"
-                onClick={() => setIsOpen(true)}>
-                <IoAdd />
-            </button>
+    const togglerBtn = (<button className="text-4xl p-0 text-primary hover:text-lite rounded-md transition-colors z-10 bg-expand relative neomorphism-outset-sm dark:neomorphism-outset-sm-dark bg-element dark:bg-lite-dark"
+        onClick={() => setIsOpen(true)}>
+        <span className="relative z-40"><IoAdd /></span>
+    </button>);
 
+    return (<>
+        <div className="min-h-screen px-2 py-10 pt-32">
             <div className="max-w-screen-xl mx-auto h-full">
                 <Outlet />
             </div>
         </div>
 
-        <Drawer open={isOpen} onClose={handleClose} className="">
+        <Header drawerToggler={togglerBtn}/>
+
+        <Drawer theme={theme} open={isOpen} onClose={handleClose} className="bg-white">
             <div className="relative">
                 <Tooltip content="Visit Site">
                     <Logo />
@@ -48,13 +57,13 @@ const Dashboard = () => {
 
                 <button
                     onClick={handleClose}
-                    className="absolute right-0 top-0 text-2xl hover:text-accent-dark">
+                    className="absolute dark:text-text-dark right-0 top-0 text-2xl hover:text-accent-dark">
                     <RxCross2 />
                 </button>
             </div>
 
             <Drawer.Items>
-                <ul className="mt-10 text-text relative min-h-80">
+                <ul className="mt-10 text-text dark:text-text-dark relative min-h-80">
                     {adminChecking ? <Loading loading={adminChecking} /> : <>
                         {isAdmin ? <>
                             <NavItem

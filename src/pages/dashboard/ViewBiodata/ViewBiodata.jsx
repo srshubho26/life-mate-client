@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import useIsPremiumRequested from "../../../hooks/useIsPremiumRequested";
 import { useNavigate } from "react-router-dom";
 
-const detailsTxtCss = "border rounded-md px-3 sm:px-5 py-2 basis-1/2 ";
+const detailsTxtCss = "neomorphism-outset-sm dark:neomorphism-outset-sm-dark rounded px-3 sm:px-5 py-2 basis-1/2 ";
 
 const ViewBiodata = () => {
     useEffect(() => {
@@ -67,7 +67,7 @@ const ViewBiodata = () => {
 
         <Title title="View Your Biodata" />
 
-        <div className="mt-10 relative max-w-xl mx-auto border p-2 bg-element border-accent rounded-md">
+        <div className="mt-10 relative max-w-xl mx-auto  p-2 bg-element dark:bg-background-dark neomorphism-outset dark:neomorphism-outset-dark rounded">
             <Loading loading={loading || premiumLoading} />
             <div className="w-64 h-64 mx-auto relative">
                 {details?.isPremium ? <span className="bg-primary text-lite rounded-md px-3 py-1 font-semibold absolute bottom-0 left-0">Premium</span> : null}
@@ -83,7 +83,7 @@ const ViewBiodata = () => {
                 <p className="text-xl text-text dark:text-text-dark">{details?.occupation}</p>
             </div>
 
-            {!requestChecking && <div className="flex gap-2 justify-center mt-2">
+            {!requestChecking && <div className="flex gap-2 justify-center mt-2 dark:text-lite">
                 {request?.isRequested && request?.status === 'pending' && <span>Your biodata is under review</span>}
 
                 {!request?.isRequested && <button
@@ -94,7 +94,7 @@ const ViewBiodata = () => {
                 }
             </div>}
 
-            <div className="mt-5 text-left text-sm sm:text-lg">
+            <div className="mt-5 text-left dark:text-text-dark text-sm sm:text-lg">
                 <p className="flex gap-2 mt-2">
                     <span className={detailsTxtCss + ' font-semibold'}>Email: </span>
                     <span className={detailsTxtCss}>{details?.contact?.email}</span>

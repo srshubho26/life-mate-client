@@ -111,10 +111,10 @@ const CheckoutForm = ({setLoading, biodataId}) => {
         />
 
         <button
-            className="hover:bg-primary text-primary hover:text-lite border border-primary font-bold text-xl py-3 rounded-md w-full max-w-96 disabled:opacity-70 disabled:hover:bg-transparent disabled:hover:text-primary mt-10"
+            className="text-primary hover:text-lite neomorphism-outset-sm bg-expand relative dark:neomorphism-outset-sm-dark font-bold text-xl py-3 rounded-md w-full max-w-96 disabled:opacity-70 disabled:hover:bg-transparent disabled:hover:text-primary mt-10"
             type="submit"
             disabled={!stripe || !clientSecret}>
-            Pay
+            <span className='relative z-10'>Pay</span>
         </button>
 
     </form>)

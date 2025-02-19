@@ -34,6 +34,10 @@ const AuthProvider = ({ children }) => {
         return unsubscribe;
     }, [axiosWithCredentials]);
 
+    useEffect(()=>{
+        document.body.classList[dark? 'add' : 'remove']('dark');
+    }, [dark])
+
     // Google Signin
     const googleSignin = () => signInWithPopup(auth, googleAuth);
 
@@ -64,10 +68,10 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const values = { user, logOut, loginUser, createNewUser, googleSignin, setDark, dark }
+    const values = { user, logOut, loginUser, createNewUser, googleSignin, setDark }
 
     return (<AuthContext.Provider value={values}>
-        <div className={(dark ? "dark bg-lite-dark" : " bg-lite")}>
+        <div className={(dark ? "bg-lite-dark" : "bg-lite")}>
         {loading ? < Loading loading={loading} /> : children}
         </div>
     </AuthContext.Provider>);

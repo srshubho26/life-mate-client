@@ -71,15 +71,15 @@ const Login = () => {
 
                 <div className="flex gap-3 flex-wrap">
                     <button onClick={()=>fillFormVal("z@gmail.com", "aA123456")} type="button" className={btnCss}>
-                        <span className="relative z-20 text-sm">Normal</span>
+                        <span className="relative z-10 text-sm">Normal</span>
                     </button>
 
                     <button onClick={()=>fillFormVal("a@gmail.com", "aA123456")} type="button" className={btnCss}>
-                        <span className="relative z-20 text-sm">Premium</span>
+                        <span className="relative z-10 text-sm">Premium</span>
                     </button>
 
                     <button onClick={()=>fillFormVal("admin@gmail.com", "Admin123456")} type="button" className={btnCss}>
-                        <span className="relative z-20 text-sm">Admin</span>
+                        <span className="relative z-10 text-sm">Admin</span>
                     </button>
                 </div>
 

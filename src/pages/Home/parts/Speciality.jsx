@@ -28,7 +28,7 @@ const Speciality = () => {
 
                 <div className='max-w-sm sm:max-w-full mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-5 text-center xl:text-left'>
                     {techniques.map((el, i) => (<div key={i} className='px-2 py-3 xl:px-4 xl:py-5 rounded-md flex flex-col xl:flex-row items-center gap-4 neomorphism-outset text-primary'>
-                        <span className='text-6xl mx-auto w-fit'>
+                        <span className='text-6xl mx-auto w-fit text-secondary'>
                             {el.icon}
                         </span>
     

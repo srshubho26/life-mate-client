@@ -24,7 +24,7 @@ const SuccessCountup = () => {
         }, 50);
     }
 
-    return (<section className="px-2 py-20 bg-lite">
+    return (<section className="px-2 py-20 bg-element">
         <div className="max-w-screen-xl mx-auto">
             <Title title="our short journey" />
 

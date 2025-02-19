@@ -21,7 +21,7 @@ body {
         -2px -2px 3px #fff;
 }
 
-.bg-expand:before {
+.bg-expand::before, .bg-expand-secondary::before {
     content: '';
     position: absolute;
     left: 0;
@@ -32,8 +32,11 @@ body {
     transition: .2s ease-in;
     border-radius: 4px;
 }
+.bg-expand-secondary::before {
+    background: #ebb08e;
+}
 
-.bg-expand:hover:before {
+.bg-expand:hover:before, .bg-expand-secondary:hover:before {
     height: 100%;
 }
 

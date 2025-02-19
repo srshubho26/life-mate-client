@@ -88,7 +88,7 @@ const Banner = () => {
 
                                 <Link 
                                 to={slide.actionBtn.link} 
-                                className='text-primary-dark neomorphism-outset-sm-dark bg-background-dark w-fit rounded-md flex gap-4 items-center mt-5 px-4 py-3 text-xl bg-expand relative hover:text-lite transition-all'
+                                className='text-secondary neomorphism-outset-sm-dark bg-background-dark w-fit rounded-md flex gap-4 items-center mt-5 px-4 py-3 text-xl bg-expand-secondary relative hover:text-text transition-all'
                                 >
                                 <span className='text-3xl relative z-20'>{slide.actionBtn.icon}</span>
                                 <span className='relative z-20 font-semibold'>{slide.actionBtn.name}</span>

@@ -15,7 +15,7 @@ export default {
         'background': '#fceefb',
         'lite': '#f9f9f9',
         'clear-lite': '#fff6ffeb',
-        'background-dark': '#110310',
+        'background-dark': '#202020',
         'clear-dark': '#11031066',
         'primary': '#d833db',
         'primary-dark': '#c924cc',

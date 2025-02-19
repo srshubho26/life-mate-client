@@ -5,6 +5,7 @@ import HowItWorks from "./parts/HowItWorks";
 import SuccessCountup from "./parts/SuccessCountup";
 import SuccessStory from "./parts/SuccessStory";
 import { useEffect } from "react";
+import Biodatas from "./parts/Biodatas";
 
 const Home = () => {
     useEffect(() => {
@@ -20,8 +21,9 @@ const Home = () => {
             <Banner />
             <PremiumMembers />
             <HowItWorks />
+            <Biodatas />
             <SuccessCountup />
-            <SuccessStory/>
+            <SuccessStory />
         </>
     );
 };

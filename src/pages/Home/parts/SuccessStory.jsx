@@ -1,8 +1,8 @@
 import Title from "../../../components/reusuable/Title";
 import useSuccessStories from "../../../hooks/useSuccessStories";
-import { Link } from "react-router-dom";
 import SuccessStoryCard from "../../../components/reusuable/SuccessStoryCard";
 import Loading from "../../../components/reusuable/Loading";
+import LinkBtn from "../../../components/reusuable/LinkBtn";
 
 const SuccessStory = () => {
     const { stories, storiesLoading } = useSuccessStories(8);
@@ -16,9 +16,7 @@ const SuccessStory = () => {
                 {stories?.map(story => <SuccessStoryCard key={story._id} story={story} />)}
             </div>
 
-            <Link to="/stories" className="w-fit block mt-10 mx-auto text-primary transition-colors font-semibold text-lg rounded-lg px-6 py-2 hover:text-lite uppercase neomorphism-outset bg-expand relative">
-                <span className="relative z-20">View All</span>
-            </Link>
+            <LinkBtn to="/stories" name="View All" />
         </div>
     </section>);
 };
